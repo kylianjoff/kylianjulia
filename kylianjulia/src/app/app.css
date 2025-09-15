@@ -1,15 +1,17 @@
 header {
     background-color: #272727c7;
     color: white;
-    margin: 10px 60px;
     padding: 10px 60px;
-    border-radius: 20px;
     border: solid 2px white;
-
+    position: fixed;
+    top: 10px;
+    left: 60px;
+    width: calc(100vw - 120px);
+    border-radius: 20px;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 header a {
