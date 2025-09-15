@@ -1,7 +1,7 @@
 header {
     background-color: #272727c7;
     color: white;
-    margin: 10px 20px;
+    margin: 10px 60px;
     padding: 10px 60px;
     border-radius: 20px;
     border: solid 2px white;
@@ -16,3 +16,20 @@ header a img {
     height: 25px;
 }
 
+nav {
+    display: flex;
+    gap: 40px;
+    margin: 0 40px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    transition: ease-in-out 0.3s;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
