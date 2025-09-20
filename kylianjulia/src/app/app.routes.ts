@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Blog } from './blog/blog';
 import { Projects } from './projects/projects';
 import { Home } from './home/home';
+import { About } from './about/about';
 
 export const routes: Routes = [
     {
@@ -20,4 +21,9 @@ export const routes: Routes = [
         title: "Projets de Kylian JULIA",
         component: Projects
     },
+    {
+        path: 'about',
+        title: "À propos de moi",
+        component: About
+    }
 ];
