@@ -88,7 +88,48 @@ html, body {
 }
 
 section {
-    min-height: 100vh;
+    position: relative;
+    padding: 20px;
     background: #1a1a1a;
     z-index: 100;
+}
+
+#projets {
+    height: 50vh;
+}
+
+#blog {
+    height: 50vh;
+}
+
+.seeMore {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    background: #00000020;
+    padding: 20px 40px;
+    font-size: 1.2em;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    box-shadow: 0 0 2px #ffffff50;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.seeMore:hover {
+    box-shadow: 0 0 10px #ffffff80;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
