@@ -1,30 +1,93 @@
-section {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    align-items: center;
-    padding: 20px;
-    border: solid 1px #ccc;
-}
-
-section h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-.seeMore {
-    position: static;
-    margin-top: auto;
-    text-decoration: none;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
     color: #fff;
-    bottom: 20px;
-    left: 50%;
-    font-size: 18px;
-    transition: ease-in-out 0.3s;
 }
 
-.seeMore:hover {
-    text-decoration: underline;
+.special {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1a1a1a);
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: gradient 12s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.special h1 {
+    font-size: 3em;
+    z-index: 2;
+    position: relative;
+}
+
+.wave {
+    background: #00067748;
+    border-radius: 1000% 1000% 0 0;
+    position: absolute;
+    width: 200%;
+    height: 10em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+
+section {
+    min-height: 100vh;
+    background: #262626c4;
+    z-index: 100;
 }
