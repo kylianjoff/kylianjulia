@@ -5,8 +5,37 @@
     font-family: 'Helvetica', sans-serif;
 }
 
+html, body {
+    height: 100%;
+    background: #272727;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
-    background-color: #272727;
     color: white;
     overflow-x: hidden;
+}
+
+/* --- Chrome, Edge, Safari (WebKit/Blink) --- */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+    border-radius: 6px;
+}
+body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #111, #333);
+}
+
+/* --- Firefox --- */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #333 #1a1a1a;
 }
