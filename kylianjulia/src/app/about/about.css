@@ -58,4 +58,26 @@ main {
 .content {
     padding : 20px;
     margin: 0 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.formation, .experience, .competence {
+    display: flex;
+    flex-direction: row;
+}
+
+.col-g {
+    width: 20vw;
+}
+
+.col-d {
+    width: 80vw;
 }
