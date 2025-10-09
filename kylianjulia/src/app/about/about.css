@@ -50,3 +50,10 @@ main {
     font-size: 18px;
     transition: color 0.3s;
 }
+
+/* Contenu de la page */
+
+.content {
+    padding : 20px;
+    margin: 0 80px;
+}
