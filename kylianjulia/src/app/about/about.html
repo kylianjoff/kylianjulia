@@ -1,11 +1,11 @@
 <main>
     <div class="menu">
-        <div class="menu-btn">
+        <div class="menu-btn" (click)="toggleMenuCV()">
             <div class="menu-bar"></div>
             <div class="menu-bar"></div>
             <div class="menu-bar"></div>
         </div>
-        <div class="menu-content">
+        <div class="menu-content" *ngIf="menuCV">
             <a href="/about#formations">Formations</a>
             <a href="/about#experiences">Expérience</a>
             <a href="/about#competences">Compétences</a>
