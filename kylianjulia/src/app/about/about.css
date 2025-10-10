@@ -72,12 +72,27 @@ section h2 {
 .formation, .experience, .competence {
     display: flex;
     flex-direction: row;
+    margin: 40px 0;
 }
 
 .col-g {
     width: 20vw;
+    text-align: right;
+    margin: 0 20px;
 }
 
 .col-d {
     width: 80vw;
+    text-align: left;
+    margin: 0 20px;
+}
+
+.competence h3 {
+    text-decoration: underline;
+}
+
+.competence ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 10px;
 }
