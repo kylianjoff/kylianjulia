@@ -97,6 +97,117 @@ section h2 {
     margin: 0 10px;
 }
 
+/* Section associatif */
+
+#associatif {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.assos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.logos li {
+  width: 10vw;
+  height: 10vw;
+  background: #7171712e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.logos img {
+  width: 8vw;
+  height: 8vw;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(85%);
+}
+
+.logos img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.logos img.active {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.logos li.active {
+  background: #71717170;
+  border: 2px solid #272727;
+}
+
+.infos {
+  background: #7171712e;
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+  width: 50vw;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.infos ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.infos ul li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.infos ul li::before {
+  content: "➜";
+  position: absolute;
+  left: 0;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.infos ul li:hover::before {
+  color: #9f00b1;
+  transform: translateX(3px);
+}
+
+.infos h3 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.infos h4 {
+    font-size: 24px;
+}
+
+.infos h5 {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
 /* Boutons pour voir mes CV en PDF */
 
 .tel-cv {

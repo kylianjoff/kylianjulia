@@ -152,57 +152,28 @@
 
         <section id="associatif">
             <h2>Mon engagement dans l'associatif</h2>
+
             <section class="assos">
-                <ul>
-                    <li><img src="" alt="Logo Image"></li>
-                    <li><img src="" alt="Logo DreZZing"></li>
-                    <li><img src="" alt="Logo Shared"></li>
-                    <li><img src="" alt="Logo Isimalt"></li>
-                    <li><img src="" alt="Logo Sigmix"></li>
+                <ul class="logos">
+                <li *ngFor="let asso of associations" (click)="selectAsso(asso)">
+                    <img
+                    [src]="asso.logo"
+                    [alt]="'Logo ' + asso.name"
+                    [class.active]="selectedAsso?.name === asso.name"
+                    />
+                </li>
                 </ul>
-                <ul>
-                    <li>
-                        <div class="asso">
-                            <h3>Association Image</h3>
-                            <h4>Junior entreprise de l'ISIMA</h4>
-                            <h4>Poste : Vice-président (10/2025 - 02/2026)</h4>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="asso">
-                            <h3>Le DreZZing</h3>
-                            <h4>Association de textiles et goodies de l'ISIMA</h4>
-                            <h4>Poste : Trésorier (02/2025 - 02/2026)</h4>
-                            <ul>
-                                <li>Assurer la stabilité financière de l'association.</li>
-                                <li>Gestion des projets.</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="asso">
-                            <h3>Shared</h3>
-                            <h4>Club caritatif de l'ISIMA</h4>
-                            <h4>Poste : Responsable de la communication interne (02/2025 - 02/2026)</h4>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="asso">
-                            <h3>Isimalt</h3>
-                            <h4>Club de bière de l'ISIMA.</h4>
-                            <h4>Poste : Responsable de la communication (02/2025 - 02/2026)</h4>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="asso">
-                            <h3>Sigmix</h3>
-                            <h4>Association de DJ de Sigma Clermont et ISIMA</h4>
-                            <h4>Poste : DJ</h4>
-                        </div>
-                    </li>
+
+                <div class="infos" *ngIf="selectedAsso">
+                <h3>{{ selectedAsso.name }}</h3>
+                <h4>{{ selectedAsso.description }}</h4>
+                <h5>Poste : {{ selectedAsso.role }}</h5>
+                <ul *ngIf="selectedAsso.details">
+                    <li *ngFor="let detail of selectedAsso.details">{{ detail }}</li>
                 </ul>
+                </div>
             </section>
-        </section>
+            </section>
 
         <section id="moncv">
             <h2>Mon CV au format PDF</h2>
