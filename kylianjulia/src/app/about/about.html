@@ -146,10 +146,20 @@
         <section id="moncv">
             <h2>Mon CV au format PDF</h2>
             <div class="tel-cv">
-                <button>Mon CV français</button>
-                <button>My english resume</button>
+                <button class="french" (click)="selectCV(CV[0])"><span>Mon CV français</span></button>
+                <button class="english" (click)="selectCV(CV[1])"><span>My english resume</span></button>
             </div>
         </section>
+    </div>
+
+    <div class="bg-CV-PDF" *ngIf="modalCV" (click)="closeModal()">
+        <div class="modal-CV" (click)="$event.stopPropagation()">
+            <div class="close" (click)="closeModal()">&times;</div>
+            <div class="modal-content">
+                <h2 *ngIf="langCV === 'fr'">Mon CV</h2>
+                <h2 *ngIf="langCV === 'en'">My resume</h2>
+            </div>
+        </div>
     </div>
 
 </main>

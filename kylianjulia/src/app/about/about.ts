@@ -9,6 +9,11 @@ interface Association {
   details?: string[];
 }
 
+interface CVInfo {
+  lang: string;
+  file: string;
+}
+
 @Component({
   selector: 'app-about',
   imports: [CommonModule],
@@ -86,4 +91,22 @@ export class About {
     { titre: 'Outils', skills: ['Microsoft Office', 'Visual Studio', 'UNIX', 'GIT'] },
     { titre: 'Cybersécurité', skills: ['OWASP', 'Pentesting'] }
   ];
+
+  CV: CVInfo[] = [
+    {lang: 'fr', file: ''},
+    {lang: 'en', file: ''}
+  ]
+
+  modalCV: boolean = false;
+  langCV: string = '';
+
+  selectCV(cv: CVInfo) {
+    this.langCV = cv.lang;
+    this.modalCV = true;
+  }
+
+  closeModal() {
+    this.modalCV = false;
+    this.langCV = '';
+  }
 }
