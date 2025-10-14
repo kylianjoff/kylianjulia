@@ -104,49 +104,17 @@
 
         <section id="competences">
             <h2>Mes compétences techniques</h2>
-            <section class="competence">
-                <h3>Langages de programmation</h3>
-                <ul>
-                    <li>C</li>
-                    <li>Java</li>
-                    <li>C++</li>
-                    <li>JavaScript</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Python</li>
-                    <li>PHP</li>
-                </ul>
-            </section>
-            <section class="competence">
-                <h3>Web</h3>
-                <ul>
-                    <li>Angular</li>
-                    <li>Colyseus</li>
-                    <li>ASP.NET</li>
-                </ul>
-            </section>
-            <section class="competence">
-                <h3>Bases de données</h3>
-                <ul>
-                    <li>PostgreSQL</li>
-                    <li>MySQL</li>
-                </ul>
-            </section>
-            <section class="competence">
-                <h3>Outils</h3>
-                <ul>
-                    <li>Microsoft Office</li>
-                    <li>Visual Studio</li>
-                    <li>UNIX</li>
-                    <li>GIT</li>
-                </ul>
-            </section>
-            <section class="competence">
-                <h3>Cybersécurité</h3>
-                <ul>
-                    <li>OWASP</li>
-                    <li>Pentesting</li>
-                </ul>
+
+            <section
+                class="competence"
+                *ngFor="let bloc of blocs; let i = index"
+                [class.reverse]="i % 2 === 1"
+            >
+                <h3>{{ bloc.titre }}</h3>
+                <div class="list-competences" #list>
+                    <span *ngFor="let skill of bloc.skills">{{ skill }}</span>
+                </div>
+                <div class="fade"></div>
             </section>
         </section>
 

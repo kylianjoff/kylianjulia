@@ -16,6 +16,7 @@ interface Association {
   styleUrl: './about.css'
 })
 export class About {
+
   menuCV: boolean = false;
 
   toggleMenuCV() {
@@ -56,7 +57,7 @@ export class About {
     },
     {
       name: 'Isimalt',
-      description: 'Club de bière de l\ISIMA',
+      description: 'Club de bière de l\'ISIMA',
       role: 'Responsable de la communication (02/2025 - actuel)',
       logo: 'assos/isimalt.jpg'
     },
@@ -77,4 +78,12 @@ export class About {
   selectAsso(asso: Association) {
     this.selectedAsso = asso;
   }
+
+  blocs = [
+    { titre: 'Langages de programmation', skills: ['C', 'Java', 'C++', 'JavaScript', 'HTML', 'CSS', 'Python', 'PHP'] },
+    { titre: 'Web', skills: ['Angular', 'Colyseus', 'ASP.NET'] },
+    { titre: 'Bases de données', skills: ['PostgreSQL', 'MySQL'] },
+    { titre: 'Outils', skills: ['Microsoft Office', 'Visual Studio', 'UNIX', 'GIT'] },
+    { titre: 'Cybersécurité', skills: ['OWASP', 'Pentesting'] }
+  ];
 }
