@@ -100,7 +100,24 @@
             <div class="close" (click)="closeModal()">&times;</div>
             <div class="modal-content">
                 <h2 *ngIf="langCV === 'fr'">Mon CV</h2>
+                <div class="cv-container" *ngIf="langCV === 'fr'">
+                    <object 
+                        data="CV/CV_Kylian_JULIA.pdf" 
+                        type="application/pdf">
+                        <p>Votre navigateur ne supporte pas les PDF. 
+                        <a href="CV/CV_Kylian_JULIA.pdf">Télécharger le CV</a></p>
+                    </object>
+                </div>
+                
                 <h2 *ngIf="langCV === 'en'">My resume</h2>
+                <div class="cv-container" *ngIf="langCV === 'en'">
+                    <object 
+                        data="CV/Resume_Kylian_JULIA.pdf" 
+                        type="application/pdf">
+                        <p>Your browser don't support PDF files. 
+                        <a href="CV/Resume_Kylian_JULIA.pdf">Download the resume</a></p>
+                    </object>
+                </div>
             </div>
         </div>
     </div>
