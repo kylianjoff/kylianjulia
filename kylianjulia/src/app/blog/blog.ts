@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 interface BlogPost {
   title: string;
+  thumbnail?: string;
   date: string;
   author: string;
   file: string;
@@ -10,22 +14,19 @@ interface BlogPost {
 
 @Component({
   selector: 'app-blog',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './blog.html',
-  styleUrl: './blog.css'
+  styleUrls: ['./blog.css']
 })
-export class Blog {
+export class Blog implements OnInit {
   posts: BlogPost[] = [];
 
+  constructor(private http: HttpClient) {}
+
   ngOnInit() {
-    this.posts = [
-      {
-        title: 'Créer un blog Angular sans backend',
-        date: '2025-10-15',
-        author: 'Kylian Julia',
-        file: 'assets/posts/post-1.md',
-        excerpt: 'Apprends à créer un blog Angular 100 % statique avec Markdown.'
-      }
-    ]
+      this.http.get<BlogPost[]>('assets/blog-index.json').subscribe(data => {
+        this.posts = data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      });
   }
 }

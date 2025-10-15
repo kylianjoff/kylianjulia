@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-blog-post',
-  imports: [],
+  standalone: true,
+  imports: [MarkdownModule],
   templateUrl: './blog-post.html',
-  styleUrl: './blog-post.css'
+  styleUrls: ['./blog-post.css']
 })
-export class BlogPost {
+export class BlogPostComponent implements OnInit {
+  postSrc = '';
 
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    const slug = this.route.snapshot.paramMap.get('slug');
+    this.postSrc = `assets/blogs/${slug}`;
+  }
 }
