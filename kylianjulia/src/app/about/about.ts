@@ -14,6 +14,21 @@ interface CVInfo {
   file: string;
 }
 
+interface Formation {
+  nom: string;
+  lieu: string;
+  ecole: string,
+  description?: string;
+  periode: string;
+}
+
+interface Experience {
+  nom: string;
+  lieu: string;
+  details?: string[];
+  periode: string;
+}
+
 @Component({
   selector: 'app-about',
   imports: [CommonModule],
@@ -27,6 +42,76 @@ export class About {
   toggleMenuCV() {
     this.menuCV = !this.menuCV;
   }
+
+  formation: Formation[] = [
+    {
+      nom: 'Diplôme d\'ingénieur informatique de l\'ISIMA',
+      ecole: 'INP ISIMA',
+      lieu: 'Aubière, France',
+      description: '2ème année d\'ingénieur. Spécialisation en réseaux et sécurité informatique.',
+      periode: '09/2024 - En cours'
+    },
+    {
+      nom: 'Licence informatique mention informatique',
+      ecole: 'UCA',
+      lieu: 'Aubière, France',
+      description: 'Validation d\'une équivalence L3 informatique durant ma première année d\'ingénieur à l\'ISIMA.',
+      periode: '09/2024 - 07/2025'
+    },
+    {
+      nom: 'CPGE, PTSI PT',
+      ecole: 'Lycée Dhuoda',
+      lieu: 'Nîmes, France',
+      description: '2 années en Classe Préparatoire aux Grandes Ecoles en Physique, Technologie et Sciences de l\'Ingénieur.',
+      periode: '09/2022 - 07/2024'
+    },
+    {
+      nom: 'Baccalauréat, Mathématiques et Sciences de l\'Ingénieur',
+      ecole: 'Lycée Condorcet',
+      lieu: 'Saint-Priest, France',
+      periode: '09/2019 - 06/2022'
+    }
+  ]
+
+  experience: Experience[] = [
+    {
+      nom: 'Vice-président de l\'association Image',
+      lieu: 'Aubière, France',
+      details: [
+        'Remise en route de la junior entreprise de l\'ISIMA.',
+        'Interface entre les étudiants et les entreprises dans la réalisation de projets.'
+      ],
+      periode: '10/2025 - En cours',
+    },
+    {
+      nom: 'Trésorier de l\'association DreZZing',
+      lieu: 'Aubière, France',
+      details: [
+        'Assurer la stabilité financière de l\'association.',
+        'Gérer les projets.'
+      ],
+      periode: '02/2025 - En cours'
+    },
+    {
+      nom: 'Préparateur de commande',
+      lieu: 'UPS | Saint-Quentin-Fallavier, France | Intérimaire',
+      details: [
+        'Contrôle des commandes.',
+        'Mise en carton des commandes.'
+      ],
+      periode: '07/2025'
+    },
+    {
+      nom: 'Agent d\'entretien des espaces verts',
+      lieu: 'Montpellier Méditérranée Métropole | Vendargues, France | Saisonnier',
+      details: [
+        'Entretien et nettoyage des espaces verts.',
+        'Soufflage et rammassage des feuilles.',
+        'Entretien des surfaces : tonte, désherbage, balayage, ratissage et arrosage.'
+      ],
+      periode: '07/2023'
+    }
+  ]
 
   associations: Association[] = [
     {

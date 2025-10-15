@@ -17,86 +17,29 @@
     <div class="content">
         <section id="formations">
             <h2>Mes formations</h2>
-            <section class="formation">
+            <section class="formation" *ngFor="let form of formation">
                 <div class="col-g">
-                    <p>09/2024 - En cours</p>
+                    <p>{{ form.periode }}</p>
                 </div>
                 <div class="col-d">
-                    <h3>Diplôme d'ingénieur informatique de l'ISIMA</h3>
-                    <p><b>INP ISIMA</b> | Aubière, France</p>
-                    <p>2ème année d'ingénieur. Spécialisation en réseaux et sécurité informatique.</p>
-                </div>
-            </section>
-            <section class="formation">
-                <div class="col-g">
-                    <p>09/2024 - 07/2025</p>
-                </div>
-                <div class="col-d">
-                    <h3>Licence informatique mention informatique</h3>
-                    <p><b>UCA</b> | Aubière, France</p>
-                    <p>Validation d'une équivalence L3 informatique durant ma première année d'ingénieur à l'ISIMA.</p>
-                </div>
-            </section>
-            <section class="formation">
-                <div class="col-g">
-                    <p>09/2022 - 07/2024</p>
-                </div>
-                <div class="col-d">
-                    <h3>CPGE, PTSI/PT</h3>
-                    <p><b>Lycée Dhuoda</b> | Nîmes, France</p>
-                    <p>2 années en Classe Préparatoire aux Grandes Ecoles en Physique, Technologie et Sciences de l'Ingénieur.</p>
-                </div>
-            </section>
-            <section class="formation">
-                <div class="col-g">
-                    <p>09/2019 - 06/2022</p>
-                </div>
-                <div class="col-d">
-                    <h3>Baccalauréat, Mathématiques et Sciences de l'Ingénieur</h3>
-                    <p><b>Lycée Condorcet</b> | Saint-Priest, France</p>
+                    <h3>{{ form.nom }}</h3>
+                    <p><b>{{ form.ecole }}</b> | {{ form.lieu }}</p>
+                    <p>{{ form.description }}</p>
                 </div>
             </section>
         </section>
 
         <section id="experiences">
             <h2>Mes expériences</h2>
-            <section class="experience">
+            <section class="experience" *ngFor="let exp of experience">
                 <div class="col-g">
-                    <p>02/2025 - En cours</p>
+                    <p>{{ exp.periode }}</p>
                 </div>
                 <div class="col-d">
-                    <h3>Trésorier de l'association DreZZing</h3>
-                    <p>Aubière, France</p>
-                    <ul>
-                        <li>Assurer la stabilité financière de l'association.</li>
-                        <li>Gestion des projets.</li>
-                    </ul>
-                </div>
-            </section>
-            <section class="experience">
-                <div class="col-g">
-                    <p>07/2025</p>
-                </div>
-                <div class="col-d">
-                    <h3>Préparateur de commande</h3>
-                    <p>UPS | Saint-Quentin-Fallavier, France | Intérimaire</p>
-                    <ul>
-                        <li>Contrôle des commandes.</li>
-                        <li>Mise en carton des commandes.</li>
-                    </ul>
-                </div>
-            </section>
-            <section class="experience">
-                <div class="col-g">
-                    <p>07/2023</p>
-                </div>
-                <div class="col-d">
-                    <h3>Agent d'entretien des espaces verts</h3>
-                    <p>Montpellier Méditérranée Métropole | Vendargues, France | Saisonnier</p>
-                    <ul>
-                        <li>Entretien et nettoyage des espaces verts.</li>
-                        <li>Soufflage et ramassage des feuilles.</li>
-                        <li>Entretien des surfaces : tonte, désherbage, balayage, ratissage et arrosage.</li>
+                    <h3>{{ exp.nom }}</h3>
+                    <p>{{ exp.lieu }}</p>
+                    <ul *ngIf="exp.details">
+                        <li *ngFor="let det of exp.details">{{ det }}</li>
                     </ul>
                 </div>
             </section>
