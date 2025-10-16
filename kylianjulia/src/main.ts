@@ -13,7 +13,7 @@ bootstrapApplication(App, {
     importProvidersFrom(
       MarkdownModule.forRoot()
     ),
-    provideHttpClient()   // <-- c'est tout ce dont tu as besoin
+    provideHttpClient()
   ]
 })
 .catch((err) => console.error(err));

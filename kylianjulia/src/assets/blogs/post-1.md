@@ -1,7 +1,7 @@
 ---
 title: "Créer un blog Angular sans backend"
 date: "2025-10-15"
-author: "Kylian Julia"
+author: "Kylian JULIA"
 tags: ["Angular", "Markdown", "Frontend"]
 ---
 

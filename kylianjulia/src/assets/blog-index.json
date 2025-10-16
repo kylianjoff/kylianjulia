@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Créer un blog Angular sans backend",
+    "date": "2025-10-15",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Angular",
+      "Markdown",
+      "Frontend"
+    ],
+    "excerpt": "",
+    "file": "post-1.md",
+    "thumbnail": null
+  },
+  {
+    "title": "Un deuxième post",
+    "date": "16/10/2025",
+    "author": "Kylian JULIA",
+    "tags": [
+      "test",
+      "angular"
+    ],
+    "excerpt": "Je fais juste des tests",
+    "file": "post-2.md",
+    "thumbnail": "assos/drezzing.png"
+  }
+]

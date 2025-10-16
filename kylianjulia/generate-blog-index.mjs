@@ -49,7 +49,7 @@ const posts = files.map(file => {
         date: data.date || '',
         author: data.author || '',
         tags: data.tags || [],
-        excerpt,
+        excerpt: data.excerpt || '',
         file,
         thumbnail: data.thumbnail || null
     };
