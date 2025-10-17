@@ -15,34 +15,36 @@
     </div>
 
     <div class="content">
-        <section id="formations">
-            <h2>Mes formations</h2>
-            <section class="formation" *ngFor="let form of formation">
-                <div class="col-g">
-                    <p>{{ form.periode }}</p>
-                </div>
-                <div class="col-d">
-                    <h3>{{ form.nom }}</h3>
-                    <p><b>{{ form.ecole }}</b> | {{ form.lieu }}</p>
-                    <p>{{ form.description }}</p>
-                </div>
-            </section>
-        </section>
+        <section id="formations" class="c-formation">
+            <h1 class="c-formation__title">Mes formations</h1>
 
-        <section id="experiences">
-            <h2>Mes expériences</h2>
-            <section class="experience" *ngFor="let exp of experience">
-                <div class="col-g">
-                    <p>{{ exp.periode }}</p>
+            <ul class="c-formation__list">
+                <li class="c-formation__item" *ngFor="let form of formation">
+                <div class="c-formation__item-info">
+                    <h2 class="c-formation__item-title">{{ form.nom }}</h2>
+                    <p class="c-formation__item-subtitle"><b>{{ form.ecole }}</b> | {{ form.lieu }}</p>
+                    <p class="c-formation__item-excerpt">{{ form.description }}</p>
+                    <p class="c-formation__item-period">{{ form.periode }}</p>
                 </div>
-                <div class="col-d">
-                    <h3>{{ exp.nom }}</h3>
-                    <p>{{ exp.lieu }}</p>
-                    <ul *ngIf="exp.details">
-                        <li *ngFor="let det of exp.details">{{ det }}</li>
-                    </ul>
-                </div>
+                </li>
+            </ul>
             </section>
+
+            <section id="experiences" class="c-experience">
+            <h1 class="c-experience__title">Mes expériences</h1>
+
+            <ul class="c-experience__list">
+                <li class="c-experience__item" *ngFor="let exp of experience">
+                <div class="c-experience__item-info">
+                    <h2 class="c-experience__item-title">{{ exp.nom }}</h2>
+                    <p class="c-experience__item-subtitle">{{ exp.lieu }}</p>
+                    <ul *ngIf="exp.details">
+                    <li *ngFor="let det of exp.details">{{ det }}</li>
+                    </ul>
+                    <p class="c-experience__item-period">{{ exp.periode }}</p>
+                </div>
+                </li>
+            </ul>
         </section>
 
         <section id="competences">
