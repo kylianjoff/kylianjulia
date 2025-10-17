@@ -378,6 +378,7 @@ section h2 {
   align-items: center;
   color: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -431,6 +432,63 @@ section h2 {
 
 .close:hover {
     transform: scale(1.4);
+}
+
+.why {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease-in-out;
+}
+
+.why:hover {
+  transform: scale(1.4);
+}
+
+.why-content {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  width: 30vw;
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease-in-out;
+}
+
+.why:hover + .why-content {
+  display: flex;
+}
+
+.why-content:hover {
+  display: flex;
+}
+
+.why-content:hover + .why {
+  transform: scale(1.4);
+}
+
+.why-content a {
+  text-decoration: none;
+  color: #9f00b1;
+}
+
+.why-content a:hover {
+  font-weight: bold;
 }
 
 /* Scroll pour les expériences et les formations */

@@ -99,6 +99,15 @@
 
     <div class="bg-CV-PDF" *ngIf="modalCV" (click)="closeModal()">
         <div class="modal-CV" (click)="$event.stopPropagation()">
+            <div class="why">&#8505;</div>
+            <div class="why-content" *ngIf="langCV === 'fr'">
+                <p><b>Pourquoi le numéro de téléphone est masqué ?</b></p>
+                <p>Tout simplement parceque c'est mon numéro personnel. Si vous être un(e) recruteur/recruteuse, envoyer moi un mail : <a href="mailto:kylianju382@gmail.com">kylianju382@gmail.com</a>.</p>
+            </div>
+            <div class="why-content" *ngIf="langCV === 'en'">
+                <p><b>Why the phone number is hidden ?</b></p>
+                <p>Simply because it is my personal number. If you are a recruiter, send me an email: <a href="mailto:kylinju382@gmail.com">kylianju382@gmail.com</a>.</p>
+            </div>
             <div class="close" (click)="closeModal()">&times;</div>
             <div class="modal-content">
                 <h2 *ngIf="langCV === 'fr'">Mon CV</h2>
