@@ -1,3 +1,15 @@
 <div class="post-container">
-    <markdown [src]="postSrc"></markdown>
+  <div class="post-header">
+    <img *ngIf="postThumbnail" [src]="postThumbnail" alt="thumbnail" class="post-thumbnail" />
+    <h1>{{ postTitle }}</h1>
+    <div class="post-meta">
+      <span>{{ postAuthor }}</span> • <span>{{ postDate }}</span>
+    </div>
+    <div class="post-tags">
+      <span class="tag" *ngFor="let tag of postTags">{{ tag }}</span>
+    </div>
+    <p class="post-excerpt">{{ postExcerpt }}</p>
+  </div>
+
+  <markdown [src]="postSrc"></markdown>
 </div>
