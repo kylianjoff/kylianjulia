@@ -481,7 +481,7 @@ section h2 {
   /* ⚡ Fix largeur */
   width: 100%;          /* Remplit le container parent */
   box-sizing: border-box;
-  min-height: 200px;    /* Hauteur minimale pour éviter les cartes trop petites */
+  min-height: 300px;    /* Hauteur minimale pour éviter les cartes trop petites */
   margin: 0 auto;       /* Centre les cartes */
 
   transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -500,6 +500,35 @@ section h2 {
   justify-content: center;   /* centre verticalement le contenu */
   gap: 15px;
   overflow: hidden;
+}
+
+/* Style pour les détails de chaque expérience */
+.c-experience__item-info ul li {
+  position: relative;
+  padding-left: 25px; /* espace pour la flèche */
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  list-style: none; /* on supprime les puces classiques */
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+/* Flèche avant chaque item */
+.c-experience__item-info ul li::before {
+  content: "➜"; /* flèche */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fff; /* couleur par défaut */
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Changement de couleur et léger mouvement au hover */
+.c-experience__item-info ul li:hover::before {
+  color: #9f00b1;
+  transform: translateX(3px);
 }
 
 .c-formation__item-title,
