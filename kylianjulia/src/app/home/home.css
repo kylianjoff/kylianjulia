@@ -133,3 +133,87 @@ section {
         transform: translateY(-5px);
     }
 }
+
+/* Réalisation de la fenêtre console */
+
+.fenetre-console {
+    position: absolute;
+    top: 100px;
+    left: 70px;
+    height: 65vh;
+    width: 50vw;
+    overflow: hidden;
+}
+
+.fenetre-header {
+    height: 30px;
+    background-color: #272727;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.fenetre-title {
+    font-size: 13px;
+    margin-left: 20px;
+}
+
+.fenetre-btn-content {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+    padding: 0 15px;
+}
+
+.fenetre-btn {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+}
+
+.--close {
+    background-color: red;
+}
+
+.--screen {
+    background-color: orange;
+}
+
+.--reduce {
+    background-color: green;
+}
+
+.fenetre-content {
+    height: calc(100% - 30px);
+    background-color: #fff;
+    border-radius: 0 0 15px 15px;
+    padding: 5px;
+    color: #272727;
+    font-weight: 550;
+}
+
+.fenetre-content ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 3px;
+}
+
+.fenetre-content ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.console-title {
+    color: green;
+}
+
+.console-command {
+    margin-left: 5px;
+}
