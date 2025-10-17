@@ -215,6 +215,7 @@ section h2 {
   cursor: pointer;
   transition: transform 0.3s ease, filter 0.3s ease;
   filter: grayscale(85%);
+  border-radius: 20%;
 }
 
 .logos img:hover {
@@ -452,7 +453,8 @@ section h2 {
   top: 10vh; /* distance depuis le haut */
   z-index: 10;
   padding: 10px 0;     /* optionnel, pour espace */
-  margin-top: 0;        /* supprimer margin-top énorme */
+  margin-top: 80px;        /* supprimer margin-top énorme */
+  margin-bottom: 30px;
 }
 
 /* --- List --- */
