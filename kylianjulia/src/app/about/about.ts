@@ -80,7 +80,7 @@ export class About {
       details: [
         'Junior entreprise de l\'ISIMA.',
         'Participation à la renaissance de la junior entreprise de l\'ISIMA.',
-        'Interface entre les étudiants et les entreprises dans la réalisation de projets.'
+        'Responsable des étudiants dans la réalisation des projets.'
       ],
       periode: '10/2025 - En cours',
     },
@@ -90,7 +90,7 @@ export class About {
       details: [
         'Association de textiles et de goodies de l\'ISIMA.',
         'Assurer la stabilité financière de l\'association.',
-        'Gérer les projets.'
+        'Gestion des projets.'
       ],
       periode: '02/2025 - En cours'
     },
