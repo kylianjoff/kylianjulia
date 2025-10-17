@@ -37,7 +37,7 @@ interface Experience {
 })
 export class About {
 
-  menuCV: boolean = false;
+  menuCV: boolean = false; 
 
   toggleMenuCV() {
     this.menuCV = !this.menuCV;
@@ -78,7 +78,8 @@ export class About {
       nom: 'Vice-président de l\'association Image',
       lieu: 'Aubière, France',
       details: [
-        'Remise en route de la junior entreprise de l\'ISIMA.',
+        'Junior entreprise de l\'ISIMA.',
+        'Participation à la renaissance de la junior entreprise de l\'ISIMA.',
         'Interface entre les étudiants et les entreprises dans la réalisation de projets.'
       ],
       periode: '10/2025 - En cours',
@@ -87,6 +88,7 @@ export class About {
       nom: 'Trésorier de l\'association DreZZing',
       lieu: 'Aubière, France',
       details: [
+        'Association de textiles et de goodies de l\'ISIMA.',
         'Assurer la stabilité financière de l\'association.',
         'Gérer les projets.'
       ],
@@ -120,7 +122,8 @@ export class About {
       role: 'Vice-président (10/2025 - actuel)',
       logo: 'assos/image.png',
       details: [
-        'Aide au relancement de l\'association'
+        'Aide au relancement de l\'association.',
+        'Responsable du lien entre les projets et les étudiants.'
       ]
     },
     {
@@ -129,8 +132,8 @@ export class About {
       role: 'Trésorier (02/2025 - actuel)',
       logo: 'assos/drezzing.png',
       details: [
-        'Assurer la stabilité financière de l\'association',
-        'Gestion des projets'
+        'Assurer la stabilité financière de l\'association.',
+        'Gestion des projets.'
       ]
     },
     {
@@ -139,10 +142,10 @@ export class About {
       role: 'Responsable de la communication interne (03/2025 - actuel)',
       logo: 'assos/shared.png',
       details: [
-        'Membre fondateur du club',
-        'Communication des actions caritatives auprès des étudiants de l\'ISIMA',
-        'Travail avec des associations',
-        'Organisation de la partie associative de l\'événement ZZevent organisé par le BDE ISIMA'
+        'Membre fondateur du club.',
+        'Communication des actions caritatives auprès des étudiants de l\'ISIMA.',
+        'Travail avec des associations.',
+        'Organisation de la partie associative de l\'événement ZZevent organisé par le BDE ISIMA.'
       ]
     },
     {
@@ -157,8 +160,8 @@ export class About {
       role: 'DJ (05/2025 - actuel)',
       logo: 'assos/sigmix.JPEG',
       details: [
-        'Débutant',
-        'Assurer l\'ambiance des soirées'
+        'Débutant.',
+        'Assurer l\'ambiance des soirées à l\'ISIMA et à Sigma Clermont.'
       ]
     }
   ]
@@ -173,7 +176,7 @@ export class About {
     { titre: 'Langages de programmation', skills: ['C', 'Java', 'C++', 'JavaScript', 'HTML', 'CSS', 'Python', 'PHP'] },
     { titre: 'Web', skills: ['Angular', 'Colyseus', 'ASP.NET'] },
     { titre: 'Bases de données', skills: ['PostgreSQL', 'MySQL'] },
-    { titre: 'Outils', skills: ['Microsoft Office', 'Visual Studio', 'UNIX', 'GIT'] },
+    { titre: 'Outils', skills: ['Microsoft Office', 'Microsoft Azure', 'Visual Studio', 'UNIX', 'GIT', 'Docker'] },
     { titre: 'Cybersécurité', skills: ['OWASP', 'Pentesting'] }
   ];
 
