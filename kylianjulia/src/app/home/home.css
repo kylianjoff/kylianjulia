@@ -193,6 +193,7 @@ section {
     padding: 5px;
     color: #272727;
     font-weight: 550;
+    font-size: 18px;
 }
 
 .fenetre-content ul {
@@ -211,9 +212,28 @@ section {
 }
 
 .console-title {
-    color: green;
+    color: rgb(0, 170, 0);
 }
 
 .console-command {
     margin-left: 5px;
+}
+
+.fenetre-content ul li ul.ls-results {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ls-result {
+    width: 200px;
+}
+
+.--folder {
+    color: blue;
+}
+
+.--file-pdf {
+    color: rgb(0, 170, 0);
 }
