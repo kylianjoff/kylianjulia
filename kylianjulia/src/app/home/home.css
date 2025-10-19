@@ -244,6 +244,12 @@ section {
     overflow: hidden;
 }
 
+@media (max-width: 700px) {
+    .fenetre-console {
+        width: 80vw;
+    }
+}
+
 .fenetre-header {
     height: 30px;
     background-color: #272727;
