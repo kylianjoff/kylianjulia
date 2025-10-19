@@ -117,3 +117,9 @@ footer {
     padding: 30px 120px;
     border: solid 1px #444;
 }
+
+@media (max-width: 600px) {
+    .footerLinks {
+        flex-direction: column;
+    }
+}
