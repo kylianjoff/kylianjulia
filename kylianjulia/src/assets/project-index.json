@@ -9,8 +9,8 @@
       "test",
       "Frontend"
     ],
-    "excerpt": "Tu veux un blog rapide, moderne et sans base de données ?  \r C’est possible en utilisant **Angular** et des fichiers **Markdown**.\r Place tes articles...",
-    "thumbnail": "/miniatures/project-default.png",
+    "excerpt": "<p>test post</p>\n",
+    "thumbnail": "/miniatures/blog-default.png",
     "file": "post-1"
   }
 ]

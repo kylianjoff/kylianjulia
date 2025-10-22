@@ -8,7 +8,7 @@
     "Markdown",
     "Frontend"
   ],
-  "excerpt": "Tu veux un blog rapide, moderne et sans base de données ?  \r C’est possible en utilisant **Angular** et des fichiers **Markdown**.\r Place tes articles...",
+  "excerpt": "<p>Tu veux un blog rapide, moderne et sans base de données ?<br> C’est possible en utilisant <strong>Angular</strong> et des fichiers <strong>Markdown</strong>.\n...</p>\n",
   "thumbnail": "/miniatures/blog-default.png",
   "file": "post-1",
   "content": "<h1>Créer un blog Angular sans backend</h1>\n<p>Tu veux un blog rapide, moderne et sans base de données ?<br>C’est possible en utilisant <strong>Angular</strong> et des fichiers <strong>Markdown</strong>.</p>\n<h2>Étape 1 : Préparer les fichiers</h2>\n<p>Place tes articles dans <code>assets/posts/</code> et affiche-les avec le module <code>ngx-markdown</code>.</p>\n<h2>Étape 2 : Afficher les articles</h2>\n<p>Utilise un composant Angular pour boucler sur tes fichiers.</p>\n"

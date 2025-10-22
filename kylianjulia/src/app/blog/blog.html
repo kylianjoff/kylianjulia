@@ -14,7 +14,7 @@
           <p class="meta">
             Publié le {{ post.date }} par {{ post.author }}
           </p>
-          <p class="excerpt">{{ post.excerpt }}</p>
+          <div class="excerpt" [innerHTML]="post.excerpt"></div>
         </div>
       </a>
     </div>

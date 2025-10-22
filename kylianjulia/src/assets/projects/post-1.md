@@ -2,6 +2,7 @@
 title: "Test project"
 date: "22/10/2025"
 author: "Kylian JULIA"
+excerpt: "test post"
 tags: ["projet", "test", "Frontend"]
 ---
 

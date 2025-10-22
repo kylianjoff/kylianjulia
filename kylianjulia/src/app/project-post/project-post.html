@@ -17,7 +17,7 @@
         <div class="blog-tags">
             <span class="tag" *ngFor="let tag of post.tags">#{{ tag }}</span>
         </div>
-        <p class="blog-excerpt" *ngIf="post.excerpt">{{ post.excerpt }}</p>
+        <div class="blog-excerpt" [innerHTML]="post.excerpt"></div>
         </div>
     </header>
 

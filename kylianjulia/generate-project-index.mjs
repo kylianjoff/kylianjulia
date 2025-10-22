@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { marked } from 'marked'; // Installe avec: npm install marked
+import { marked } from 'marked';
 
 const postsDir = path.resolve('src/assets/projects');
 const outputFile = path.resolve('src/assets/project-index.json');
@@ -40,13 +40,21 @@ const posts = files.map(file => {
     // Génère le HTML depuis le Markdown
     const htmlContent = marked(content);
 
-    // Crée un extrait des 3 premières lignes non vides
-    const excerpt = content
-        .split('\n')
-        .filter(l => l.trim() !== '' && !l.startsWith('#'))
-        .slice(0, 3)
-        .join(' ')
-        .substring(0, 150) + '...';
+    // Génère l'excerpt en HTML
+    let excerptHtml = '';
+    if (data.excerpt) {
+        // ✅ Convertit l'excerpt YAML en HTML avec marked
+        excerptHtml = marked(data.excerpt);
+    } else {
+        // Fallback : crée un extrait depuis le contenu
+        const fallbackExcerpt = content
+            .split('\n')
+            .filter(l => l.trim() !== '' && !l.startsWith('#'))
+            .slice(0, 2)
+            .join(' ')
+            .substring(0, 150) + '...';
+        excerptHtml = marked(fallbackExcerpt);
+    }
 
     // Slug = nom du fichier sans .md
     const slug = file.replace('.md', '');
@@ -57,10 +65,10 @@ const posts = files.map(file => {
         date: data.date || '',
         author: data.author || '',
         tags: data.tags || [],
-        excerpt: data.excerpt || excerpt,
-        thumbnail: data.thumbnail || "/miniatures/project-default.png",
+        excerpt: excerptHtml, // ✅ HTML au lieu de texte brut
+        thumbnail: data.thumbnail || "/miniatures/blog-default.png",
         file: slug,
-        content: htmlContent // HTML pré-généré
+        content: htmlContent
     };
 
     // Sauvegarde chaque post individuellement
@@ -76,5 +84,5 @@ const posts = files.map(file => {
 const index = posts.map(({ content, ...post }) => post);
 fs.writeFileSync(outputFile, JSON.stringify(index, null, 2));
 
-console.log(`✅ Project index généré : ${outputFile}`);
+console.log(`✅ Projets index généré : ${outputFile}`);
 console.log(`✅ ${posts.length} post(s) généré(s) dans ${postsJsonDir}`);
