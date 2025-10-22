@@ -1,52 +1,68 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { MarkdownModule } from 'ngx-markdown';
-import * as yaml from 'js-yaml';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  author: string;
+  tags: string[];
+  excerpt: string;
+  thumbnail: string | null;
+  content: string;
+}
 
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [MarkdownModule, CommonModule],
+  imports: [CommonModule],
   templateUrl: './blog-post.html',
   styleUrls: ['./blog-post.css']
 })
 export class BlogPostComponent implements OnInit {
-  postSrc!: string;
-  postTitle!: string;
-  postDate!: string;
-  postAuthor!: string;
-  postTags!: string[];
-  postThumbnail!: string;
-  postExcerpt!: string;
+  post?: BlogPost;
+  safeContent?: SafeHtml;
+  loading = true;
+  error = false;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
-    // Récupérer le paramètre "slug" depuis l'URL
-    const slug = this.route.snapshot.paramMap.get('slug');
-    if (!slug) return;
+    // Récupère le slug depuis l'URL
+    this.route.paramMap.subscribe(params => {
+      const slug = params.get('slug');
+      
+      console.log('Slug récupéré:', slug); // Debug
+      
+      if (!slug) {
+        this.error = true;
+        this.loading = false;
+        return;
+      }
 
-    const path = `assets/blogs/${slug}`;
+      this.loadPost(slug);
+    });
+  }
 
-    this.http.get(path, { responseType: 'text' }).subscribe(data => {
-      const match = /^---\n([\s\S]*?)\n---/.exec(data);
-      if (match) {
-        const yamlContent = match[1];
-        const meta = yaml.load(yamlContent) as any;
-
-        this.postTitle = meta.title;
-        this.postDate = meta.date;
-        this.postAuthor = meta.author;
-        this.postTags = meta.tags;
-        this.postThumbnail = meta.thumbnail;
-        this.postExcerpt = meta.excerpt;
-
-        // Supprimer le YAML du markdown pour l'affichage
-        this.postSrc = data.slice(match[0].length).trim();
-      } else {
-        this.postSrc = data;
+  private loadPost(slug: string) {
+    this.http.get<BlogPost>(`assets/posts-json/${slug}.json`).subscribe({
+      next: (post) => {
+        this.post = post;
+        // Sanitize le HTML pour l'affichage
+        this.safeContent = this.sanitizer.sanitize(1, post.content) || '';
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Erreur chargement post:', err);
+        this.error = true;
+        this.loading = false;
       }
     });
   }

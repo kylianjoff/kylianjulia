@@ -1,5 +1,6 @@
 [
   {
+    "slug": "post-1",
     "title": "Créer un blog Angular sans backend",
     "date": "15/10/2025",
     "author": "Kylian JULIA",
@@ -8,12 +9,13 @@
       "Markdown",
       "Frontend"
     ],
-    "excerpt": "",
-    "file": "post-1.md",
-    "thumbnail": null
+    "excerpt": "Tu veux un blog rapide, moderne et sans base de données ?  \r C’est possible en utilisant **Angular** et des fichiers **Markdown**.\r Place tes articles...",
+    "thumbnail": null,
+    "file": "post-1"
   },
   {
-    "title": "Un deuxième post et je teste la longueur du titre voir si ça ne pose pas trop de problème",
+    "slug": "post-2",
+    "title": "Un deuxième post",
     "date": "16/10/2025",
     "author": "Kylian JULIA",
     "tags": [
@@ -21,7 +23,7 @@
       "angular"
     ],
     "excerpt": "Je fais juste des tests",
-    "file": "post-2.md",
-    "thumbnail": "assos/drezzing.png"
+    "thumbnail": "assos/drezzing.png",
+    "file": "post-2"
   }
 ]

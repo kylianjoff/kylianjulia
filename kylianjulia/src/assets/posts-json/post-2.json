@@ -1,0 +1,14 @@
+{
+  "slug": "post-2",
+  "title": "Un deuxième post",
+  "date": "16/10/2025",
+  "author": "Kylian JULIA",
+  "tags": [
+    "test",
+    "angular"
+  ],
+  "excerpt": "Je fais juste des tests",
+  "thumbnail": "assos/drezzing.png",
+  "file": "post-2",
+  "content": "<h1>Un deuxième post</h1>\n<p>coucou</p>\n"
+}
