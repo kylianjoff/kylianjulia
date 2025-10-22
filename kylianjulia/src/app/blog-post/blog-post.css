@@ -1,7 +1,13 @@
+.content {
+  min-height: 100vh;
+  padding: 100px 0;
+}
+
 .blog-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  border: solid 1px black;
 }
 
 .blog-header {
