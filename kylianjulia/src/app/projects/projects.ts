@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
-interface ProjectPost {
+interface BlogPost {
   title: string;
   thumbnail?: string;
   date: string;
@@ -13,26 +13,27 @@ interface ProjectPost {
 }
 
 @Component({
-  selector: 'app-projects',
+  selector: 'app-blog',
+  standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './projects.html',
-  styleUrl: '../blog/blog.css'
+  styleUrls: ['../blog/blog.css']
 })
-export class Projects {
-  posts: ProjectPost[] = [];
+export class Projects implements OnInit {
+  posts: BlogPost[] = [];
 
   constructor(private http: HttpClient) {}
-  
+
   ngOnInit() {
-    this.http.get<ProjectPost[]>('assets/project-index.json').subscribe(data => {
+    this.http.get<BlogPost[]>('assets/project-index.json').subscribe(data => {
       this.posts = data.sort((a, b) => {
         // Convertir "dd/MM/yyyy" en Date
         const [dayA, monthA, yearA] = a.date.split('/').map(Number);
         const [dayB, monthB, yearB] = b.date.split('/').map(Number);
-  
+
         const dateA = new Date(yearA, monthA - 1, dayA);
         const dateB = new Date(yearB, monthB - 1, dayB);
-  
+
         // Tri décroissant (du plus récent au plus ancien)
         return dateB.getTime() - dateA.getTime();
       });
