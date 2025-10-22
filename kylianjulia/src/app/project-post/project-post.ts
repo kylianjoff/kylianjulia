@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -17,7 +17,7 @@ interface ProjectPost {
 
 @Component({
   selector: 'app-project-post',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './project-post.html',
   styleUrl: '../blog-post/blog-post.css'
 })
