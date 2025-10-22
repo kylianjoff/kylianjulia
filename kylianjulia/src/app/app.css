@@ -123,3 +123,10 @@ footer {
         flex-direction: column;
     }
 }
+
+@media (max-width: 780px) {
+    .header {
+        left: 60px;
+        width: calc(100% - 120px);
+    }
+}
