@@ -713,18 +713,9 @@ section h2 {
     .c-experience {
         width: 70vw;
     }
-
-    .menu {
-        left: 20px;
-    }
 }
 
 @media (max-width: 768px) {
-    .menu {
-        top: 70px;
-        left: 10px;
-    }
-
     .content {
         margin: 0 20px;
         gap: 60px;
