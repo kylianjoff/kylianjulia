@@ -52,7 +52,7 @@ export class BlogPostComponent implements OnInit {
   }
 
   private loadPost(slug: string) {
-    this.http.get<BlogPost>(`assets/posts-json/${slug}.json`).subscribe({
+    this.http.get<BlogPost>(`assets/blogs/posts-json/${slug}.json`).subscribe({
       next: (post) => {
         this.post = post;
         // Sanitize le HTML pour l'affichage

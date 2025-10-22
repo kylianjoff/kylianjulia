@@ -10,7 +10,7 @@
       "Frontend"
     ],
     "excerpt": "Tu veux un blog rapide, moderne et sans base de données ?  \r C’est possible en utilisant **Angular** et des fichiers **Markdown**.\r Place tes articles...",
-    "thumbnail": null,
+    "thumbnail": "/miniatures/blog-default.png",
     "file": "post-1"
   },
   {

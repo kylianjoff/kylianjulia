@@ -3,9 +3,9 @@ import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked'; // Installe avec: npm install marked
 
-const postsDir = path.resolve('src/assets/blogs');
-const outputFile = path.resolve('src/assets/blog-index.json');
-const postsJsonDir = path.resolve('src/assets/blogs/posts-json');
+const postsDir = path.resolve('src/assets/projects');
+const outputFile = path.resolve('src/assets/project-index.json');
+const postsJsonDir = path.resolve('src/assets/projects/posts-json');
 
 if (!fs.existsSync(postsDir)) {
     console.error(`❌ Le dossier ${postsDir} n'existe pas !`);
@@ -58,7 +58,7 @@ const posts = files.map(file => {
         author: data.author || '',
         tags: data.tags || [],
         excerpt: data.excerpt || excerpt,
-        thumbnail: data.thumbnail || "/miniatures/blog-default.png",
+        thumbnail: data.thumbnail || "/miniatures/project-default.png",
         file: slug,
         content: htmlContent // HTML pré-généré
     };
@@ -76,5 +76,5 @@ const posts = files.map(file => {
 const index = posts.map(({ content, ...post }) => post);
 fs.writeFileSync(outputFile, JSON.stringify(index, null, 2));
 
-console.log(`✅ Blog index généré : ${outputFile}`);
+console.log(`✅ Project index généré : ${outputFile}`);
 console.log(`✅ ${posts.length} post(s) généré(s) dans ${postsJsonDir}`);

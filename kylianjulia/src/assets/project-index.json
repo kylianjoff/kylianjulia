@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "post-1",
+    "title": "Test project",
+    "date": "22/10/2025",
+    "author": "Kylian JULIA",
+    "tags": [
+      "projet",
+      "test",
+      "Frontend"
+    ],
+    "excerpt": "Tu veux un blog rapide, moderne et sans base de données ?  \r C’est possible en utilisant **Angular** et des fichiers **Markdown**.\r Place tes articles...",
+    "thumbnail": "/miniatures/project-default.png",
+    "file": "post-1"
+  }
+]

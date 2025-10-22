@@ -6,7 +6,7 @@
       <a [routerLink]="['/blog-post', post.file]" class="blog-link">
         <!-- ✅ Miniature facultative -->
         <div class="thumbnail" *ngIf="post.thumbnail">
-          <img [src]="post.thumbnail" [alt]="post.title" />
+          <img [src]="post.thumbnail" [alt]="post.title"/>
         </div>
 
         <div class="blog-content">

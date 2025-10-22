@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run generate:blog && ng serve",
-    "build": "npm run generate:blog && ng build",
+    "start": "npm run generate:blog && npm run generate:project && ng serve",
+    "build": "npm run generate:blog && npm run generate:project && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "generate:blog": "node generate-blog-index.mjs"
+    "generate:blog": "node generate-blog-index.mjs",
+    "generate:project": "node generate-project-index.mjs"
   },
   "prettier": {
     "printWidth": 100,
