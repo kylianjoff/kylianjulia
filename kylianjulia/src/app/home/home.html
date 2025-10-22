@@ -83,7 +83,7 @@
                     <p class="meta">
                         Publié le {{ projet.date }} par {{projet.author}}
                     </p>
-                    <p class="excerpt">{{ projet.excerpt }}</p>
+                    <div class="excerpt" [innerHTML]="projet.excerpt"></div>
                 </div>
             </a>
         </div>
@@ -113,7 +113,7 @@
                     <p class="meta">
                         Publié le {{ blog.date }} par {{ blog.author }}
                     </p>
-                    <p class="excerpt">{{ blog.excerpt }}</p>
+                    <div class="excerpt" [innerHTML]="blog.excerpt"></div>
                 </div>
             </a>
         </div>
