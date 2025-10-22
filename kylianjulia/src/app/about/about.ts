@@ -197,4 +197,15 @@ export class About {
     this.modalCV = false;
     this.langCV = '';
   }
+
+  ngAfterViewInit() {
+    const lists = document.querySelectorAll<HTMLElement>('.list-competences');
+    lists.forEach(list => {
+      const parent = list.parentElement;
+      if (parent) {
+        const clone = list.cloneNode(true) as HTMLElement;
+        parent.appendChild(clone);
+      }
+    });
+  }
 }
