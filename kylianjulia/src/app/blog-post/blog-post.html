@@ -4,7 +4,7 @@
     <header class="blog-header">
       <img 
         *ngIf="post.thumbnail" 
-        [src]="'assets/' + post.thumbnail" 
+        [src]="post.thumbnail" 
         [alt]="post.title"
         class="blog-thumbnail"
       />
