@@ -219,7 +219,7 @@ section h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px;
+    gap: 40px;
     width: 100%;
     max-width: 1200px;
     margin: 40px auto;
@@ -257,6 +257,7 @@ section h2 {
     gap: 1rem;
     white-space: nowrap;
     width: fit-content;
+    margin-bottom: 20px;
     animation: scroll-left 20s linear infinite;
 }
 
@@ -276,9 +277,12 @@ section h2 {
     border-radius: 8px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     font-size: 0.95rem;
     transition: all 0.3s ease;
     color: #fff;
+    min-width: 120px;
+    text-align: center;
 }
 
 .list-competences span:hover {
@@ -317,13 +321,13 @@ section h2 {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-25%);
     }
 }
 
 @keyframes scroll-right {
     0% {
-        transform: translateX(-50%);
+        transform: translateX(-25%);
     }
     100% {
         transform: translateX(0);

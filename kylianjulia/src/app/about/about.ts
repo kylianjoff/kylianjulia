@@ -201,10 +201,14 @@ export class About {
   ngAfterViewInit() {
     const lists = document.querySelectorAll<HTMLElement>('.list-competences');
     lists.forEach(list => {
-      const parent = list.parentElement;
-      if (parent) {
-        const clone = list.cloneNode(true) as HTMLElement;
-        parent.appendChild(clone);
+      const children = Array.from(list.children);
+      
+      // Duplique le contenu 5 fois pour garantir que tout soit plein
+      for (let i = 0; i < 5; i++) {
+        children.forEach(child => {
+          const clone = child.cloneNode(true) as HTMLElement;
+          list.appendChild(clone);
+        });
       }
     });
   }
