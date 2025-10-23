@@ -104,6 +104,25 @@ section h2 {
     background-clip: text;
 }
 
+.profil-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.profil-text {
+    width: 30vw;
+    font-size: 22px;
+}
+
+.profil-picture img {
+    width: 15vw;
+    box-sizing: cover;
+    border: solid 1px #9f00b1;
+}
+
 /* Sections formations et expériences */
 .c-formation, .c-experience {
     width: 50vw;
