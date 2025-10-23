@@ -212,4 +212,10 @@ export class About {
       }
     });
   }
+
+  profil: string[] = [
+    'Etudiant motivé par la cybersécurité',
+    'Adore le développement',
+    'Passer son temps libre dans l\'associatif et les projets personnels'
+  ]
 }

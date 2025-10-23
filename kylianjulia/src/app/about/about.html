@@ -6,6 +6,7 @@
             <div class="menu-bar"></div>
         </div>
         <div class="menu-content" *ngIf="menuCV">
+            <a href="/about#profil">Profil</a>
             <a href="/about#formations">Formations</a>
             <a href="/about#experiences">Expérience</a>
             <a href="/about#competences">Compétences</a>
@@ -15,6 +16,20 @@
     </div>
 
     <div class="content">
+        <section id="profil">
+            <h1>Profil</h1>
+            <div class="profil-content">
+                <div class="profil-text">
+                    <ul>
+                        <li *ngFor="let p of profil">{{ p }}</li>
+                    </ul>
+                </div>
+                <div class="profil-picture">
+                    <img src="" alt="Kylian JULIA">
+                </div>
+            </div>
+        </section>
+
         <section id="formations" class="c-formation">
             <h1 class="c-formation__title">Mes formations</h1>
 
