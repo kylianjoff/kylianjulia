@@ -504,113 +504,153 @@ section {
 
 /* Réalisation de la fenêtre console */
 
-.fenetre-console {
-    position: absolute;
-    top: 100px;
-    left: 70px;
-    height: 65vh;
-    width: 50vw;
-    overflow: hidden;
-}
-
-@media (max-width: 700px) {
     .fenetre-console {
-        width: 80vw;
+      position: absolute;
+      top: 100px;
+      left: 70px;
+      height: 65vh;
+      width: 50vw;
+      overflow: hidden;
     }
-}
 
-.fenetre-header {
-    height: 30px;
-    background-color: #272727;
-    border-radius: 15px 15px 0 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+    @media (max-width: 700px) {
+      .fenetre-console {
+        width: 80vw;
+      }
+    }
 
-.fenetre-title {
-    font-size: 13px;
-    margin-left: 20px;
-}
+    .fenetre-header {
+      height: 30px;
+      background-color: #272727;
+      border-radius: 15px 15px 0 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
 
-.fenetre-btn-content {
-    display: flex;
-    justify-content: start;
-    flex-direction: row;
-    align-items: center;
-    gap: 7px;
-    padding: 0 15px;
-}
+    .fenetre-title {
+      font-size: 13px;
+      margin-left: 20px;
+      color: #fff;
+    }
 
-.fenetre-btn {
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-}
+    .fenetre-btn-content {
+      display: flex;
+      justify-content: start;
+      flex-direction: row;
+      align-items: center;
+      gap: 7px;
+      padding: 0 15px;
+    }
 
-.--close {
-    background-color: red;
-}
+    .fenetre-btn {
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+    }
 
-.--screen {
-    background-color: orange;
-}
+    .--close {
+      background-color: #ff5f56;
+    }
 
-.--reduce {
-    background-color: green;
-}
+    .--screen {
+      background-color: #ffbd2e;
+    }
 
-.fenetre-content {
-    height: calc(100% - 30px);
-    background-color: #fff;
-    border-radius: 0 0 15px 15px;
-    padding: 5px;
-    color: #272727;
-    font-weight: 550;
-    font-size: 18px;
-}
+    .--reduce {
+      background-color: #27c93f;
+    }
 
-.fenetre-content ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 3px;
-}
+    .fenetre-content {
+      height: calc(100% - 30px);
+      background-color: #1e1e1e;
+      border-radius: 0 0 15px 15px;
+      padding: 15px;
+      color: #d4d4d4;
+      font-weight: 400;
+      font-size: 14px;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      overflow-y: auto;
+    }
 
-.fenetre-content ul li {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-}
+    .fenetre-content ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      gap: 3px;
+      margin: 0;
+      padding: 0;
+    }
 
-.console-title {
-    color: rgb(0, 170, 0);
-}
+    .fenetre-content ul li {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+    }
 
-.console-command {
-    margin-left: 5px;
-}
+    .console-title {
+      color: #4ec9b0;
+      margin: 0;
+      white-space: nowrap;
+    }
 
-.fenetre-content ul li ul.ls-results {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-}
+    .console-command {
+      margin: 0 0 0 5px;
+      color: #d4d4d4;
+      white-space: nowrap;
+      position: relative;
+    }
 
-.ls-result {
-    width: 200px;
-}
+    .console-result {
+      margin: 0;
+      color: #ce9178;
+    }
 
-.--folder {
-    color: blue;
-}
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background-color: #d4d4d4;
+      animation: blink 1s step-end infinite;
+      margin-left: 2px;
+    }
 
-.--file-pdf {
-    color: rgb(0, 170, 0);
-}
+    @keyframes blink {
+      0%, 50% {
+        opacity: 1;
+      }
+      51%, 100% {
+        opacity: 0;
+      }
+    }
+
+    .fenetre-content ul li ul.ls-results {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .ls-result {
+      width: 200px;
+      margin: 0;
+    }
+
+    .--folder {
+      color: #4fc1ff;
+      font-weight: 600;
+    }
+
+    .--file-pdf {
+      color: #f14c4c;
+    }
+
+    .--file {
+      color: #4ec9b0;
+    }
 
 /* Partie compétences */
 

@@ -1,60 +1,39 @@
 <section id="accueil" class="special">
     <div class="fenetre-console">
-        <div class="fenetre-header">
-            <div class="fenetre-btn-content">
-                <div class="fenetre-btn --close"></div>
-                <div class="fenetre-btn --screen"></div>
-                <div class="fenetre-btn --reduce"></div>
-            </div>
-            <p class="fenetre-title">kylian@pc: ~</p>
+      <div class="fenetre-header">
+        <div class="fenetre-btn-content">
+          <div class="fenetre-btn --close"></div>
+          <div class="fenetre-btn --screen"></div>
+          <div class="fenetre-btn --reduce"></div>
         </div>
-        <div class="fenetre-content">
-            <ul>
-                <li>
-                    <p class="console-title">kylian@pc:~$ </p>
-                    <p class="console-command">cd trucsInutile/</p>
+        <p class="fenetre-title">kylian@pc: ~</p>
+      </div>
+      <div class="fenetre-content" #content>
+        <ul>
+          <li *ngFor="let line of visibleLines; let i = index">
+            <ng-container *ngIf="line.type === 'command'">
+              <p class="console-title">{{ line.prompt }}</p>
+              <p class="console-command">
+                {{ line.animated ? animatedText : line.command }}
+                <span class="cursor" *ngIf="isCurrentLine(i) && line.animated"></span>
+              </p>
+            </ng-container>
+            
+            <ng-container *ngIf="line.type === 'result'">
+              <p class="console-result">{{ line.result }}</p>
+            </ng-container>
+            
+            <ng-container *ngIf="line.type === 'ls'">
+              <ul class="ls-results">
+                <li *ngFor="let item of line.lsResults" 
+                    [class]="'ls-result --' + item.type">
+                  {{ item.name }}
                 </li>
-                <li>
-                    <p class="console-title">kylian@pc:~/trucsInutile$ </p>
-                    <p class="console-command">./meilleurDev</p>
-                </li>
-                <li>
-                    <p class="console-result">-bash: ./meilleurDev: Aucun fichier ou dossier de ce type</p>
-                </li>
-                <li>
-                    <p class="console-title">kylian@pc:~/trucsInutile$ </p>
-                    <p class="console-command">./bestDev</p>
-                </li>
-                <li>
-                    <p class="console-result">-bash: ./bestDev: Aucun fichier ou dossier de ce type</p>
-                </li>
-                <li>
-                    <p class="console-title">kylian@pc:~/trucsInutile$ </p>
-                    <p class="console-command">ls</p>
-                </li>
-                <li>
-                    <ul class="ls-results">
-                        <li class="ls-result --folder">Banque</li>
-                        <li class="ls-result --folder">Cours</li>
-                        <li class="ls-result --file-pdf">CV_Kylian_Julia.pdf</li>
-                        <li class="ls-result --file">kylian</li>
-                        <li class="ls-result --folder">Projets</li>
-                        <li class="ls-result --file-pdf">resume_Kylian_Julia.pdf</li>
-                    </ul>
-                </li>
-                <li>
-                    <p class="console-title">kylian@pc:~/trucsInutile$ </p>
-                    <p class="console-command">./kylian</p>
-                </li>
-                <li>
-                    <p class="console-result">Segmentation fault (core dumped)</p>
-                </li>
-                <li>
-                    <p class="console-title">kylian@pc:~/trucsInutile</p>
-                    <p class="console-command">cd ../ && clear</p>
-                </li>
-            </ul>
-        </div>
+              </ul>
+            </ng-container>
+          </li>
+        </ul>
+      </div>
     </div>
     <div>
         <div class="wave"></div>

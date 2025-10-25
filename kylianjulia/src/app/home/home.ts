@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -21,21 +21,64 @@ interface ProjetPost {
   excerpt: string;
 }
 
+interface ConsoleLine {
+  type: 'command' | 'result' | 'ls';
+  prompt?: string;
+  command?: string;
+  result?: string;
+  lsResults?: Array<{ name: string; type: string }>;
+  animated?: boolean;
+}
+
 @Component({
   selector: 'app-home',
   imports: [CommonModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
+export class Home implements OnInit, OnDestroy {
   blogPosts: BlogPost[] = [];
   projetPosts: ProjetPost[] = [];
   nbrBlog: number = 0;
   nbrProjet: number = 0;
 
+  // Variables pour l'animation console
+  lines: ConsoleLine[] = [
+    { type: 'command', prompt: 'kylian@pc:~$ ', command: 'cd trucsInutile/', animated: true },
+    { type: 'command', prompt: 'kylian@pc:~/trucsInutile$ ', command: './meilleurDev', animated: true },
+    { type: 'result', result: '-bash: ./meilleurDev: Aucun fichier ou dossier de ce type' },
+    { type: 'command', prompt: 'kylian@pc:~/trucsInutile$ ', command: './bestDev', animated: true },
+    { type: 'result', result: '-bash: ./bestDev: Aucun fichier ou dossier de ce type' },
+    { type: 'command', prompt: 'kylian@pc:~/trucsInutile$ ', command: 'ls', animated: true },
+    { 
+      type: 'ls', 
+      lsResults: [
+        { name: 'Banque', type: 'folder' },
+        { name: 'Cours', type: 'folder' },
+        { name: 'CV_Kylian_Julia.pdf', type: 'file-pdf' },
+        { name: 'kylian', type: 'file' },
+        { name: 'Projets', type: 'folder' },
+        { name: 'resume_Kylian_Julia.pdf', type: 'file-pdf' }
+      ]
+    },
+    { type: 'command', prompt: 'kylian@pc:~/trucsInutile$ ', command: './kylian', animated: true },
+    { type: 'result', result: 'Segmentation fault (core dumped)' },
+    { type: 'command', prompt: 'kylian@pc:~/trucsInutile$ ', command: 'cd ../ && clear', animated: true }
+  ];
+
+  visibleLines: ConsoleLine[] = [];
+  currentLineIndex = 0;
+  currentCharIndex = 0;
+  animatedText = '';
+  
+  private animationTimeout: any;
+  private typingSpeed = 80; // ms par caractère
+  private delayBetweenLines = 500; // ms entre les lignes
+
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    // Chargement des données blog et projets
     this.http.get<ProjetPost[]>('').subscribe(data => {
       this.projetPosts = data.sort((a, b) => {
         const [dayA, monthA, yearA] = a.date.split('/').map(Number);
@@ -50,24 +93,94 @@ export class Home {
 
     this.http.get<BlogPost[]>('assets/blog-index.json').subscribe(data => {
       this.blogPosts = data.sort((a, b) => {
-        // Convertir "dd/MM/yyyy" en Date
         const [dayA, monthA, yearA] = a.date.split('/').map(Number);
         const [dayB, monthB, yearB] = b.date.split('/').map(Number);
 
         const dateA = new Date(yearA, monthA - 1, dayA);
         const dateB = new Date(yearB, monthB - 1, dayB);
 
-        // Tri décroissant (du plus récent au plus ancien)
         return dateB.getTime() - dateA.getTime();
       }).slice(0,2);
     });
 
     this.http.get<ProjetPost[]>('').subscribe(data => {
       this.nbrProjet = data.length;
-    })
+    });
 
     this.http.get<BlogPost[]>('assets/blog-index.json').subscribe(data => {
       this.nbrBlog = data.length;
-    })
+    });
+
+    // Démarrer l'animation console
+    this.startAnimation();
+  }
+
+  ngOnDestroy() {
+    if (this.animationTimeout) {
+      clearTimeout(this.animationTimeout);
+    }
+  }
+
+  // Méthodes pour l'animation console
+  startAnimation() {
+    this.animateNextLine();
+  }
+
+  animateNextLine() {
+    if (this.currentLineIndex >= this.lines.length) {
+      this.animationTimeout = setTimeout(() => {
+        this.resetAnimation();
+      }, 3000);
+      return;
+    }
+
+    const currentLine = this.lines[this.currentLineIndex];
+
+    if (currentLine.type === 'command' && currentLine.animated) {
+      this.animateTyping(currentLine);
+    } else {
+      this.visibleLines.push(currentLine);
+      this.currentLineIndex++;
+      this.animationTimeout = setTimeout(() => {
+        this.animateNextLine();
+      }, this.delayBetweenLines);
+    }
+  }
+
+  animateTyping(line: ConsoleLine) {
+    if (!line.command) return;
+
+    if (this.currentCharIndex === 0) {
+      this.visibleLines.push(line);
+    }
+
+    if (this.currentCharIndex < line.command.length) {
+      this.animatedText = line.command.substring(0, this.currentCharIndex + 1);
+      this.currentCharIndex++;
+      
+      this.animationTimeout = setTimeout(() => {
+        this.animateTyping(line);
+      }, this.typingSpeed);
+    } else {
+      this.currentCharIndex = 0;
+      this.animatedText = '';
+      this.currentLineIndex++;
+      
+      this.animationTimeout = setTimeout(() => {
+        this.animateNextLine();
+      }, this.delayBetweenLines);
+    }
+  }
+
+  isCurrentLine(index: number): boolean {
+    return index === this.visibleLines.length - 1 && this.currentCharIndex > 0;
+  }
+
+  resetAnimation() {
+    this.visibleLines = [];
+    this.currentLineIndex = 0;
+    this.currentCharIndex = 0;
+    this.animatedText = '';
+    this.startAnimation();
   }
 }
