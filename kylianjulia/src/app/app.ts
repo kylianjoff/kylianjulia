@@ -31,4 +31,8 @@ export class App implements OnInit, OnDestroy {
     // Clean up listener
     this.mediaQuery.removeEventListener('change', this.mediaQueryListener);
   }
+
+  menuChange() {
+    this.menuMobileOpen = !this.menuMobileOpen;
+  }
 }

@@ -28,6 +28,17 @@ header a img {
     height: 25px;
 }
 
+header span {
+    align-items: center;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
 nav {
     display: flex;
     gap: 40px;
