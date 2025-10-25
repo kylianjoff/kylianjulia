@@ -5,6 +5,7 @@ import { Home } from './home/home';
 import { About } from './about/about';
 import { BlogPostComponent } from './blog-post/blog-post';
 import { ProjectPostComponent } from './project-post/project-post';
+import { NotFound } from './not-found/not-found';
 
 export const routes: Routes = [
     {
@@ -37,5 +38,10 @@ export const routes: Routes = [
         path: 'project-post/:slug',
         title: "Projet",
         component: ProjectPostComponent
+    },
+    {
+        path: '**',
+        title: "Cette page est introuvable",
+        component: NotFound
     }
 ];
