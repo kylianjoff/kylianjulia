@@ -1,6 +1,6 @@
 <header>
     <a href="/"><img src="favicon.ico" alt=""> Kylian JULIA</a>
-    <nav>
+    <nav *ngIf="!littleScreen || menuMobileOpen">
       <a href="/about">A propos</a>
       <a href="/projects">Projets</a>
       <a href="/blog">Blog</a>
