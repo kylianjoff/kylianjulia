@@ -106,8 +106,24 @@
         <section id="moncv">
             <h2>Mon CV au format PDF</h2>
             <div class="tel-cv">
-                <button class="french" (click)="selectCV(CV[0])"><span>Mon CV français</span></button>
-                <button class="english" (click)="selectCV(CV[1])"><span>My english resume</span></button>
+                <button class="french" (click)="selectCV(CV[0])">
+                    <div class="flag-layer blue-fr"></div>
+                    <div class="flag-layer white-fr"></div>
+                    <div class="flag-layer red-fr"></div>
+                    <span>Mon CV français</span>
+                </button>
+                <button class="english" (click)="selectCV(CV[1])">
+                    <div class="flag-layer bg-blue"></div>
+                    <div class="flag-layer diag-white-1"></div>
+                    <div class="flag-layer diag-white-2"></div>
+                    <div class="flag-layer diag-red-1"></div>
+                    <div class="flag-layer diag-red-2"></div>
+                    <div class="flag-layer cross-white-h"></div>
+                    <div class="flag-layer cross-white-v"></div>
+                    <div class="flag-layer cross-red-h"></div>
+                    <div class="flag-layer cross-red-v"></div>
+                    <span>My english resume</span>
+                </button>
             </div>
         </section>
     </div>

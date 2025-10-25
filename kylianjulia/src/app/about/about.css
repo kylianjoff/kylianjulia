@@ -560,6 +560,7 @@ section h2 {
 /* Section CV */
 #moncv {
     padding: 40px 20px;
+    text-align: center;
 }
 
 #moncv h2 {
@@ -583,14 +584,13 @@ section h2 {
     position: relative;
     font-size: 1.2rem;
     text-align: center;
-    align-items: center;
     border: 2px solid rgba(159, 0, 177, 0.3);
     border-radius: 15px;
     background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
     color: #fff;
     cursor: pointer;
-    width: 250px;
-    height: 70px;
+    width: 280px;
+    height: 80px;
     box-shadow: 0 5px 15px rgba(159, 0, 177, 0.2);
     transition: all 0.3s ease;
     overflow: hidden;
@@ -600,42 +600,249 @@ section h2 {
     border-color: #9f00b1;
     box-shadow: 0 10px 25px rgba(159, 0, 177, 0.4);
     transform: translateY(-5px);
-}
-
-.tel-cv button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 13px;
-    z-index: 0;
-    background-size: cover;
-    background-position: center;
-}
-
-.tel-cv button:hover::before {
-    opacity: 0.3;
+    animation: flagWave 0.8s ease-in-out;
 }
 
 .tel-cv button span {
     position: relative;
+    z-index: 100;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* Couches de drapeaux communes */
+.flag-layer {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* === DRAPEAU FRANÇAIS === */
+
+/* Bande bleue */
+.blue-fr {
+    top: 0;
+    left: 0;
+    width: 33.33%;
+    height: 100%;
+    background: #002395;
+    transform: translateX(-100%) rotate(-20deg);
     z-index: 1;
 }
 
-.tel-cv button.french::before {
-    background-image: url('https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg');
+.tel-cv button.french:hover .blue-fr {
+    opacity: 0.9;
+    transform: translateX(0) rotate(0);
+    transition-delay: 0s;
 }
 
-.tel-cv button.english::before {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_Kingdom.svg'), 
-                      url('https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg');
-    background-position: left center, right center;
-    background-size: 50% 100%, 50% 100%;
-    background-repeat: no-repeat, no-repeat;
+/* Bande blanche */
+.white-fr {
+    top: 0;
+    left: 33.33%;
+    width: 33.34%;
+    height: 100%;
+    background: #ffffff;
+    transform: translateY(-100%) rotate(15deg);
+    z-index: 2;
+}
+
+.tel-cv button.french:hover .white-fr {
+    opacity: 0.9;
+    transform: translateY(0) rotate(0);
+    transition-delay: 0.1s;
+}
+
+/* Bande rouge */
+.red-fr {
+    top: 0;
+    left: 66.67%;
+    width: 33.33%;
+    height: 100%;
+    background: #ED2939;
+    transform: translateX(100%) rotate(20deg);
+    z-index: 3;
+}
+
+.tel-cv button.french:hover .red-fr {
+    opacity: 0.9;
+    transform: translateX(0) rotate(0);
+    transition-delay: 0.2s;
+}
+
+/* === DRAPEAU UK === */
+
+/* Layer 1: Fond bleu */
+.bg-blue {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #012169;
+    transform: scale(0) rotate(360deg);
+    z-index: 10;
+}
+
+.tel-cv button.english:hover .bg-blue {
+    opacity: 0.9;
+    transform: scale(1) rotate(0);
+    transition-delay: 0s;
+}
+
+/* Layer 2: Diagonales blanches */
+.diag-white-1,
+.diag-white-2 {
+    top: 50%;
+    left: 50%;
+    width: 141.42%;
+    height: 25%;
+    background: white;
+    transform-origin: center;
+    z-index: 11;
+}
+
+.diag-white-1 {
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+}
+
+.diag-white-2 {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+}
+
+.tel-cv button.english:hover .diag-white-1 {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+    transition-delay: 0.1s;
+}
+
+.tel-cv button.english:hover .diag-white-2 {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+    transition-delay: 0.15s;
+}
+
+/* Layer 3: Diagonales rouges (plus fines) */
+.diag-red-1,
+.diag-red-2 {
+    top: 50%;
+    left: 50%;
+    width: 141.42%;
+    height: 12%;
+    background: #C8102E;
+    transform-origin: center;
+    z-index: 12;
+}
+
+.diag-red-1 {
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+}
+
+.diag-red-2 {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+}
+
+.tel-cv button.english:hover .diag-red-1 {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+    transition-delay: 0.25s;
+}
+
+.tel-cv button.english:hover .diag-red-2 {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+    transition-delay: 0.3s;
+}
+
+/* Layer 4: Croix blanche */
+.cross-white-h {
+    top: 35%;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: white;
+    transform: scaleX(0);
+    z-index: 13;
+}
+
+.cross-white-v {
+    top: 0;
+    left: 42%;
+    width: 16%;
+    height: 100%;
+    background: white;
+    transform: scaleY(0);
+    z-index: 13;
+}
+
+.tel-cv button.english:hover .cross-white-h {
+    opacity: 0.9;
+    transform: scaleX(1);
+    transition-delay: 0.35s;
+}
+
+.tel-cv button.english:hover .cross-white-v {
+    opacity: 0.9;
+    transform: scaleY(1);
+    transition-delay: 0.4s;
+}
+
+/* Layer 5: Croix rouge */
+.cross-red-h {
+    top: 40%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: #C8102E;
+    transform: scaleX(0) rotate(10deg);
+    z-index: 14;
+}
+
+.cross-red-v {
+    top: 0;
+    left: 44%;
+    width:12%;
+    height: 100%;
+    background: #C8102E;
+    transform: scaleY(0) rotate(-10deg);
+    z-index: 14;
+}
+
+.tel-cv button.english:hover .cross-red-h {
+    opacity: 0.9;
+    transform: scaleX(1) rotate(0);
+    transition-delay: 0.45s;
+}
+
+.tel-cv button.english:hover .cross-red-v {
+    opacity: 0.9;
+    transform: scaleY(1) rotate(0);
+    transition-delay: 0.5s;
+}
+
+/* Animation de rotation 3D */
+@keyframes flagWave {
+    0%, 100% {
+        transform: perspective(400px) rotateY(0deg) translateY(-5px);
+    }
+    50% {
+        transform: perspective(400px) rotateY(8deg) translateY(-5px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tel-cv {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tel-cv button {
+        width: 240px;
+        height: 70px;
+        font-size: 1.1rem;
+    }
 }
 
 /* Modal PDF CV */
