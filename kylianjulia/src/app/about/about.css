@@ -148,8 +148,8 @@ section h2 {
 
 .profil-picture {
     background: #1a1a1a;
-    width: 20vw;
-    height: 40vh;
+    width: 250px;
+    height: 380px;
     transform: rotate(15deg);
     border-radius: 20px;
     box-shadow: 0 0 10px #9f00b1;
