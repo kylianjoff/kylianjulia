@@ -46,6 +46,22 @@ nav a:hover {
     text-decoration: underline;
 }
 
+@media (max-width: 940px) {
+    nav {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50px;
+        right: -40px;
+        background: #272727d0;
+        width: 200px;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 8px #fff;
+    }
+}
+
 footer {
     background: #000;
     color: white;
