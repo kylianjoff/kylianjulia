@@ -17,3 +17,8 @@ Place tes articles dans `assets/posts/` et affiche-les avec le module `ngx-markd
 ## Étape 2 : Afficher les articles
 
 Utilise un composant Angular pour boucler sur tes fichiers.
+
+> code
+code
+
+code
