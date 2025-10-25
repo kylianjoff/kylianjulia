@@ -125,7 +125,6 @@ section h2 {
     border-radius: 20px;
     box-shadow: 0 0 10px #9f00b1;
     overflow: hidden;
-    box-sizing: cover;
     transition: ease-in-out 0.3s;
 }
 
@@ -134,8 +133,16 @@ section h2 {
     box-shadow: 0 0 20px #9f00b1;
 }
 
-.profil-picture:hover > .profil-picture img {
-    transform: scale(1.2);
+.profil-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: ease-in-out 0.3s;
+    border: solid 1px #9f00b1;
+}
+
+.profil-picture img:hover {
+    transform: scale(1.1);
 }
 
 /* Sections formations et expériences */
