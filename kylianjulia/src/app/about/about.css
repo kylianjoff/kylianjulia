@@ -5,6 +5,8 @@ main {
     min-height: 100vh;
 }
 
+/* Menu */
+
 .menu {
     position: fixed;
     top: 80px;
@@ -36,6 +38,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .menu-bar {
@@ -44,10 +47,39 @@ main {
     background-color: #fff;
     border-radius: 2px;
     margin: 3px 0;
-    transition: background-color 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: absolute;
+}
+
+.menu-bar:nth-child(1) {
+    transform: translateY(-10px);
+}
+
+.menu-bar:nth-child(2) {
+    transform: translateY(0);
+}
+
+.menu-bar:nth-child(3) {
+    transform: translateY(10px);
 }
 
 .menu:hover .menu-bar {
+    background-color: #9f00b1;
+}
+
+/* Animation en croix quand le menu est actif */
+.menu.active .menu-bar:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+    background-color: #9f00b1;
+}
+
+.menu.active .menu-bar:nth-child(2) {
+    transform: translateY(0) scaleX(0);
+    opacity: 0;
+}
+
+.menu.active .menu-bar:nth-child(3) {
+    transform: translateY(0) rotate(-45deg);
     background-color: #9f00b1;
 }
 
