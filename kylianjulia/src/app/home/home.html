@@ -12,11 +12,11 @@
         <ul>
           <li *ngFor="let line of visibleLines; let i = index">
             <ng-container *ngIf="line.type === 'command'">
-              <p class="console-title">{{ line.prompt }}</p>
-              <p class="console-command">
-                {{ line.animated ? animatedText : line.command }}
-                <span class="cursor" *ngIf="isCurrentLine(i) && line.animated"></span>
-              </p>
+                <p class="console-title">{{ line.prompt }}</p>
+                <p class="console-command">
+                    {{ line.displayedCommand !== undefined ? line.displayedCommand : line.command }}
+                    <span class="cursor" *ngIf="line.isTyping"></span>
+                </p>
             </ng-container>
             
             <ng-container *ngIf="line.type === 'result'">

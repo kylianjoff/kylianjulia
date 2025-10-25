@@ -28,6 +28,8 @@ interface ConsoleLine {
   result?: string;
   lsResults?: Array<{ name: string; type: string }>;
   animated?: boolean;
+  displayedCommand?: string; // Nouveau: texte actuellement affiché
+  isTyping?: boolean; // Nouveau: indique si on est en train de taper
 }
 
 @Component({
@@ -69,7 +71,6 @@ export class Home implements OnInit, OnDestroy {
   visibleLines: ConsoleLine[] = [];
   currentLineIndex = 0;
   currentCharIndex = 0;
-  animatedText = '';
   
   private animationTimeout: any;
   private typingSpeed = 80; // ms par caractère
@@ -139,7 +140,7 @@ export class Home implements OnInit, OnDestroy {
     if (currentLine.type === 'command' && currentLine.animated) {
       this.animateTyping(currentLine);
     } else {
-      this.visibleLines.push(currentLine);
+      this.visibleLines.push({ ...currentLine });
       this.currentLineIndex++;
       this.animationTimeout = setTimeout(() => {
         this.animateNextLine();
@@ -151,19 +152,30 @@ export class Home implements OnInit, OnDestroy {
     if (!line.command) return;
 
     if (this.currentCharIndex === 0) {
-      this.visibleLines.push(line);
+      // Ajouter la ligne avec le texte vide au début
+      this.visibleLines.push({ 
+        ...line, 
+        displayedCommand: '',
+        isTyping: true 
+      });
     }
 
     if (this.currentCharIndex < line.command.length) {
-      this.animatedText = line.command.substring(0, this.currentCharIndex + 1);
+      // Mettre à jour le texte affiché de la dernière ligne
+      const lastIndex = this.visibleLines.length - 1;
+      this.visibleLines[lastIndex].displayedCommand = line.command.substring(0, this.currentCharIndex + 1);
       this.currentCharIndex++;
       
       this.animationTimeout = setTimeout(() => {
         this.animateTyping(line);
       }, this.typingSpeed);
     } else {
+      // Fin de la ligne - marquer comme terminée
+      const lastIndex = this.visibleLines.length - 1;
+      this.visibleLines[lastIndex].displayedCommand = line.command;
+      this.visibleLines[lastIndex].isTyping = false;
+      
       this.currentCharIndex = 0;
-      this.animatedText = '';
       this.currentLineIndex++;
       
       this.animationTimeout = setTimeout(() => {
@@ -172,15 +184,10 @@ export class Home implements OnInit, OnDestroy {
     }
   }
 
-  isCurrentLine(index: number): boolean {
-    return index === this.visibleLines.length - 1 && this.currentCharIndex > 0;
-  }
-
   resetAnimation() {
     this.visibleLines = [];
     this.currentLineIndex = 0;
     this.currentCharIndex = 0;
-    this.animatedText = '';
     this.startAnimation();
   }
 }
