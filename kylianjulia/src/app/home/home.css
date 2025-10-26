@@ -652,6 +652,18 @@ section {
       color: #4ec9b0;
     }
 
+/* Partie Avatar */
+
+.avatar {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.avatar img {
+  width: 40vw;
+}
+
 /* Partie compétences */
 
 #competences {
