@@ -25,6 +25,9 @@ export class App implements OnInit, OnDestroy {
 
     // Listen to changes
     this.mediaQuery.addEventListener('change', this.mediaQueryListener);
+
+    // Cacher le loader initial après le chargement d'Angular
+    this.hideInitialLoader();
   }
 
   ngOnDestroy(): void {
@@ -34,5 +37,19 @@ export class App implements OnInit, OnDestroy {
 
   menuChange() {
     this.menuMobileOpen = !this.menuMobileOpen;
+  }
+
+  private hideInitialLoader(): void {
+    const loader = document.getElementById('initial-loader');
+    if (loader) {
+      // Petit délai pour que l'animation soit visible
+      setTimeout(() => {
+        loader.classList.add('hidden');
+        // Supprimer l'élément du DOM après la transition
+        setTimeout(() => {
+          loader.remove();
+        }, 500);
+      }, 500);
+    }
   }
 }
