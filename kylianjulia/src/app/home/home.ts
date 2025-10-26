@@ -28,8 +28,9 @@ interface ConsoleLine {
   result?: string;
   lsResults?: Array<{ name: string; type: string }>;
   animated?: boolean;
-  displayedCommand?: string; // Nouveau: texte actuellement affiché
-  isTyping?: boolean; // Nouveau: indique si on est en train de taper
+  displayedCommand?: string;
+  isTyping?: boolean;
+  isClearCommand?: boolean; // Nouveau: pour identifier la commande clear
 }
 
 @Component({
@@ -65,7 +66,7 @@ export class Home implements OnInit, OnDestroy {
     },
     { type: 'command', prompt: 'kylian@pc:~/trucsInutile$ ', command: './kylian', animated: true },
     { type: 'result', result: 'Segmentation fault (core dumped)' },
-    { type: 'command', prompt: 'kylian@pc:~/trucsInutile$ ', command: 'cd ../ && clear', animated: true }
+    { type: 'command', prompt: 'kylian@pc:~/trucsInutile$ ', command: 'cd ../ && clear', animated: true, isClearCommand: true }
   ];
 
   visibleLines: ConsoleLine[] = [];
@@ -75,6 +76,7 @@ export class Home implements OnInit, OnDestroy {
   private animationTimeout: any;
   private typingSpeed = 80; // ms par caractère
   private delayBetweenLines = 500; // ms entre les lignes
+  private delayBeforeClear = 2000; // ms avant la dernière commande (clear)
 
   constructor(private http: HttpClient) {}
 
@@ -129,15 +131,19 @@ export class Home implements OnInit, OnDestroy {
 
   animateNextLine() {
     if (this.currentLineIndex >= this.lines.length) {
-      this.animationTimeout = setTimeout(() => {
-        this.resetAnimation();
-      }, 3000);
+      // Toutes les lignes sont affichées, recommencer
+      this.resetAnimation();
       return;
     }
 
     const currentLine = this.lines[this.currentLineIndex];
 
-    if (currentLine.type === 'command' && currentLine.animated) {
+    // Si c'est la commande clear, ajouter un délai avant de la taper
+    if (currentLine.isClearCommand) {
+      this.animationTimeout = setTimeout(() => {
+        this.animateTyping(currentLine);
+      }, this.delayBeforeClear);
+    } else if (currentLine.type === 'command' && currentLine.animated) {
       this.animateTyping(currentLine);
     } else {
       this.visibleLines.push({ ...currentLine });
@@ -170,7 +176,7 @@ export class Home implements OnInit, OnDestroy {
         this.animateTyping(line);
       }, this.typingSpeed);
     } else {
-      // Fin de la ligne - marquer comme terminée
+      // Fin de la ligne
       const lastIndex = this.visibleLines.length - 1;
       this.visibleLines[lastIndex].displayedCommand = line.command;
       this.visibleLines[lastIndex].isTyping = false;
@@ -178,9 +184,16 @@ export class Home implements OnInit, OnDestroy {
       this.currentCharIndex = 0;
       this.currentLineIndex++;
       
-      this.animationTimeout = setTimeout(() => {
-        this.animateNextLine();
-      }, this.delayBetweenLines);
+      // Si c'est la commande clear, nettoyer immédiatement l'écran
+      if (line.isClearCommand) {
+        this.animationTimeout = setTimeout(() => {
+          this.resetAnimation();
+        }, 200); // Très court délai pour simuler l'exécution du clear
+      } else {
+        this.animationTimeout = setTimeout(() => {
+          this.animateNextLine();
+        }, this.delayBetweenLines);
+      }
     }
   }
 
