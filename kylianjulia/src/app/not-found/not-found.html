@@ -1,1 +1,41 @@
-<p>not-found works!</p>
+<div class="not-found-container">
+  <div class="not-found-content">
+    <!-- Icône animée 404 -->
+    <div class="error-code">
+      <span class="digit">4</span>
+      <span class="digit special">0</span>
+      <span class="digit">4</span>
+    </div>
+
+    <!-- Message d'erreur -->
+    <h1 class="error-title">Page introuvable</h1>
+    <p class="error-message">
+      Oups ! La page que vous recherchez semble avoir disparu dans le cyberespace...
+    </p>
+
+    <!-- Boutons de navigation -->
+    <div class="action-buttons">
+      <a routerLink="/" class="btn-home">
+        <span class="icon">🏠</span>
+        Retour à l'accueil
+      </a>
+      <a routerLink="/blog" class="btn-blog">
+        <span class="icon">📝</span>
+        Voir le blog
+      </a>
+      <a routerLink="/projects" class="btn-blog">
+        <span class="icon">💻</span>
+        Voir les projets
+      </a>
+    </div>
+
+    <!-- Illustration SVG animée -->
+    <div class="illustration">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#9f00b1" class="blob"
+          d="M51.9,-58.5C66.3,-46.9,75.8,-28.2,77.2,-9.2C78.6,9.9,71.8,29.2,59.6,44.2C47.4,59.2,29.7,69.9,9.7,74.4C-10.3,78.9,-31.6,77.2,-48.6,66.3C-65.6,55.4,-78.3,35.3,-80.3,15.2C-82.3,-4.9,-73.5,-24.9,-59.8,-38.1C-46.2,-51.4,-27.6,-57.8,-8.4,-63.5C10.7,-69.2,21.4,-74.2,51.9,-58.5Z"
+          transform="translate(100 100)" />
+      </svg>
+    </div>
+  </div>
+</div>
