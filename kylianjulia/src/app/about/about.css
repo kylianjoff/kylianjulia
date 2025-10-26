@@ -1055,8 +1055,6 @@ section h2 {
 
     .c-formation__item,
     .c-experience__item {
-        position: relative;
-        top: 0;
         min-height: auto;
     }
 
