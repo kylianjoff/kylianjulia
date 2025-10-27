@@ -106,7 +106,19 @@ export class Home implements OnInit, OnDestroy {
       }).slice(0,2);
     });
 
-    this.http.get<ProjetPost[]>('').subscribe(data => {
+    this.http.get<BlogPost[]>('assets/project-index.json').subscribe(data => {
+      this.projetPosts = data.sort((a, b) => {
+        const [dayA, monthA, yearA] = a.date.split('/').map(Number);
+        const [dayB, monthB, yearB] = b.date.split('/').map(Number);
+
+        const dateA = new Date(yearA, monthA - 1, dayA);
+        const dateB = new Date(yearB, monthB - 1, dayB);
+
+        return dateB.getTime() - dateA.getTime();
+      }).slice(0,2);
+    });
+
+    this.http.get<ProjetPost[]>('assets/project-index.json').subscribe(data => {
       this.nbrProjet = data.length;
     });
 
