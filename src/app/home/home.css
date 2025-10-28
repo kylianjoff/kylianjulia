@@ -515,7 +515,8 @@ section {
 
     @media (max-width: 780px) {
       .fenetre-console {
-        width: 80vw;
+        left: 30px;
+        width: calc(100% - 60px);
       }
     }
 
