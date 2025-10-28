@@ -152,8 +152,15 @@ footer {
 }
 
 @media (max-width: 780px) {
-    .header {
+    header {
         left: 60px;
         width: calc(100% - 120px);
+    }
+}
+
+@media (max-width: 550px) {
+    header {
+        left: 10px;
+        width: calc(100% - 20px);
     }
 }
