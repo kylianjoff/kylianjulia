@@ -218,6 +218,21 @@ section h2 {
     transform: scale(1.1);
 }
 
+@media (max-width: 780px) {
+    .profil-content {
+        flex-direction: column;
+    }
+
+    .profil-text {
+        width: 80vw;
+    }
+
+    .profil-picture {
+        width: 180px;
+        height: 280px;
+    }
+}
+
 /* Sections formations et expériences */
 .c-formation, .c-experience {
     width: 50vw;
