@@ -665,6 +665,36 @@ section {
   width: 40vw;
 }
 
+@media (max-width: 1100px) {
+  .avatar img {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .avatar img {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 780px) {
+  .avatar img {
+    width: 65vw;
+  }
+}
+
+@media (max-width: 550px) {
+  .avatar img {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .avatar img {
+    width: 80vw;
+  }
+}
+
 /* Partie compétences */
 
 #competences {
