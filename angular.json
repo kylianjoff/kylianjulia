@@ -28,7 +28,8 @@
                 "glob": "**/*",
                 "input": "public"
               },
-              "src/.htaccess"
+              "src/.htaccess",
+              "src/_redirects"
             ],
             "styles": [
               "src/styles.css"
