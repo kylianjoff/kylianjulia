@@ -102,6 +102,18 @@ main {
     color: #9f00b1;
 }
 
+@media (max-width: 780px) {
+    .menu {
+        left: 60px;
+    }
+}
+
+@media (max-width: 550px) {
+    .menu {
+        left: 10px;
+    }
+}
+
 /* Contenu de la page */
 .content {
     padding: 20px;
