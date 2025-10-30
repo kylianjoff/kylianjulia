@@ -145,6 +145,13 @@ footer {
     border: solid 1px #444;
 }
 
+@media (max-width: 420px) {
+    .copyright {
+        text-align: center;
+        padding: 30px 0;
+    }
+}
+
 @media (max-width: 600px) {
     .footerLinks {
         flex-direction: column;

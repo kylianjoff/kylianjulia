@@ -1,16 +1,1 @@
-[
-  {
-    "slug": "post-1",
-    "title": "Test project",
-    "date": "22/10/2025",
-    "author": "Kylian JULIA",
-    "tags": [
-      "projet",
-      "test",
-      "Frontend"
-    ],
-    "excerpt": "<p>test post</p>\n",
-    "thumbnail": "/miniatures/blog-default.png",
-    "file": "post-1"
-  }
-]
+[]
