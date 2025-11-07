@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "slug": "site-perso",
+    "title": "J'ai créé un site personnel",
+    "date": "07/11/2025",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Angular"
+    ],
+    "excerpt": "<p>J&#39;avais besoin d&#39;un endroit qui m&#39;appartient à 100% pour regrouper et montrer tout ce que je fais et ce que je sais faire...</p>\n",
+    "thumbnail": "/miniatures/blog-default.png",
+    "file": "site-perso"
+  }
+]
