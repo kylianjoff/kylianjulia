@@ -55,7 +55,7 @@
     <h2>Mes projets</h2>
     <div class="projet-list">
         <div class="projet" *ngFor="let projet of projetPosts">
-            <a [routerLink]="['/projet-post', projet.file]" class="projet-link">
+            <a [routerLink]="['/project-post', projet.file]" class="projet-link">
                 <div class="thumbnail" *ngIf="projet.thumbnail">
                     <img [src]="projet.thumbnail" [alt]="projet.title" />
                 </div>
