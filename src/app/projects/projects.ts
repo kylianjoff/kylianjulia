@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -17,7 +17,8 @@ interface BlogPost {
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './projects.html',
-  styleUrls: ['../blog/blog.css']
+  styleUrls: ['../blog/blog.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class Projects implements OnInit {
   posts: BlogPost[] = [];
