@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -20,7 +20,8 @@ interface BlogPost {
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './blog-post.html',
-  styleUrls: ['./blog-post.css']
+  styleUrls: ['./blog-post.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BlogPostComponent implements OnInit {
   post?: BlogPost;
