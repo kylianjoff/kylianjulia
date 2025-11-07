@@ -66,7 +66,7 @@ const posts = files.map(file => {
         author: data.author || '',
         tags: data.tags || [],
         excerpt: excerptHtml, // ✅ HTML au lieu de texte brut
-        thumbnail: data.thumbnail || "/miniatures/blog-default.png",
+        thumbnail: data.thumbnail || "/miniatures/project-default.png",
         file: slug,
         content: htmlContent
     };
