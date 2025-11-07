@@ -3,7 +3,7 @@ title: "J'ai créé un TooGoodToGo entièrement gratuit pour les étudiants"
 date: "08/11/2025"
 author: "Kylian JULIA"
 tags: ["Angular", "ASP.NET"]
-excerpt: “Et si les étudiants pouvaient récupérer gratuitement les invendus du BDE ou du resto U ? C’est la question que je me suis posée avant de créer une plateforme inspirée de TooGoodToGo — mais 100 % gratuite pour les étudiants.”
+excerpt: Et si les étudiants pouvaient récupérer gratuitement les invendus du BDE ou du resto U ? C’est la question que je me suis posée avant de créer une plateforme inspirée de TooGoodToGo — mais 100 % gratuite pour les étudiants.
 thumbnail: "/assets/projects/toogoodtogo-des-etudiants/logo.png"
 ---
 Un TooGoodToGo pour les étudiants ? Mais pourquoi ?
