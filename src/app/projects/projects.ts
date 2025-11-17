@@ -17,7 +17,7 @@ interface BlogPost {
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './projects.html',
-  styleUrls: ['../blog/blog.css'],
+  styleUrls: ['./projects.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class Projects implements OnInit {
