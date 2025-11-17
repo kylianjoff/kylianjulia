@@ -1,3 +1,6 @@
+@import url('./animations.css');
+@import url('./content.css');
+
 .content {
   padding: 120px 20px 80px;
   background: #272727;
