@@ -1,3 +1,9 @@
+.content {
+  padding: 120px 20px 80px;
+  background: #272727;
+  position: relative;
+}
+
 .post-container {
   max-width: 900px;
   margin: 0 auto;
@@ -299,4 +305,106 @@
   color: #9f00b1;
   padding: 0 1rem;
   font-size: 0.8rem;
+}
+
+/* États de chargement et erreur */
+.loading, .error {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #ccc;
+  position: relative;
+  z-index: 1;
+}
+
+.loading p {
+  font-size: 1.2rem;
+  color: #9f00b1;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.error {
+  background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid rgba(159, 0, 177, 0.2);
+  box-shadow: 0 5px 20px rgba(159, 0, 177, 0.2);
+}
+
+.error h2 {
+  color: #9f00b1;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.error p {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  background: rgba(159, 0, 177, 0.15);
+  border: 2px solid rgba(159, 0, 177, 0.3);
+  border-radius: 10px;
+  color: #9f00b1;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  background: rgba(159, 0, 177, 0.25);
+  border-color: #9f00b1;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(159, 0, 177, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    padding: 100px 15px 60px;
+  }
+
+  .post-thumbnail {
+    height: 250px;
+  }
+
+  .post-header-content {
+    padding: 1.5rem;
+  }
+
+  .post-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .post-title {
+    font-size: 1.75rem;
+  }
+
+  .post-content h1 { font-size: 1.75rem; }
+  .post-content h2 { font-size: 1.5rem; }
+  .post-content h3 { font-size: 1.25rem; }
+  .post-content h4 { font-size: 1.1rem; }
+
+  .post-content pre {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .post-content table {
+    font-size: 0.9rem;
+  }
+
+  .post-content th,
+  .post-content td {
+    padding: 0.75rem;
+  }
+
+  .post-content img,
+  .post-content p img {
+    width: 100%;
+  }
 }
