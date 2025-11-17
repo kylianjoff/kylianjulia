@@ -19,7 +19,7 @@ interface ProjectPost {
   selector: 'app-project-post',
   imports: [CommonModule, RouterLink],
   templateUrl: './project-post.html',
-  styleUrl: '../blog-post/blog-post.css'
+  styleUrl: './project-post.css'
 })
 export class ProjectPostComponent {
   post?: ProjectPost;
