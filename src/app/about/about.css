@@ -1,3 +1,5 @@
+@import url('../styles/animations.css');
+
 main {
     margin-top: 80px;
     margin-bottom: 40px;
@@ -462,25 +464,6 @@ section h2 {
     background: linear-gradient(to left, #272727 0%, transparent 100%);
 }
 
-/* Animations de défilement */
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-25%);
-    }
-}
-
-@keyframes scroll-right {
-    0% {
-        transform: translateX(-25%);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
 /* Section associatif */
 #associatif {
     display: flex;
@@ -878,16 +861,6 @@ section h2 {
     opacity: 0.9;
     transform: scaleY(1) rotate(0);
     transition-delay: 0.5s;
-}
-
-/* Animation de rotation 3D */
-@keyframes flagWave {
-    0%, 100% {
-        transform: perspective(400px) rotateY(0deg) translateY(-5px);
-    }
-    50% {
-        transform: perspective(400px) rotateY(8deg) translateY(-5px);
-    }
 }
 
 /* Responsive */
