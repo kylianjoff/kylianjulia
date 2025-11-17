@@ -6,6 +6,17 @@
   }
 }
 
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9); 
+  }
+  to { 
+    opacity: 0.8; 
+    transform: scale(1); 
+  }
+}
+
 @keyframes pulseGlow {
   0%, 100% {
     opacity: 0.5;
@@ -23,5 +34,25 @@
   }
   50% {
     opacity: 1;
+  }
+}
+
+@keyframes glowLine {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 20px rgba(159, 0, 177, 0.6);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 30px rgba(159, 0, 177, 1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
