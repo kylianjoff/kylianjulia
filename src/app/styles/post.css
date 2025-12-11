@@ -2,7 +2,7 @@
 @import url('./content.css');
 
 .content {
-  padding: 3rem 2rem;
+  padding: 5rem 2rem;
   background: #272727;
   position: relative;
 }
@@ -368,7 +368,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .content {
-    padding: 100px 15px 60px;
+    padding: 5rem 2rem;
   }
 
   .post-thumbnail {
