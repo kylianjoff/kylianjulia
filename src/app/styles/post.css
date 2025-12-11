@@ -1,12 +1,6 @@
 @import url('./animations.css');
 @import url('./content.css');
 
-.content {
-  padding: 5rem 2rem;
-  background: #272727;
-  position: relative;
-}
-
 .post-container {
   max-width: 900px;
   margin: 0 auto;

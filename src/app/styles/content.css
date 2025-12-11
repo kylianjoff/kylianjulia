@@ -1,5 +1,10 @@
 .content {
-    min-height: 100vh;
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  color: #fff;
+  margin-top: 40px;
+  background: #272727;
+  position: relative;
 }
 
 /* Effet de lueur d'arrière-plan */

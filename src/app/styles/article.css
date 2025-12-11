@@ -1,14 +1,6 @@
 @import url('./content.css');
 @import url('./animations.css');
 
-.content {
-  padding: 3rem 2rem;
-  color: #fff;
-  margin-top: 40px;
-  background: #272727;
-  position: relative;
-}
-
 .content h1 {
   position: relative;
   font-size: clamp(2.5rem, 5vw, 4rem);
