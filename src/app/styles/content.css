@@ -1,3 +1,12 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
 .content {
   min-height: 100vh;
   padding: 3rem 2rem;
