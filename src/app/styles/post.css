@@ -2,7 +2,7 @@
 @import url('./content.css');
 
 .content {
-  padding: 120px 20px 80px;
+  padding: 3rem 2rem;
   background: #272727;
   position: relative;
 }
