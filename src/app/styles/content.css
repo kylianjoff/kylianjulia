@@ -1,10 +1,17 @@
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    color: #fff;
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
 }
 
 .content {
@@ -14,6 +21,9 @@ html, body {
   margin-top: 40px;
   background: #272727;
   position: relative;
+  overflow-x: 100%;
+  width: 100%;
+  max-width: vw;
 }
 
 /* Effet de lueur d'arrière-plan */
