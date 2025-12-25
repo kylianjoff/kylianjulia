@@ -22,7 +22,7 @@ Ce projet a été généré en utilisant [Angular CLI](https://github.com/angula
 
 ## TODO
 
-- [ ] Listing clair des projets
+- [X] Listing clair des projets (sur [projets.kylianjulia.fr](https://projets.kylianjulia.fr))
 - [ ] Formulaire de prise de contact
 - [ ] Amélioration du rendu de style des articles
 - [ ] Système de tag fonctionnel
