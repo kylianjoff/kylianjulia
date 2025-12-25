@@ -707,6 +707,19 @@ section {
   margin-bottom: 50px;
 }
 
+.lien-projets-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+}
+
+.lien-projets-div h3 {
+  margin-bottom: 20px;
+}
+
+.lien-projets,
 .seeMore-btn {
   position: relative;
   padding: 18px 45px;
@@ -729,6 +742,7 @@ section {
 }
 
 /* Effet de survol lumineux */
+.lien-projets::before,
 .seeMore-btn::before {
   content: '';
   position: absolute;
@@ -742,11 +756,13 @@ section {
   transition: width 0.6s ease, height 0.6s ease;
 }
 
+.lien-projets:hover::before,
 .seeMore-btn:hover::before {
   width: 300px;
   height: 300px;
 }
 
+.lien-projets:hover,
 .seeMore-btn:hover {
   transform: translateY(-5px);
   border-color: #bf00d1;
@@ -757,6 +773,7 @@ section {
 }
 
 /* Effet de brillance qui traverse le bouton */
+.lien-projets::after,
 .seeMore-btn::after {
   content: '';
   position: absolute;
@@ -781,6 +798,7 @@ section {
     min-height: 50vh;
   }
 
+  .lien-projets,
   .seeMore-btn {
     padding: 15px 35px;
     font-size: 1rem;

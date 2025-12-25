@@ -53,6 +53,10 @@
 
 <section id="projets" class="common">
     <h2>Mes projets</h2>
+    <div class="lien-projets-div">
+        <h3>Tous mes projets sont accessibles sur projets.kylianjulia.fr !</h3>
+        <a class="lien-projets" href="https://projets.kylianjulia.fr" target="_blank">Voir tous mes projets →</a>
+    </div>
     <div class="projet-list">
         <div class="projet" *ngFor="let projet of projetPosts">
             <a [routerLink]="['/project-post', projet.file]" class="projet-link">
