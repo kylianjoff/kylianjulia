@@ -158,7 +158,7 @@ export class About {
       name: 'Sigmix',
       description: 'Association de mix de Sigma Clermont et ISIMA',
       role: 'DJ (05/2025 - actuel)',
-      logo: 'assos/sigmix.JPEG',
+      logo: 'assos/sigmix.png',
       details: [
         'Débutant.',
         'Assurer l\'ambiance des soirées à l\'ISIMA et à Sigma Clermont.'
