@@ -1,0 +1,17 @@
+.tag {
+  background: var(--tag-bg, rgba(159, 0, 177, 0.15));
+  border: 1px solid var(--tag-border, rgba(159, 0, 177, 0.3));
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--tag-text, #9f00b1);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: var(--tag-hover-bg, rgba(159, 0, 177, 0.25));
+  border-color: var(--tag-hover-border, #9f00b1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px var(--tag-hover-shadow, rgba(159, 0, 177, 0.3));
+}

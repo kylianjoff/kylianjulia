@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { TagBadgeComponent } from '../shared/tag-badge/tag-badge';
 
 interface ProjectPost {
   slug: string;
@@ -17,7 +18,7 @@ interface ProjectPost {
 
 @Component({
   selector: 'app-project-post',
-  imports: [RouterLink],
+  imports: [RouterLink, TagBadgeComponent],
   templateUrl: './project-post.html',
   styleUrl: './project-post.css'
 })
