@@ -9,9 +9,20 @@
   transition: all 0.3s ease;
 }
 
+.tag::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  color: var(--tag-text, #9f00b1);
+  background: currentColor;
+}
+
 .tag:hover {
   background: var(--tag-hover-bg, rgba(159, 0, 177, 0.25));
   border-color: var(--tag-hover-border, #9f00b1);
   transform: translateY(-2px);
   box-shadow: 0 4px 10px var(--tag-hover-shadow, rgba(159, 0, 177, 0.3));
+  cursor: pointer;
 }
