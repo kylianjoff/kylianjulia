@@ -4,7 +4,7 @@
 
 Site web personnel de Kylian JULIA ([kylianjulia.fr](https://kylianjulia.fr/)) répertoriant les compétences mais également les projets et un blog.
 
-Ce projet a été généré en utilisant [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
+Ce projet a été généré en utilisant [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
 
 ## Fonctionnalités
 

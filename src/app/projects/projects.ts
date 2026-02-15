@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 
 interface BlogPost {
@@ -15,7 +15,7 @@ interface BlogPost {
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './projects.html',
   styleUrls: ['./projects.css'],
   encapsulation: ViewEncapsulation.None

@@ -1,167 +1,203 @@
 <main>
-    <div class="menu" [class.active]="menuCV">
-        <div class="menu-btn" (click)="toggleMenuCV()">
-            <div class="menu-bar"></div>
-            <div class="menu-bar"></div>
-            <div class="menu-bar"></div>
+  <div class="menu" [class.active]="menuCV">
+    <div class="menu-btn" (click)="toggleMenuCV()">
+      <div class="menu-bar"></div>
+      <div class="menu-bar"></div>
+      <div class="menu-bar"></div>
+    </div>
+    @if (menuCV) {
+      <div class="menu-content">
+        <a href="/about#profil">Profil</a>
+        <a href="/about#formations">Formations</a>
+        <a href="/about#experiences">Expérience</a>
+        <a href="/about#competences">Compétences</a>
+        <a href="/about#associatif">Associatif</a>
+        <a href="/about#moncv">Mon CV</a>
+      </div>
+    }
+  </div>
+
+  <div class="content">
+    <section id="profil">
+      <h1>Profil</h1>
+      <div class="profil-content">
+        <div class="profil-text">
+          <ul>
+            @for (p of profil; track p) {
+              <li>{{ p }}</li>
+            }
+          </ul>
         </div>
-        <div class="menu-content" *ngIf="menuCV">
-            <a href="/about#profil">Profil</a>
-            <a href="/about#formations">Formations</a>
-            <a href="/about#experiences">Expérience</a>
-            <a href="/about#competences">Compétences</a>
-            <a href="/about#associatif">Associatif</a>
-            <a href="/about#moncv">Mon CV</a>
+        <div class="profil-picture">
+          <img src="profil.jpeg" alt="Kylian JULIA">
         </div>
+      </div>
+    </section>
+
+    <section id="formations" class="c-formation">
+      <h1 class="c-formation__title">Mes formations</h1>
+
+      <ul class="c-formation__list">
+        @for (form of formation; track form) {
+          <li class="c-formation__item">
+            <div class="c-formation__item-info">
+              <h2 class="c-formation__item-title">{{ form.nom }}</h2>
+              <p class="c-formation__item-subtitle"><b>{{ form.ecole }}</b> | {{ form.lieu }}</p>
+              <p class="c-formation__item-excerpt">{{ form.description }}</p>
+              <p class="c-formation__item-period">{{ form.periode }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section id="experiences" class="c-experience">
+      <h1 class="c-experience__title">Mes expériences</h1>
+
+      <ul class="c-experience__list">
+        @for (exp of experience; track exp) {
+          <li class="c-experience__item">
+            <div class="c-experience__item-info">
+              <h2 class="c-experience__item-title">{{ exp.nom }}</h2>
+              <p class="c-experience__item-subtitle">{{ exp.lieu }}</p>
+              @if (exp.details) {
+                <ul>
+                  @for (det of exp.details; track det) {
+                    <li>{{ det }}</li>
+                  }
+                </ul>
+              }
+              <p class="c-experience__item-period">{{ exp.periode }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section id="competences">
+      <h2>Mes compétences techniques</h2>
+
+      @for (bloc of blocs; track bloc; let i = $index) {
+        <section
+          class="competence"
+          [class.reverse]="i % 2 === 1"
+          >
+          <h3>{{ bloc.titre }}</h3>
+          <div class="list-competences" #list>
+            @for (skill of bloc.skills; track skill) {
+              <span>{{ skill }}</span>
+            }
+          </div>
+          <div class="fade"></div>
+        </section>
+      }
+    </section>
+
+    <section id="associatif">
+      <h2>Mon engagement dans l'associatif</h2>
+
+      <section class="assos">
+        <ul class="logos">
+          @for (asso of associations; track asso) {
+            <li (click)="selectAsso(asso)">
+              <img
+                [src]="asso.logo"
+                [alt]="'Logo ' + asso.name"
+                [class.active]="selectedAsso?.name === asso.name"
+                />
+              </li>
+            }
+          </ul>
+
+          @if (selectedAsso) {
+            <div class="infos">
+              <h3>{{ selectedAsso.name }}</h3>
+              <h4>{{ selectedAsso.description }}</h4>
+              <h5>Poste : {{ selectedAsso.role }}</h5>
+              @if (selectedAsso.details) {
+                <ul>
+                  @for (detail of selectedAsso.details; track detail) {
+                    <li>{{ detail }}</li>
+                  }
+                </ul>
+              }
+            </div>
+          }
+        </section>
+      </section>
+
+      <section id="moncv">
+        <h2>Mon CV au format PDF</h2>
+        <div class="tel-cv">
+          <button class="french" (click)="selectCV(CV[0])">
+            <div class="flag-layer blue-fr"></div>
+            <div class="flag-layer white-fr"></div>
+            <div class="flag-layer red-fr"></div>
+            <span>Mon CV français</span>
+          </button>
+          <button class="english" (click)="selectCV(CV[1])">
+            <div class="flag-layer bg-blue"></div>
+            <div class="flag-layer diag-white-1"></div>
+            <div class="flag-layer diag-white-2"></div>
+            <div class="flag-layer diag-red-1"></div>
+            <div class="flag-layer diag-red-2"></div>
+            <div class="flag-layer cross-white-h"></div>
+            <div class="flag-layer cross-white-v"></div>
+            <div class="flag-layer cross-red-h"></div>
+            <div class="flag-layer cross-red-v"></div>
+            <span>My english resume</span>
+          </button>
+        </div>
+      </section>
     </div>
 
-    <div class="content">
-        <section id="profil">
-            <h1>Profil</h1>
-            <div class="profil-content">
-                <div class="profil-text">
-                    <ul>
-                        <li *ngFor="let p of profil">{{ p }}</li>
-                    </ul>
-                </div>
-                <div class="profil-picture">
-                    <img src="profil.jpeg" alt="Kylian JULIA">
-                </div>
-            </div>
-        </section>
-
-        <section id="formations" class="c-formation">
-            <h1 class="c-formation__title">Mes formations</h1>
-
-            <ul class="c-formation__list">
-                <li class="c-formation__item" *ngFor="let form of formation">
-                <div class="c-formation__item-info">
-                    <h2 class="c-formation__item-title">{{ form.nom }}</h2>
-                    <p class="c-formation__item-subtitle"><b>{{ form.ecole }}</b> | {{ form.lieu }}</p>
-                    <p class="c-formation__item-excerpt">{{ form.description }}</p>
-                    <p class="c-formation__item-period">{{ form.periode }}</p>
-                </div>
-                </li>
-            </ul>
-            </section>
-
-            <section id="experiences" class="c-experience">
-            <h1 class="c-experience__title">Mes expériences</h1>
-
-            <ul class="c-experience__list">
-                <li class="c-experience__item" *ngFor="let exp of experience">
-                <div class="c-experience__item-info">
-                    <h2 class="c-experience__item-title">{{ exp.nom }}</h2>
-                    <p class="c-experience__item-subtitle">{{ exp.lieu }}</p>
-                    <ul *ngIf="exp.details">
-                    <li *ngFor="let det of exp.details">{{ det }}</li>
-                    </ul>
-                    <p class="c-experience__item-period">{{ exp.periode }}</p>
-                </div>
-                </li>
-            </ul>
-        </section>
-
-        <section id="competences">
-            <h2>Mes compétences techniques</h2>
-
-            <section
-                class="competence"
-                *ngFor="let bloc of blocs; let i = index"
-                [class.reverse]="i % 2 === 1"
-            >
-                <h3>{{ bloc.titre }}</h3>
-                <div class="list-competences" #list>
-                    <span *ngFor="let skill of bloc.skills">{{ skill }}</span>
-                </div>
-                <div class="fade"></div>
-            </section>
-        </section>
-
-        <section id="associatif">
-            <h2>Mon engagement dans l'associatif</h2>
-
-            <section class="assos">
-                <ul class="logos">
-                <li *ngFor="let asso of associations" (click)="selectAsso(asso)">
-                    <img
-                    [src]="asso.logo"
-                    [alt]="'Logo ' + asso.name"
-                    [class.active]="selectedAsso?.name === asso.name"
-                    />
-                </li>
-                </ul>
-
-                <div class="infos" *ngIf="selectedAsso">
-                <h3>{{ selectedAsso.name }}</h3>
-                <h4>{{ selectedAsso.description }}</h4>
-                <h5>Poste : {{ selectedAsso.role }}</h5>
-                <ul *ngIf="selectedAsso.details">
-                    <li *ngFor="let detail of selectedAsso.details">{{ detail }}</li>
-                </ul>
-                </div>
-            </section>
-            </section>
-
-        <section id="moncv">
-            <h2>Mon CV au format PDF</h2>
-            <div class="tel-cv">
-                <button class="french" (click)="selectCV(CV[0])">
-                    <div class="flag-layer blue-fr"></div>
-                    <div class="flag-layer white-fr"></div>
-                    <div class="flag-layer red-fr"></div>
-                    <span>Mon CV français</span>
-                </button>
-                <button class="english" (click)="selectCV(CV[1])">
-                    <div class="flag-layer bg-blue"></div>
-                    <div class="flag-layer diag-white-1"></div>
-                    <div class="flag-layer diag-white-2"></div>
-                    <div class="flag-layer diag-red-1"></div>
-                    <div class="flag-layer diag-red-2"></div>
-                    <div class="flag-layer cross-white-h"></div>
-                    <div class="flag-layer cross-white-v"></div>
-                    <div class="flag-layer cross-red-h"></div>
-                    <div class="flag-layer cross-red-v"></div>
-                    <span>My english resume</span>
-                </button>
-            </div>
-        </section>
-    </div>
-
-    <div class="bg-CV-PDF" *ngIf="modalCV" (click)="closeModal()">
+    @if (modalCV) {
+      <div class="bg-CV-PDF" (click)="closeModal()">
         <div class="modal-CV" (click)="$event.stopPropagation()">
-            <div class="why">&#8505;</div>
-            <div class="why-content" *ngIf="langCV === 'fr'">
-                <p><b>Pourquoi le numéro de téléphone est masqué ?</b></p>
-                <p>Tout simplement parceque c'est mon numéro personnel. Si vous être un(e) recruteur/recruteuse, envoyer moi un mail : <a href="mailto:kylianju382@gmail.com">kylianju382@gmail.com</a>.</p>
+          <div class="why">&#8505;</div>
+          @if (langCV === 'fr') {
+            <div class="why-content">
+              <p><b>Pourquoi le numéro de téléphone est masqué ?</b></p>
+              <p>Tout simplement parceque c'est mon numéro personnel. Si vous être un(e) recruteur/recruteuse, envoyer moi un mail : <a href="mailto:kylianju382@gmail.com">kylianju382@gmail.com</a>.</p>
             </div>
-            <div class="why-content" *ngIf="langCV === 'en'">
-                <p><b>Why the phone number is hidden ?</b></p>
-                <p>Simply because it is my personal number. If you are a recruiter, send me an email: <a href="mailto:kylinju382@gmail.com">kylianju382@gmail.com</a>.</p>
+          }
+          @if (langCV === 'en') {
+            <div class="why-content">
+              <p><b>Why the phone number is hidden ?</b></p>
+              <p>Simply because it is my personal number. If you are a recruiter, send me an email: <a href="mailto:kylinju382@gmail.com">kylianju382@gmail.com</a>.</p>
             </div>
-            <div class="close" (click)="closeModal()">&times;</div>
-            <div class="modal-content">
-                <h2 *ngIf="langCV === 'fr'">Mon CV</h2>
-                <div class="cv-container" *ngIf="langCV === 'fr'">
-                    <object 
-                        data="CV/CV_Kylian_JULIA.pdf" 
-                        type="application/pdf">
-                        <p>Votre navigateur ne supporte pas les PDF. 
-                        <a href="CV/CV_Kylian_JULIA.pdf">Télécharger le CV</a></p>
-                    </object>
+          }
+          <div class="close" (click)="closeModal()">&times;</div>
+          <div class="modal-content">
+            @if (langCV === 'fr') {
+              <h2>Mon CV</h2>
+            }
+            @if (langCV === 'fr') {
+              <div class="cv-container">
+                <object
+                  data="CV/CV_Kylian_JULIA.pdf"
+                  type="application/pdf">
+                  <p>Votre navigateur ne supporte pas les PDF.
+                    <a href="CV/CV_Kylian_JULIA.pdf">Télécharger le CV</a></p>
+                  </object>
                 </div>
-                
-                <h2 *ngIf="langCV === 'en'">My resume</h2>
-                <div class="cv-container" *ngIf="langCV === 'en'">
-                    <object 
-                        data="CV/Resume_Kylian_JULIA.pdf" 
-                        type="application/pdf">
-                        <p>Your browser don't support PDF files. 
-                        <a href="CV/Resume_Kylian_JULIA.pdf">Download the resume</a></p>
+              }
+              @if (langCV === 'en') {
+                <h2>My resume</h2>
+              }
+              @if (langCV === 'en') {
+                <div class="cv-container">
+                  <object
+                    data="CV/Resume_Kylian_JULIA.pdf"
+                    type="application/pdf">
+                    <p>Your browser don't support PDF files.
+                      <a href="CV/Resume_Kylian_JULIA.pdf">Download the resume</a></p>
                     </object>
-                </div>
+                  </div>
+                }
+              </div>
             </div>
-        </div>
-    </div>
+          </div>
+        }
 
-</main>
+      </main>

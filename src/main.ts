@@ -1,5 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { provideHttpClient } from '@angular/common/http';
 
@@ -9,7 +9,7 @@ import { App } from './app/app';
 bootstrapApplication(App, {
   ...appConfig,
   providers: [
-    ...(appConfig.providers || []),
+    provideZoneChangeDetection(),...(appConfig.providers || []),
     importProvidersFrom(
       MarkdownModule.forRoot()
     ),

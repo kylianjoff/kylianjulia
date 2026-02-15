@@ -1,15 +1,21 @@
 <header>
   <a href="/"><img src="favicon.ico" alt=""> Kylian JULIA</a>
 
-  <span *ngIf="littleScreen && !menuMobileOpen" (click)="menuChange()">&#9776;</span>
-  <span *ngIf="littleScreen && menuMobileOpen" (click)="menuChange()">&times;</span>
+  @if (littleScreen && !menuMobileOpen) {
+    <span (click)="menuChange()">&#9776;</span>
+  }
+  @if (littleScreen && menuMobileOpen) {
+    <span (click)="menuChange()">&times;</span>
+  }
 
-  <nav *ngIf="!littleScreen || menuMobileOpen">
-    <a href="/about">A propos</a>
-    <a href="/projects">Projets</a>
-    <a href="/blog">Blog</a>
-    <a href="/about#moncv">Mon CV</a>
-  </nav>
+  @if (!littleScreen || menuMobileOpen) {
+    <nav>
+      <a href="/about">A propos</a>
+      <a href="/projects">Projets</a>
+      <a href="/blog">Blog</a>
+      <a href="/about#moncv">Mon CV</a>
+    </nav>
+  }
 </header>
 
 <router-outlet />

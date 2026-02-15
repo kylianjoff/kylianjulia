@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface Association {
   name: string;
@@ -31,7 +31,7 @@ interface Experience {
 
 @Component({
   selector: 'app-about',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './about.html',
   styleUrl: './about.css'
 })

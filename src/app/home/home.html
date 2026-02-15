@@ -1,115 +1,125 @@
 <section id="accueil" class="special">
-    <div class="fenetre-console">
-      <div class="fenetre-header">
-        <div class="fenetre-btn-content">
-          <div class="fenetre-btn --close"></div>
-          <div class="fenetre-btn --screen"></div>
-          <div class="fenetre-btn --reduce"></div>
-        </div>
-        <p class="fenetre-title">kylian@pc: ~</p>
+  <div class="fenetre-console">
+    <div class="fenetre-header">
+      <div class="fenetre-btn-content">
+        <div class="fenetre-btn --close"></div>
+        <div class="fenetre-btn --screen"></div>
+        <div class="fenetre-btn --reduce"></div>
       </div>
-      <div class="fenetre-content" #content>
-        <ul>
-          <li *ngFor="let line of visibleLines; let i = index">
-            <ng-container *ngIf="line.type === 'command'">
-                <p class="console-title">{{ line.prompt }}</p>
-                <p class="console-command">
-                    {{ line.displayedCommand !== undefined ? line.displayedCommand : line.command }}
-                    <span class="cursor" *ngIf="line.isTyping"></span>
-                </p>
-            </ng-container>
-            
-            <ng-container *ngIf="line.type === 'result'">
+      <p class="fenetre-title">kylian@pc: ~</p>
+    </div>
+    <div class="fenetre-content" #content>
+      <ul>
+        @for (line of visibleLines; track line; let i = $index) {
+          <li>
+            @if (line.type === 'command') {
+              <p class="console-title">{{ line.prompt }}</p>
+              <p class="console-command">
+                {{ line.displayedCommand !== undefined ? line.displayedCommand : line.command }}
+                @if (line.isTyping) {
+                  <span class="cursor"></span>
+                }
+              </p>
+            }
+            @if (line.type === 'result') {
               <p class="console-result">{{ line.result }}</p>
-            </ng-container>
-            
-            <ng-container *ngIf="line.type === 'ls'">
+            }
+            @if (line.type === 'ls') {
               <ul class="ls-results">
-                <li *ngFor="let item of line.lsResults" 
+                @for (item of line.lsResults; track item) {
+                  <li
                     [class]="'ls-result --' + item.type">
-                  {{ item.name }}
-                </li>
+                    {{ item.name }}
+                  </li>
+                }
               </ul>
-            </ng-container>
+            }
           </li>
-        </ul>
-      </div>
+        }
+      </ul>
     </div>
-    <div class="avatar">
-        <img src="avatar.PNG" alt="">
-    </div>
-    <div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
+  </div>
+  <div class="avatar">
+    <img src="avatar.PNG" alt="">
+  </div>
+  <div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
 </section>
 
 <section id="competences" class="common">
-    <h2>Qui suis-je ?</h2>
-    <h2>Qu'est ce que je sais faire ?</h2>
-    <a href="/about" class="seeMore-btn">Me connaître</a>
+  <h2>Qui suis-je ?</h2>
+  <h2>Qu'est ce que je sais faire ?</h2>
+  <a href="/about" class="seeMore-btn">Me connaître</a>
 </section>
 
 <section id="projets" class="common">
-    <h2>Mes projets</h2>
-    <div class="lien-projets-div">
-        <h3>Tous mes projets sont accessibles sur projets.kylianjulia.fr !</h3>
-        <a class="lien-projets" href="https://projets.kylianjulia.fr" target="_blank">Voir tous mes projets →</a>
-    </div>
-    <div class="projet-list">
-        <div class="projet" *ngFor="let projet of projetPosts">
-            <a [routerLink]="['/project-post', projet.file]" class="projet-link">
-                <div class="thumbnail" *ngIf="projet.thumbnail">
-                    <img [src]="projet.thumbnail" [alt]="projet.title" />
-                </div>
-
-                <div class="projet-content">
-                    <h2>{{ projet.title }}</h2>
-                    <p class="meta">
-                        Publié le {{ projet.date }} par {{projet.author}}
-                    </p>
-                    <div class="excerpt" [innerHTML]="projet.excerpt"></div>
-                </div>
-            </a>
+  <h2>Mes projets</h2>
+  <div class="lien-projets-div">
+    <h3>Tous mes projets sont accessibles sur projets.kylianjulia.fr !</h3>
+    <a class="lien-projets" href="https://projets.kylianjulia.fr" target="_blank">Voir tous mes projets →</a>
+  </div>
+  <div class="projet-list">
+    @for (projet of projetPosts; track projet) {
+      <div class="projet">
+        <a [routerLink]="['/project-post', projet.file]" class="projet-link">
+          @if (projet.thumbnail) {
+            <div class="thumbnail">
+              <img [src]="projet.thumbnail" [alt]="projet.title" />
+            </div>
+          }
+          <div class="projet-content">
+            <h2>{{ projet.title }}</h2>
+            <p class="meta">
+              Publié le {{ projet.date }} par {{projet.author}}
+            </p>
+            <div class="excerpt" [innerHTML]="projet.excerpt"></div>
+          </div>
+        </a>
+      </div>
+    }
+    <div class="projet-seeMore">
+      <a href="/projects" class="projet-link">
+        <div class="seeMore">
+          <p>Il y a {{ nbrProjet }} projets à aller voir !</p>
+          <p class="arrow">→</p>
         </div>
-        <div class="projet-seeMore">
-            <a href="/projects" class="projet-link">
-                <div class="seeMore">
-                    <p>Il y a {{ nbrProjet }} projets à aller voir !</p>
-                    <p class="arrow">→</p>
-                </div>
-            </a>
-        </div>
+      </a>
     </div>
+  </div>
 </section>
 
 <section id="blog" class="common">
-    <h2>Mon blog</h2>
-    <div class="blog-list">
-        <div class="blog" *ngFor="let blog of blogPosts">
-            <a [routerLink]="['/blog-post', blog.file]" class="blog-link">
-                <!-- ✅ Miniature facultative -->
-                <div class="thumbnail" *ngIf="blog.thumbnail">
-                    <img [src]="blog.thumbnail" [alt]="blog.title" />
-                </div>
-
-                <div class="blog-content">
-                    <h2>{{ blog.title }}</h2>
-                    <p class="meta">
-                        Publié le {{ blog.date }} par {{ blog.author }}
-                    </p>
-                    <div class="excerpt" [innerHTML]="blog.excerpt"></div>
-                </div>
-            </a>
+  <h2>Mon blog</h2>
+  <div class="blog-list">
+    @for (blog of blogPosts; track blog) {
+      <div class="blog">
+        <a [routerLink]="['/blog-post', blog.file]" class="blog-link">
+          <!-- ✅ Miniature facultative -->
+          @if (blog.thumbnail) {
+            <div class="thumbnail">
+              <img [src]="blog.thumbnail" [alt]="blog.title" />
+            </div>
+          }
+          <div class="blog-content">
+            <h2>{{ blog.title }}</h2>
+            <p class="meta">
+              Publié le {{ blog.date }} par {{ blog.author }}
+            </p>
+            <div class="excerpt" [innerHTML]="blog.excerpt"></div>
+          </div>
+        </a>
+      </div>
+    }
+    <div class="blog-seeMore">
+      <a href="/blog" class="blog-link">
+        <div class="seeMore">
+          <p>Il y a {{ nbrBlog }} articles du blog à aller voir !</p>
+          <p class="arrow">→</p>
         </div>
-        <div class="blog-seeMore">
-            <a href="/blog" class="blog-link">
-                <div class="seeMore">
-                    <p>Il y a {{ nbrBlog }} articles du blog à aller voir !</p>
-                    <p class="arrow">→</p>
-                </div>
-            </a>
-        </div>
+      </a>
     </div>
+  </div>
 </section>

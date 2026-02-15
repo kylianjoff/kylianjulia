@@ -1,38 +1,46 @@
 <div class="content">
-    <div class="post-container" *ngIf="!loading && !error && post">
-        <!-- Header avec style -->
-        <header class="post-header">
-            <img 
-            *ngIf="post.thumbnail" 
-            [src]="post.thumbnail" 
+  @if (!loading && !error && post) {
+    <div class="post-container">
+      <!-- Header avec style -->
+      <header class="post-header">
+        @if (post.thumbnail) {
+          <img
+            [src]="post.thumbnail"
             [alt]="post.title"
             class="post-thumbnail"
             />
-            <div class="post-header-content">
-            <h1 class="post-title">{{ post.title }}</h1>
-            <div class="post-meta">
-                <span class="author">{{ post.author }}</span>
-                <span class="separator">•</span>
-                <time class="date">{{ post.date }}</time>
-            </div>
-            <div class="post-tags">
-                <span class="tag" *ngFor="let tag of post.tags">#{{ tag }}</span>
-            </div>
-            <div class="post-excerpt" [innerHTML]="post.excerpt"></div>
-            </div>
-        </header>
-
-        <!-- Contenu Markdown stylé -->
-        <article class="post-content" [innerHTML]="safeContent"></article>
+        }
+        <div class="post-header-content">
+          <h1 class="post-title">{{ post.title }}</h1>
+          <div class="post-meta">
+            <span class="author">{{ post.author }}</span>
+            <span class="separator">•</span>
+            <time class="date">{{ post.date }}</time>
+          </div>
+          <div class="post-tags">
+            @for (tag of post.tags; track tag) {
+              <span class="tag">#{{ tag }}</span>
+            }
+          </div>
+          <div class="post-excerpt" [innerHTML]="post.excerpt"></div>
+        </div>
+      </header>
+      <!-- Contenu Markdown stylé -->
+      <article class="post-content" [innerHTML]="safeContent"></article>
     </div>
+  }
 
-    <div *ngIf="loading" class="loading">
-        <p>Chargement de l'article...</p>
+  @if (loading) {
+    <div class="loading">
+      <p>Chargement de l'article...</p>
     </div>
+  }
 
-    <div *ngIf="error && !loading" class="error">
-        <h2>Article introuvable</h2>
-        <p>L'article demandé n'existe pas ou a été supprimé.</p>
-        <a routerLink="/projects" class="back-link">← Retour aux projets</a>
+  @if (error && !loading) {
+    <div class="error">
+      <h2>Article introuvable</h2>
+      <p>L'article demandé n'existe pas ou a été supprimé.</p>
+      <a routerLink="/projects" class="back-link">← Retour aux projets</a>
     </div>
+  }
 </div>
