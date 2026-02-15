@@ -180,6 +180,10 @@
   overflow: hidden;
 }
 
+.post-tags {
+  margin-bottom: 15px;
+}
+
 /* État vide */
 .no-posts {
   display: flex;
