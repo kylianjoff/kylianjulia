@@ -82,7 +82,7 @@ export class About {
         'Participation à la renaissance de la junior entreprise de l\'ISIMA.',
         'Responsable des étudiants dans la réalisation des projets.'
       ],
-      periode: '10/2025 - En cours',
+      periode: '10/2025 - 02/2026',
     },
     {
       nom: 'Trésorier de l\'association DreZZing',
@@ -92,7 +92,7 @@ export class About {
         'Assurer la stabilité financière de l\'association.',
         'Gestion des projets.'
       ],
-      periode: '02/2025 - En cours'
+      periode: '02/2025 - 02/2026'
     },
     {
       nom: 'Préparateur de commande',
@@ -117,9 +117,22 @@ export class About {
 
   associations: Association[] = [
     {
+      name: 'Sigmix',
+      description: 'Association de mix de Sigma Clermont et ISIMA',
+      role: 'Responsable de la communication (02/2026 - actuel) | DJ (05/2025 - actuel)',
+      logo: 'assos/sigmix.png',
+      details: [
+        'DJ en soirée.',
+        'Assurer l\'ambiance des soirées à l\'ISIMA et à Sigma Clermont.',
+        'Fait parti d\'une équipe de trois responsables de la communication.',
+        'Relaye principalement la communication auprès des étudiants de l\'ISIMA.',
+        'Amélioration de la communication entre plusieurs écoles.'
+      ]
+    },
+    {
       name: 'Image',
       description: 'Junior entreprise de l\'ISIMA',
-      role: 'Vice-président (10/2025 - actuel)',
+      role: 'Vice-président (10/2025 - 02/2026)',
       logo: 'assos/image.png',
       details: [
         'Aide au relancement de l\'association.',
@@ -129,17 +142,18 @@ export class About {
     {
       name: 'DreZZing',
       description: 'Association de textile et goodies de l\'ISIMA',
-      role: 'Trésorier (02/2025 - actuel)',
+      role: 'Trésorier (02/2025 - 02/2026)',
       logo: 'assos/drezzing.png',
       details: [
         'Assurer la stabilité financière de l\'association.',
-        'Gestion des projets.'
+        'Gestion des projets.',
+        'Hausse de la trésorerie de l\'association de 223% en un an.'
       ]
     },
     {
       name: 'Shared',
       description: 'Club caritatif de l\'ISIMA',
-      role: 'Responsable de la communication interne (03/2025 - actuel)',
+      role: 'Responsable de la communication interne (03/2025 - 02/2026)',
       logo: 'assos/shared.png',
       details: [
         'Membre fondateur du club.',
@@ -151,17 +165,11 @@ export class About {
     {
       name: 'Isimalt',
       description: 'Club de bière de l\'ISIMA',
-      role: 'Responsable de la communication (02/2025 - actuel)',
-      logo: 'assos/isimalt.jpg'
-    },
-    {
-      name: 'Sigmix',
-      description: 'Association de mix de Sigma Clermont et ISIMA',
-      role: 'DJ (05/2025 - actuel)',
-      logo: 'assos/sigmix.png',
+      role: 'Responsable de la communication (02/2025 - 02/2026)',
+      logo: 'assos/isimalt.jpg',
       details: [
-        'Débutant.',
-        'Assurer l\'ambiance des soirées à l\'ISIMA et à Sigma Clermont.'
+        'Communication des événements de l\'association auprès des étudiants de l\'ISIMA.',
+        'Organisation de la cuvée de bière pour le week-end d\'intégration de l\'ISIMA.'
       ]
     }
   ]
