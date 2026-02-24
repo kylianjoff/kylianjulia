@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { RouterLink } from '@angular/router';
+import { TagBadgeComponent } from '../shared/tag-badge/tag-badge';
 
 interface BlogPost {
   title: string;
@@ -9,13 +10,15 @@ interface BlogPost {
   date: string;
   author: string;
   file: string;
+  tags: string[];
+
   excerpt: string;
 }
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TagBadgeComponent],
   templateUrl: './blog.html',
   styleUrls: ['./blog.css']
 })
