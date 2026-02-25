@@ -56,7 +56,7 @@ export class ProjectPostComponent {
       next: (post) => {
         this.post = post;
         // Sanitize le HTML pour l'affichage
-        this.safeContent = this.sanitizer.sanitize(1, post.content) || '';
+        this.safeContent = this.sanitizer.bypassSecurityTrustHtml(post.content) || '';
         this.loading = false;
       },
       error: (err) => {

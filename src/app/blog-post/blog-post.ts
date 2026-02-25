@@ -21,8 +21,7 @@ interface BlogPost {
   standalone: true,
   imports: [RouterLink, TagBadgeComponent],
   templateUrl: './blog-post.html',
-  styleUrls: ['./blog-post.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./blog-post.css']
 })
 export class BlogPostComponent implements OnInit {
   post?: BlogPost;
@@ -58,7 +57,7 @@ export class BlogPostComponent implements OnInit {
       next: (post) => {
         this.post = post;
         // Sanitize le HTML pour l'affichage
-        this.safeContent = this.sanitizer.sanitize(1, post.content) || '';
+        this.safeContent = this.sanitizer.bypassSecurityTrustHtml(post.content) || '';
         this.loading = false;
       },
       error: (err) => {

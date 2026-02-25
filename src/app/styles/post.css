@@ -214,17 +214,19 @@
 
 ::ng-deep .post-content img,
 ::ng-deep .post-content p img {
-  width: 100%;
+  max-width: 500px;
+  width: auto;
   height: auto;
   border-radius: 12px;
-  margin: 2rem 0 0.5rem 0;
+  margin: 2rem auto 0.5rem auto;
+  display: block;
   box-shadow: 0 5px 20px rgba(159, 0, 177, 0.2);
   border: 2px solid rgba(159, 0, 177, 0.2);
   transition: all 0.3s ease;
 }
 
-.post-content img:hover ,
-.post-content p img:hover{
+.post-content img:hover,
+.post-content p img:hover {
   transform: scale(1.02);
   box-shadow: 0 8px 30px rgba(159, 0, 177, 0.4);
   border-color: #9f00b1;
