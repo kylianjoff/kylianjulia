@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "slug": "associatif",
+    "title": "Des gros changements après un an dans l'associatif",
+    "date": "26/02/2026",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Associatif",
+      "Clubs",
+      "DreZZing",
+      "Im@ge",
+      "SIGMIX",
+      "Shared",
+      "IsiMalt"
+    ],
+    "excerpt": "<p>La période des passations vient de passer et il y a eu énormément de changement.</p>\n",
+    "thumbnail": "/assets/blogs/associatif/logo.png",
+    "file": "associatif"
+  }
+]
