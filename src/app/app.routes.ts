@@ -20,6 +20,11 @@ export const routes: Routes = [
         component: Blog
     },
     {
+        path: 'blog/:slug',
+        title: "Article de blog",
+        component: BlogPostComponent
+    },
+    {
         path: 'projects',
         title: "Projets de Kylian JULIA",
         component: Projects
@@ -31,8 +36,7 @@ export const routes: Routes = [
     },
     {
         path: 'blog-post/:slug',
-        title: "Blog",
-        component: BlogPostComponent
+        redirectTo: 'blog/:slug'
     },
     {
         path: 'project-post/:slug',
