@@ -26,8 +26,7 @@ export const routes: Routes = [
     },
     {
         path: 'projects',
-        title: "Projets de Kylian JULIA",
-        component: Projects
+        redirectTo: 'https://projets.kylianjulia.fr'
     },
     {
         path: 'about',
@@ -40,8 +39,7 @@ export const routes: Routes = [
     },
     {
         path: 'project-post/:slug',
-        title: "Projet",
-        component: ProjectPostComponent
+        redirectTo: 'blog/:slug'
     },
     {
         path: '**',
