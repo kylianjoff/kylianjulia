@@ -58,32 +58,13 @@
 <section id="projets" class="common">
   <h2>Mes projets</h2>
   <div class="lien-projets-div">
-    <h3>Tous mes projets sont accessibles sur projets.kylianjulia.fr !</h3>
-    <a class="lien-projets" href="https://projets.kylianjulia.fr" target="_blank">Voir tous mes projets →</a>
+    <h3>Tous mes projets publics venant des solutions GIT (Github, Gitlab, ...) sont automatiquement regroupés sur projets.kylianjulia.fr !</h3>
   </div>
   <div class="projet-list">
-    @for (projet of projetPosts; track projet) {
-      <div class="projet">
-        <a [routerLink]="['/project-post', projet.file]" class="projet-link">
-          @if (projet.thumbnail) {
-            <div class="thumbnail">
-              <img [src]="projet.thumbnail" [alt]="projet.title" />
-            </div>
-          }
-          <div class="projet-content">
-            <h2>{{ projet.title }}</h2>
-            <p class="meta">
-              Publié le {{ projet.date }} par {{projet.author}}
-            </p>
-            <div class="excerpt" [innerHTML]="projet.excerpt"></div>
-          </div>
-        </a>
-      </div>
-    }
     <div class="projet-seeMore">
-      <a href="/projects" class="projet-link">
+      <a href="https://projets.kylianjulia.fr/" class="projet-link" target="_blank">
         <div class="seeMore">
-          <p>Il y a {{ nbrProjet }} projets à aller voir !</p>
+          <p>Venez voir tous mes projets publics !</p>
           <p class="arrow">→</p>
         </div>
       </a>
