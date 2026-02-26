@@ -4,13 +4,13 @@ date: "08/11/2025"
 author: "Kylian JULIA"
 tags: ["Angular", "ASP.NET"]
 excerpt: Et si les étudiants pouvaient récupérer gratuitement les invendus du BDE ou du resto U ? C’est la question que je me suis posée avant de créer une plateforme inspirée de TooGoodToGo — mais 100 % gratuite pour les étudiants.
-thumbnail: "/assets/projects/toogoodtogo-des-etudiants/logo.png"
+thumbnail: "/assets/blogs/toogoodtogo-des-etudiants/logo.png"
 ---
 Un TooGoodToGo pour les étudiants ? Mais pourquoi ?
 
 Il faut que je vous raconte toute l'histoire qui m'a mené à ce projet.
 
-![Page d'accueil de la plateforme - capture d'écran](/assets/projects/toogoodtogo-des-etudiants/accueil.png)
+![Page d'accueil de la plateforme - capture d'écran](/assets/blogs/toogoodtogo-des-etudiants/accueil.png)
 _Capture d'écran du haut de la page d'accueil de la plateforme._
 
 ## La connaissance d'un problème
@@ -24,7 +24,7 @@ Après avoir écouté tous ces problèmes, j'ai pensé à un système, ou plutô
 
 L'objectif était de faire un service exclusivement pour les étudiants et les BDE (Bureau Des Etudiants), il ne fallait donc pas que la plateforme soit entièrement ouverte à tous et contrôler les inscriptions.
 
-![Moyens de s'inscrire — capture d'écran](/assets/projects/toogoodtogo-des-etudiants/inscription.png)
+![Moyens de s'inscrire — capture d'écran](/assets/blogs/toogoodtogo-des-etudiants/inscription.png)
 _Capture d'écran des différentes options d'inscription proposées aux utilisateurs (compte étudiant, compte donateur)._ 
 
 Pour contrôler que les personnes soient bien des étudiants, nous avons au départ pensé à utilisé le CAS (Centre d'Authentification Sécurisé) de l'UCA (Université Clermont Auvergne) sur lequel tous les étudiants de Clermont-Ferrand ont un compte. Ceci nous permettait d'être sûr que chaque personne qui se connectait sur la plateforme étaient étudiant durant l'année en cours. Mais l'UCA a refusé que nous utilisons leur CAS. Il a donc fallu faire un système d'authentification propre à notre plateforme.
@@ -34,7 +34,7 @@ Nous devons tout de même toujours contrôler que chaque personne inscrit soit �
 
 La partie intéressante pour les étudiants et de savoir comment obtenir les dons. Sur cette plateforme, le donateur a juste à mettre les informations sur le don (nom, description, date de péremption et quantité). Pour les BDE ils doivent également dire si il faut don uniquement aux étudiant de leur école ou à tous les étudiants inscrit sur la plateforme. Ensuite l'étudiant qui voit le don il peut le réserver, mais pas pendant un temps infini, le don est réservé pendant 30 minutes. Pour éviter qu'une personne un peu malin embête tout le monde, un étudiant ne peut réserver qu'un don à la fois. Ensuite l'étudiant à donc 30 minutes pour aller le retirer au lieu où se trouve le donateur.
 
-![Les étapes - capture d'écran](/assets/projects/toogoodtogo-des-etudiants/etapes.png)
+![Les étapes - capture d'écran](/assets/blogs/toogoodtogo-des-etudiants/etapes.png)
 _Capture d'éran des étapes de la mise en ligne d'un don jusqu'à la récupération du don par un étudiant._
 
 ## Les technologies utilisées

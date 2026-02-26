@@ -16,5 +16,30 @@
     "excerpt": "<p>La période des passations vient de passer et il y a eu énormément de changement.</p>\n",
     "thumbnail": "/assets/blogs/associatif/logo.png",
     "file": "associatif"
+  },
+  {
+    "slug": "site-perso",
+    "title": "J'ai créé un site personnel",
+    "date": "07/11/2025",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Angular"
+    ],
+    "excerpt": "<p>J&#39;avais besoin d&#39;un endroit qui m&#39;appartient à 100% pour regrouper et montrer tout ce que je fais et ce que je sais faire...</p>\n",
+    "thumbnail": "/miniatures/blog-default.png",
+    "file": "site-perso"
+  },
+  {
+    "slug": "toogoodtogo-des-etudiants",
+    "title": "J'ai créé un TooGoodToGo entièrement gratuit pour les étudiants",
+    "date": "08/11/2025",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Angular",
+      "ASP.NET"
+    ],
+    "excerpt": "<p>Et si les étudiants pouvaient récupérer gratuitement les invendus du BDE ou du resto U ? C’est la question que je me suis posée avant de créer une plateforme inspirée de TooGoodToGo — mais 100 % gratuite pour les étudiants.</p>\n",
+    "thumbnail": "/assets/blogs/toogoodtogo-des-etudiants/logo.png",
+    "file": "toogoodtogo-des-etudiants"
   }
 ]
