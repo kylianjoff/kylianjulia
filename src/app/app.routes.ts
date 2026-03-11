@@ -4,6 +4,7 @@ import { Home } from './home/home';
 import { About } from './about/about';
 import { BlogPostComponent } from './blog-post/blog-post';
 import { NotFound } from './not-found/not-found';
+import { Cheatsheets } from './cheatsheets/cheatsheets';
 
 export const routes: Routes = [
     {
@@ -43,5 +44,10 @@ export const routes: Routes = [
         path: '**',
         title: "Cette page est introuvable",
         component: NotFound
+    },
+    {
+        path: 'cheatsheets',
+        title: "Cheatsheets de Kylian JULIA",
+        component: Cheatsheets
     }
 ];
