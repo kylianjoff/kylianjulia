@@ -75,7 +75,17 @@ export class About {
 
   experience: Experience[] = [
     {
-      nom: 'Vice-président de l\'association Image',
+      nom: 'Développeur Fullstack',
+      lieu: 'Bitrustee | Saint-Ouen, France | Stagiaire',
+      details: [
+        'Amélioration de l\'application MDM (Mobile Device Management) de Bitrustee.',
+        'Amélioration de fonctionnalités existantes et ajout de nouvelles fonctionnalités.',
+        'Utilisation de React pour le développement frontend et de RUST pour le développement backend.'
+      ],
+      periode: '03/2026 - En cours'
+    },
+    {
+      nom: 'Vice-président de l\'association Im@ge',
       lieu: 'Aubière, France',
       details: [
         'Junior entreprise de l\'ISIMA.',
