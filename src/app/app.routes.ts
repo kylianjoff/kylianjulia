@@ -41,13 +41,13 @@ export const routes: Routes = [
         redirectTo: 'blog/:slug'
     },
     {
-        path: '**',
-        title: "Cette page est introuvable",
-        component: NotFound
-    },
-    {
         path: 'cheatsheets',
         title: "Cheatsheets de Kylian JULIA",
         component: Cheatsheets
+    },
+    {
+        path: '**',
+        title: "Cette page est introuvable",
+        component: NotFound
     }
 ];
