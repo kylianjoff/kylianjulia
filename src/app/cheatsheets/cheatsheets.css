@@ -1,0 +1,144 @@
+@import url('../styles/animations.css');
+
+main {
+    margin-top: 80px;
+    margin-bottom: 40px;
+    background: #272727;
+    min-height: 100vh;
+}
+
+h1 {
+    position: relative;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #ffffff 0%, #9f00b1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+    z-index: 1;
+}
+
+.description {
+    position: relative;
+    font-size: clamp(0.6rem, 1.6vw, 1.4rem);
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 60px;
+    background-clip: text;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease forwards;
+    z-index: 1;
+}
+
+h1:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #9f00b1, transparent);
+    box-shadow: 0 0 20px rgba(159, 0, 177, 0.6);
+    animation: glowLine 2s ease-in-out infinite;
+}
+
+.cheatSheets {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.cheatSheet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+    background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 700px;
+    height: 100px;
+    border: 2px solid rgba(159, 0, 177, 0.2);
+    position: relative;
+    justify-self: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.cheatSheet:hover {
+    translate: 0 -8px;
+    box-shadow: 0 10px 20px rgba(159, 0, 177, 0.4);
+    cursor: pointer;
+}
+
+.cheatSheetInfos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 10px;
+}
+
+.cheatSheetMeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    margin: 0 10px;
+}
+
+.cheatSheetLanguage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    border: 2px solid;
+    padding: 10px 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+.lang-rust {
+    color: #ce422b;
+    border-color: rgba(206, 66, 43, 0.4);
+    background: rgba(206, 66, 43, 0.08);
+}
+
+.lang-tailwind {
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.08);
+}
+
+.lang-default {
+    color: #9f00b1;
+    border-color: rgba(159, 0, 177, 0.2);
+    background: transparent;
+}
+
+.cheatSheetDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    font-size: 0.8rem;
+    font-weight: 300;
+}

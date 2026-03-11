@@ -1,1 +1,19 @@
-<p>cheatsheets works!</p>
+<main>
+    <h1>Cheat Sheets</h1>
+    <p class="description">Retrouvez ma collection de cheat sheets fait par mes soins.</p>
+
+    <div class="cheatSheets">
+        @for (cheatSheet of cheatSheets; track cheatSheet.file) {
+            <div class="cheatSheet" (click)="openCheatSheet(cheatSheet.file)">
+                <div class="cheatSheetInfos">
+                    <h2>{{ cheatSheet.title }}</h2>
+                    <p>{{ cheatSheet.description }}</p>
+                </div>
+                <div class="cheatSheetMeta">
+                    <span class="cheatSheetLanguage" [class]="getLanguageClass(cheatSheet.language)">{{ cheatSheet.language }}</span>
+                    <span class="cheatSheetDate">{{ cheatSheet.date }}</span>
+                </div>
+            </div>
+        }
+    </div>
+</main>
