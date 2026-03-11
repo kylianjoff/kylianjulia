@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Contact } from '../contact/contact';
 import { RouterLink } from '@angular/router';
 
 interface BlogPost {
@@ -35,7 +35,7 @@ interface ConsoleLine {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [RouterLink, Contact],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

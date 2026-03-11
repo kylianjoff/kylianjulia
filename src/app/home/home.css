@@ -808,3 +808,12 @@ section {
     margin-bottom: 40px;
   }
 }
+
+app-contact {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
