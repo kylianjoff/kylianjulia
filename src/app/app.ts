@@ -14,7 +14,7 @@ export class App implements OnInit, OnDestroy {
   littleScreen = false;
   menuMobileOpen = false;
 
-  private mediaQuery = window.matchMedia('(max-width: 940px)');
+  private mediaQuery = window.matchMedia('(max-width: 1100px)');
   private mediaQueryListener = (event: MediaQueryListEvent) => {
     this.littleScreen = event.matches;
   };

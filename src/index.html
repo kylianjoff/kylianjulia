@@ -189,6 +189,14 @@
   </style>
 </head>
 <body>
+  <!-- Formulaire caché pour la détection Netlify Forms -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact">
+    <input name="bot-field">
+    <input name="firstName"><input name="lastName">
+    <input name="email"><input name="subject">
+    <textarea name="message"></textarea>
+  </form>
   <!-- Écran de chargement initial (avant Angular) -->
   <div id="initial-loader">
     <div class="loader-content">

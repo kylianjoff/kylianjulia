@@ -1,5 +1,36 @@
 @import url('../styles/animations.css');
 
+.feedback {
+    text-align: center;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.feedback.success {
+    color: #4caf50;
+    border: 1px solid #4caf5055;
+    background: #4caf5015;
+}
+
+.feedback.error {
+    color: #e03c3c;
+    border: 1px solid #e03c3c55;
+    background: #e03c3c15;
+}
+
+/* Honeypot : invisible pour les humains, visible pour les bots */
+.honeypot {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
 .content {
     position: relative;
     padding: 40px 40px;
@@ -12,4 +43,120 @@
     width: 50vw;
     border-radius: 10px;
     border: solid 1px #f1f1f12b;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+}
+
+.inputZone {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1px;
+}
+
+label.required::after {
+    content: ' *';
+    color: #e03c3c;
+}
+
+.name {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    width: 100%;
+}
+
+input[type="text"], input[type="email"], textarea {
+    background: #2b2a2a;
+    border: solid 1px #f1f1f10d;
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    outline: none;
+}
+
+input[type="text"]:active, input[type="email"]:active, textarea:active,
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    border: solid 1px #00000000;
+    box-shadow: 0 0 5px #9f00b1;
+}
+
+textarea {
+    resize: none;
+    height: 150px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+}
+
+button[type="submit"] {
+    background: #f1f1f12b;
+    border: solid 1px #f1f1f12b;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    width: 60%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background: #9f00b1;
+    border: solid 1px #9f00b1;
+    box-shadow: 0 0 10px #9f00b1;
+    transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 0 5px #9f00b1;
+}
+
+button[type="submit"]:disabled {
+    background: #f1f1f10d;
+    border: solid 1px #f1f1f10d;
+    color: #fff;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.obligatoire {
+    font-size: 0.9em;
+    margin-top: -10px;
+}
+
+.obligatoire::before {
+    content: '*';
+    color: #e03c3c;
+    margin-right: 5px;
+}
+
+@media (max-width: 1100px) {
+    form {
+        width: 100%;
+    }
+    .name {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 800px) {
+    .content {
+        width: 70vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        width: 90vw;
+        padding: 20px;
+    }
 }
