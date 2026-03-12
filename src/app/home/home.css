@@ -108,7 +108,8 @@ section {
 
 /* Titres des sections */
 #projets h2:first-child,
-#blog h2:first-child {
+#blog h2:first-child,
+#contact h2:first-child {
   position: relative;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
@@ -126,7 +127,8 @@ section {
 
 /* Ligne lumineuse sous le titre */
 #projets h2:first-child::after,
-#blog h2:first-child::after {
+#blog h2:first-child::after,
+#contact h2:first-child::after {
   content: '';
   position: absolute;
   bottom: -15px;
@@ -270,7 +272,8 @@ section {
 }
 
 .projet-content h2,
-.blog-content h2 {
+.blog-content h2,
+.contact h2 {
   font-size: 1.3rem;
   font-weight: 600;
   color: #ffffff;
@@ -280,7 +283,8 @@ section {
 }
 
 .projet-link:hover .projet-content h2,
-.blog-link:hover .blog-content h2 {
+.blog-link:hover .blog-content h2,
+.contact h2:hover {
   color: #9f00b1;
 }
 
@@ -402,7 +406,8 @@ section {
   }
 
   .projet-content h2,
-  .blog-content h2 {
+  .blog-content h2,
+  .contact h2 {
     font-size: 1rem;
   }
 
