@@ -21,6 +21,13 @@ export class Cheatsheets {
 
   cheatSheets: CheatSheet[] = [
     {
+      title: 'Cheat Sheet Diesel ORM V1 - FR',
+      description: 'Cheat Sheet de l\'ORM Diesel pour Rust en français',
+      file: 'cheatsheets/DieselRust_v1_fr.pdf',
+      language: 'Diesel ORM',
+      date: '16/03/2026'
+    },
+    {
       title: 'Cheat Sheet RUST V1 - FR',
       description: 'Première version de la cheat sheet RUST en français',
       file: 'cheatsheets/Rust_v1_fr.pdf',
@@ -39,6 +46,7 @@ export class Cheatsheets {
   private languageClassMap: Record<string, string> = {
     'RUST': 'lang-rust',
     'Tailwind CSS': 'lang-tailwind',
+    'Diesel ORM': 'lang-diesel',
   };
 
   getLanguageClass(language: string): string {
