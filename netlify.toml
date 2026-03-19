@@ -1,3 +1,6 @@
 [build]
   command = "node generate-blog-index.mjs && ng build --configuration production"
   publish = "dist/kylianjulia/browser"
+
+[functions]
+  directory = "netlify/functions"

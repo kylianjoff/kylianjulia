@@ -1,6 +1,8 @@
 <div class="content">
   <h1>Mon blog</h1>
 
+  <app-newsletter></app-newsletter>
+
   @if (posts && posts.length > 0) {
     <div class="art-list">
       @for (post of posts; track post) {
