@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import { TagBadgeComponent } from '../shared/tag-badge/tag-badge';
 
 interface BlogPost {
@@ -32,15 +33,13 @@ export class BlogPostComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private titleService: Title
   ) {}
 
   ngOnInit() {
-    // Récupère le slug depuis l'URL
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
-      
-      console.log('Slug récupéré:', slug); // Debug
       
       if (!slug) {
         this.error = true;
@@ -56,7 +55,7 @@ export class BlogPostComponent implements OnInit {
     this.http.get<BlogPost>(`assets/blogs/posts-json/${slug}.json`).subscribe({
       next: (post) => {
         this.post = post;
-        // Sanitize le HTML pour l'affichage
+        this.titleService.setTitle(post.title + " | Kylian JULIA");
         this.safeContent = this.sanitizer.bypassSecurityTrustHtml(post.content) || '';
         this.loading = false;
       },

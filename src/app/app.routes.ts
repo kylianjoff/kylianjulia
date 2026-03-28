@@ -20,7 +20,6 @@ export const routes: Routes = [
     },
     {
         path: 'blog/:slug',
-        title: "Article de blog",
         component: BlogPostComponent
     },
     {
