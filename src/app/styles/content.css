@@ -16,14 +16,14 @@ html, body {
 
 .content {
   min-height: 100vh;
-  padding: 3rem 2rem;
+  padding: 3rem clamp(1rem, 4vw, 2rem);
   color: #fff;
   margin-top: 40px;
   background: #272727;
   position: relative;
-  overflow-x: 100%;
+  overflow-x: hidden;
   width: 100%;
-  max-width: vw;
+  box-sizing: border-box;
 }
 
 /* Effet de lueur d'arrière-plan */
