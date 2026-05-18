@@ -18,13 +18,6 @@ export class Newsletter {
   envoiReussi = false;
   envoiEchoue = false;
 
-  private readonly DELAI_MIN_MS = 3000; // 3s minimum avant soumission
-  private readonly MAX_SOUMISSIONS = 3;
-  private readonly FENETRE_MS = 10 * 60 * 1000; // 10 minutes
-
-  private formOuvertA = Date.now();
-  private soumissions: number[] = [];
-
   isRequired(controlName: string): boolean {
     const control = this.newsletterForm.get(controlName);
     return control?.hasValidator(Validators.required) ?? false;
@@ -32,48 +25,36 @@ export class Newsletter {
 
   async onSubmit(): Promise<void> {
     if (this.newsletterForm.invalid) {
-      alert('Veuillez remplir tous les champs du formulaire qui ont une étoile rouge !');
       return;
     }
 
-    // Anti-bot honeypot : le champ doit être vide
     if (this.newsletterForm.value.botField) {
       return;
     }
-
-    // Anti-bot délai minimum : un humain met au moins 3 secondes
-    if (Date.now() - this.formOuvertA < this.DELAI_MIN_MS) {
-      return;
-    }
-
-    // Anti-spam : max 3 soumissions par 10 minutes
-    const maintenant = Date.now();
-    this.soumissions = this.soumissions.filter(t => maintenant - t < this.FENETRE_MS);
-    if (this.soumissions.length >= this.MAX_SOUMISSIONS) {
-      this.envoiEchoue = true;
-      alert('Trop de tentatives. Veuillez patienter quelques minutes avant de réessayer.');
-      return;
-    }
-    this.soumissions.push(maintenant);
 
     this.envoiEnCours = true;
     this.envoiReussi = false;
     this.envoiEchoue = false;
 
+    const body = new URLSearchParams({
+      'form-name': 'newsletter',
+      'bot-field': '',
+      email: this.newsletterForm.value.email ?? '',
+    });
+
     try {
-      const response = await fetch('/api/subscribe', {
+      const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: this.newsletterForm.value.email }),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+      if (response.ok) {
+        this.envoiReussi = true;
+        this.newsletterForm.reset();
+      } else {
+        this.envoiEchoue = true;
       }
-
-      this.envoiReussi = true;
-      this.newsletterForm.reset();
-      this.formOuvertA = Date.now();
     } catch {
       this.envoiEchoue = true;
     } finally {
@@ -81,3 +62,4 @@ export class Newsletter {
     }
   }
 }
+

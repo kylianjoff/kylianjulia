@@ -232,6 +232,12 @@
     </div>
   </div>
 
+  <!-- Formulaires cachés pour la détection Netlify Forms (SPA) -->
+  <form name="newsletter" data-netlify="true" data-netlify-honeypot="bot-field" style="display:none">
+    <input type="email" name="email">
+    <input type="text" name="bot-field">
+  </form>
+
   <!-- Votre app Angular -->
   <app-root></app-root>
 </body>
