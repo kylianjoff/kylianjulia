@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Bloquer les ressources non pertinentes pour le crawl
+Disallow: /assets/blogs/posts-json/
+
+Sitemap: https://kylianjulia.fr/sitemap.xml

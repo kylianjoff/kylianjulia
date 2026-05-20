@@ -3,8 +3,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Title } from '@angular/platform-browser';
 import { TagBadgeComponent } from '../shared/tag-badge/tag-badge';
+import { SeoService } from '../services/seo.service';
 
 interface BlogPost {
   slug: string;
@@ -34,7 +34,7 @@ export class BlogPostComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private titleService: Title
+    private seo: SeoService
   ) {}
 
   ngOnInit() {
@@ -55,7 +55,42 @@ export class BlogPostComponent implements OnInit {
     this.http.get<BlogPost>(`assets/blogs/posts-json/${slug}.json`).subscribe({
       next: (post) => {
         this.post = post;
-        this.titleService.setTitle(post.title + " | Kylian JULIA");
+
+        const description = SeoService.stripHtml(post.excerpt).substring(0, 160);
+        const imageUrl = post.thumbnail
+          ? post.thumbnail.startsWith('http') ? post.thumbnail : `https://kylianjulia.fr${post.thumbnail}`
+          : 'https://kylianjulia.fr/profil.jpeg';
+
+        this.seo.update({
+          title: post.title,
+          description,
+          url: `/blog/${slug}`,
+          image: imageUrl,
+          type: 'article',
+          keywords: post.tags.join(', '),
+          jsonLd: {
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: post.title,
+            description,
+            image: imageUrl,
+            url: `https://kylianjulia.fr/blog/${slug}`,
+            datePublished: SeoService.toISODate(post.date),
+            author: {
+              '@type': 'Person',
+              name: post.author,
+              url: 'https://kylianjulia.fr/about'
+            },
+            publisher: {
+              '@type': 'Person',
+              name: 'Kylian JULIA',
+              url: 'https://kylianjulia.fr'
+            },
+            keywords: post.tags.join(', '),
+            inLanguage: 'fr-FR'
+          }
+        });
+
         this.safeContent = this.sanitizer.bypassSecurityTrustHtml(post.content) || '';
         this.loading = false;
       },

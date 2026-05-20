@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Contact } from '../contact/contact';
 import { RouterLink } from '@angular/router';
+import { SeoService } from '../services/seo.service';
 
 interface BlogPost {
   title: string;
@@ -78,9 +79,16 @@ export class Home implements OnInit, OnDestroy {
   private delayBetweenLines = 500; // ms entre les lignes
   private delayBeforeClear = 2000; // ms avant la dernière commande (clear)
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private seo: SeoService) {}
 
   ngOnInit() {
+    this.seo.update({
+      title: 'Kylian JULIA — Étudiant ingénieur, développeur & passionné de cybersécurité',
+      description: 'Kylian JULIA est étudiant ingénieur à l\'ISIMA, spécialisé en réseaux et cybersécurité. Découvrez ses projets et son blog.',
+      url: '/',
+      keywords: 'Kylian JULIA, développeur fullstack, ingénieur informatique, ISIMA, cybersécurité, réseaux, Angular, React, Rust, ASP.NET, étudiant ingénieur'
+    });
+
     // Chargement des données blog et projets
     this.http.get<ProjetPost[]>('').subscribe(data => {
       this.projetPosts = data.sort((a, b) => {

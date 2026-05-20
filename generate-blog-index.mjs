@@ -86,3 +86,38 @@ fs.writeFileSync(outputFile, JSON.stringify(index, null, 2));
 
 console.log(`✅ Blog index généré : ${outputFile}`);
 console.log(`✅ ${posts.length} post(s) généré(s) dans ${postsJsonDir}`);
+
+// ─── Génération du sitemap.xml ───────────────────────────────────────────────
+const SITE_URL = 'https://kylianjulia.fr';
+const sitemapOutputFile = path.resolve('public/sitemap.xml');
+
+// Routes statiques (priorité et fréquence de modification)
+const staticRoutes = [
+    { loc: '/',             changefreq: 'weekly',  priority: '1.0' },
+    { loc: '/about',        changefreq: 'monthly', priority: '0.9' },
+    { loc: '/blog',         changefreq: 'weekly',  priority: '0.9' },
+    { loc: '/cheatsheets',  changefreq: 'monthly', priority: '0.7' },
+];
+
+/** Convertit "dd/MM/yyyy" en "yyyy-MM-dd" pour le sitemap */
+function toISODate(dateStr) {
+    if (!dateStr) return new Date().toISOString().split('T')[0];
+    const parts = dateStr.split('/');
+    if (parts.length === 3) {
+        return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+    }
+    return dateStr;
+}
+
+const staticEntries = staticRoutes.map(r =>
+    `  <url>\n    <loc>${SITE_URL}${r.loc}</loc>\n    <changefreq>${r.changefreq}</changefreq>\n    <priority>${r.priority}</priority>\n  </url>`
+).join('\n');
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${staticEntries}
+</urlset>
+`;
+
+fs.writeFileSync(sitemapOutputFile, sitemap);
+console.log(`✅ Sitemap généré : ${sitemapOutputFile}`);

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../services/seo.service';
 
 
 interface Association {
@@ -35,7 +36,31 @@ interface Experience {
   templateUrl: './about.html',
   styleUrl: './about.css'
 })
-export class About {
+export class About implements OnInit {
+  constructor(private seo: SeoService) {}
+
+  ngOnInit(): void {
+    this.seo.update({
+      title: 'À propos de Kylian JULIA — Parcours, compétences & expériences',
+      description: 'Découvrez le parcours de Kylian JULIA — étudiant ingénieur à l\'ISIMA (2ème année), spécialisé en réseaux et sécurité informatique. Formations, expériences, compétences et associations.',
+      url: '/about',
+      keywords: 'Kylian JULIA, ISIMA, ingénieur informatique, cybersécurité, réseaux, développeur, React, Rust, Angular, ASP.NET, CPGE, formations, expériences',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        mainEntity: {
+          '@type': 'Person',
+          name: 'Kylian JULIA',
+          url: 'https://kylianjulia.fr/about',
+          image: 'https://kylianjulia.fr/profil.jpeg',
+          jobTitle: 'Étudiant ingénieur en informatique',
+          description: 'Étudiant ingénieur à l\'ISIMA en 2ème année, spécialisé en réseaux et sécurité informatique. Développeur fullstack (Angular, React, Rust, ASP.NET).',
+          alumniOf: { '@type': 'CollegeOrUniversity', name: 'INP ISIMA' },
+          sameAs: ['https://github.com/kylianjoff']
+        }
+      }
+    });
+  }
 
   menuCV: boolean = false; 
 
