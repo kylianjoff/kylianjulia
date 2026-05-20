@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { TagBadgeComponent } from '../shared/tag-badge/tag-badge';
 import { Newsletter } from '../newsletter/newsletter';
+import { SeoService } from '../services/seo.service';
 
 interface BlogPost {
   title: string;
@@ -26,9 +27,15 @@ interface BlogPost {
 export class Blog implements OnInit {
   posts: BlogPost[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private seo: SeoService) {}
 
   ngOnInit() {
+    this.seo.update({
+      title: 'Blog — Articles sur le dev, la cybersécurité et la vie étudiante',
+      description: 'Retrouvez tous les articles de Kylian JULIA.',
+      url: '/blog',
+      keywords: 'blog, articles, Angular, Rust, ASP.NET, cybersécurité, réseaux, développement web, informatique, ISIMA, étudiant ingénieur'
+    });
     this.http.get<BlogPost[]>('assets/blog-index.json').subscribe(data => {
       this.posts = data.sort((a, b) => {
         // Convertir "dd/MM/yyyy" en Date

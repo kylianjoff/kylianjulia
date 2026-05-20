@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { SeoService } from '../services/seo.service';
 
 interface CheatSheet {
   title: string;
@@ -15,7 +16,17 @@ interface CheatSheet {
   templateUrl: './cheatsheets.html',
   styleUrl: './cheatsheets.css',
 })
-export class Cheatsheets {
+export class Cheatsheets implements OnInit {
+  private seo = inject(SeoService);
+
+  ngOnInit(): void {
+    this.seo.update({
+      title: 'Cheatsheets — Aide-mémoire gratuits pour développeurs',
+      description: 'Téléchargez gratuitement les cheat sheets de Kylian JULIA : Diesel ORM (Rust), RUST, Tailwind CSS et plus encore. Aide-mémoire en français pour développeurs.',
+      url: '/cheatsheets',
+      keywords: 'cheatsheet, aide-mémoire, Rust, Diesel ORM, Tailwind CSS, développeur, gratuit, PDF, français'
+    });
+  }
   private document = inject(DOCUMENT);
   private window = this.document.defaultView!;
 
