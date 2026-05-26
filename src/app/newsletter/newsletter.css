@@ -33,14 +33,15 @@
 
 .content {
     position: relative;
-    padding: 10px 10px;
+    padding: 20px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     justify-content: center;
     background: #2b2a2a;
-    width: clamp(280px, 90vw, 450px);
+    width: 100%;
+    box-sizing: border-box;
     border-radius: 10px;
     border: solid 1px #f1f1f12b;
 }
@@ -199,14 +200,10 @@ button[type="submit"]:disabled {
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
     .ligne {
         flex-direction: column;
         align-items: stretch;
-    }
-
-    .inputZone {
-        width: 100%;
     }
 
     .submit {
