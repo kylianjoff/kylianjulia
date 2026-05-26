@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { TagBadgeComponent } from '../shared/tag-badge/tag-badge';
+import { Newsletter } from '../newsletter/newsletter';
 import { SeoService } from '../services/seo.service';
 
 interface BlogPost {
@@ -20,7 +21,7 @@ interface BlogPost {
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [RouterLink, TagBadgeComponent],
+  imports: [RouterLink, TagBadgeComponent, Newsletter],
   templateUrl: './blog-post.html',
   styleUrls: ['./blog-post.css']
 })
