@@ -1,9 +1,9 @@
 @import url('../styles/article.css');
 
 app-newsletter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 0;
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
     animation: fadeIn 1s ease-in-out;
 }
