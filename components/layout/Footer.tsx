@@ -41,7 +41,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">Signaler un bug</a>
+                <a href="https://github.com/kylianjoff/kylianjulia/issues/new" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">Signaler un bug</a>
               </li>
               <li>
                 <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">
@@ -63,10 +63,10 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/kylian-julia/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">LinkedIn</a>
               </li>
               <li>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">Instagram</a>
+                <a href="https://www.instagram.com/kylian_julia/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">Instagram</a>
               </li>
             </ul>
           </div>
