@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "defis-sport-metro-paris",
+    "title": "Je me suis lancé le défi de courir toutes les lignes de métro de Paris",
+    "date": "19/06/2026",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Sport",
+      "Défi"
+    ],
+    "excerpt": "Pendant ma période de stage à Paris, je me suis donné pour objectif de me remettre au sport. Quoi de mieux que de se lancer un (gros) défi pour l'occasion ?",
+    "thumbnail": null
+  },
+  {
+    "slug": "associatif",
+    "title": "Des gros changements après un an dans l'associatif",
+    "date": "26/02/2026",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Associatif",
+      "Clubs",
+      "DreZZing",
+      "Im@ge",
+      "SIGMIX",
+      "Shared",
+      "IsiMalt"
+    ],
+    "excerpt": "La période des passations vient de passer et il y a eu énormément de changement.",
+    "thumbnail": "/assets/blogs/associatif/logo.png"
+  },
+  {
+    "slug": "toogoodtogo-des-etudiants",
+    "title": "J'ai créé un TooGoodToGo entièrement gratuit pour les étudiants",
+    "date": "08/11/2025",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Angular",
+      "ASP.NET"
+    ],
+    "excerpt": "Et si les étudiants pouvaient récupérer gratuitement les invendus du BDE ou du resto U ? C’est la question que je me suis posée avant de créer une plateforme inspirée de TooGoodToGo — mais 100 % gratuite pour les étudiants.",
+    "thumbnail": "/assets/blogs/toogoodtogo-des-etudiants/logo.png"
+  },
+  {
+    "slug": "site-perso",
+    "title": "J'ai créé un site personnel",
+    "date": "07/11/2025",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Angular"
+    ],
+    "excerpt": "J'avais besoin d'un endroit qui m'appartient à 100% pour regrouper et montrer tout ce que je fais et ce que je sais faire...",
+    "thumbnail": null
+  }
+]
