@@ -26,9 +26,14 @@ interface Experience {
     periode: string;
 }
 
+interface Skill {
+    titre: string;
+    logo?: string;
+}
+
 interface Skills {
     titre: string;
-    skills: string[];
+    skills: Skill[];
 }
 
 const associations: Association[] = [
@@ -36,7 +41,7 @@ const associations: Association[] = [
         name: 'Sigmix',
         description: 'Association de mix de Sigma Clermont et ISIMA',
         role: 'Responsable de la communication (02/2026 - actuel) | DJ (05/2025 - actuel)',
-        logo: 'assos/sigmix.png',
+        logo: 'images/assos/sigmix.png',
         details: [
             'DJ en soirée.',
             'Assurer l\'ambiance des soirées à l\'ISIMA et à Sigma Clermont.',
@@ -49,7 +54,7 @@ const associations: Association[] = [
         name: 'Image',
         description: 'Junior entreprise de l\'ISIMA',
         role: 'Vice-président (10/2025 - 02/2026)',
-        logo: 'assos/image.png',
+        logo: 'images/assos/image.png',
         details: [
             'Aide au relancement de l\'association.',
             'Responsable du lien entre les projets et les étudiants.'
@@ -59,7 +64,7 @@ const associations: Association[] = [
         name: 'DreZZing',
         description: 'Association de textile et goodies de l\'ISIMA',
         role: 'Trésorier (02/2025 - 02/2026)',
-        logo: 'assos/drezzing.png',
+        logo: 'images/assos/drezzing.png',
         details: [
             'Assurer la stabilité financière de l\'association.',
             'Gestion des projets.',
@@ -70,7 +75,7 @@ const associations: Association[] = [
         name: 'Shared',
         description: 'Club caritatif de l\'ISIMA',
         role: 'Responsable de la communication interne (03/2025 - 02/2026)',
-        logo: 'assos/shared.png',
+        logo: 'images/assos/shared.png',
         details: [
             'Membre fondateur du club.',
             'Communication des actions caritatives auprès des étudiants de l\'ISIMA.',
@@ -82,7 +87,7 @@ const associations: Association[] = [
         name: 'Isimalt',
         description: 'Club de bière de l\'ISIMA',
         role: 'Responsable de la communication (02/2025 - 02/2026)',
-        logo: 'assos/isimalt.jpg',
+        logo: 'images/assos/isimalt.png',
         details: [
             'Communication des événements de l\'association auprès des étudiants de l\'ISIMA.',
             'Organisation de la cuvée de bière pour le week-end d\'intégration de l\'ISIMA.'
@@ -180,22 +185,58 @@ const experiences: Experience[] = [
 const skills: Skills[] = [
     {
         titre: 'Langages de programmation',
-        skills: ['C', 'Java', 'C++', 'JavaScript', 'HTML', 'CSS', 'Python', 'PHP'],
+        skills: [
+            {titre: 'C', logo: 'https://cdn.simpleicons.org/c/A8B9CC'},
+            {titre: 'Java', logo: 'https://cdn.simpleicons.org/openjdk/ED8B00'},
+            {titre: 'C++', logo: 'https://cdn.simpleicons.org/cplusplus/00599C'},
+            {titre: 'JavaScript', logo: 'https://cdn.simpleicons.org/javascript/F7DF1E'},
+            {titre: 'HTML', logo: 'https://cdn.simpleicons.org/html5/E34F26'},
+            {titre: 'CSS', logo: 'https://cdn.simpleicons.org/css3/1572B6'},
+            {titre: 'Python', logo: 'https://cdn.simpleicons.org/python/3776AB'},
+            {titre: 'PHP', logo: 'https://cdn.simpleicons.org/php/777BB4'},
+        ],
     },
     {
         titre: 'Web',
-        skills: ['Angular', 'Coluseus', 'ASP.NET'],
+        skills: [
+            {titre: 'Angular', logo: 'https://cdn.simpleicons.org/angular/DD0031'},
+            {titre: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs/FFFFFF'},
+            {titre: 'Colyseus'},
+            {titre: 'ASP.NET', logo: 'https://cdn.simpleicons.org/dotnet/512BD4'},
+        ],
     },
     {
         titre: 'Bases de données',
-        skills: ['PostgreSQL', 'MySQL'],
+        skills: [
+            {titre: 'MySQL', logo: 'https://cdn.simpleicons.org/mysql/4479A1'},
+            {titre: 'PostgreSQL', logo: 'https://cdn.simpleicons.org/postgresql/4169E1'},
+        ],
     },
     {
         titre: 'Outils',
-        skills: ['Microsoft Office', 'Microsoft Azure', 'Visual Studio', 'UNIX', 'GIT', 'Docker'],
+        skills: [
+            {titre: 'Microsoft Office', logo: 'https://cdn.simpleicons.org/microsoftoffice/D83B01'},
+            {titre: 'Microsoft Azure', logo: 'https://cdn.simpleicons.org/microsoftazure/0078D4'},
+            {titre: 'Visual Studio', logo: 'https://cdn.simpleicons.org/visualstudio/5C2D91'},
+            {titre: 'UNIX', logo: 'https://cdn.simpleicons.org/linux/FFFFFF'},
+            {titre: 'GIT', logo: 'https://cdn.simpleicons.org/git/F05032'},
+            {titre: 'Docker', logo: 'https://cdn.simpleicons.org/docker/2496ED'},
+        ],
     },
     {
         titre: 'Cybersécurité',
-        skills: ['OWASP', 'Pentesting'],
+        skills: [
+            {titre: 'OWASP', logo: 'https://cdn.simpleicons.org/owasp/000000'},
+            {titre: 'Pentesting'},
+        ],
     }
 ]
+
+const profileDescription: string[] = [
+    "Etudiant ingénieur en informatique spécialisé en réseaux et sécurité informatique.",
+    "Passionné par le développement et la cybersécurité.",
+    "Toujours occupé par des projets personnels.",
+]
+
+export { associations, CVInfos, formations, experiences, skills, profileDescription }
+export type { Association, CVInfo, Formation, Experience, Skills }

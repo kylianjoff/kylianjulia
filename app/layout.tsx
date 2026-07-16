@@ -17,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Kylian JULIA - Etudiant ingénieur informatique",
+  title: "Kylian JULIA — Etudiant ingénieur informatique",
   description: "Site personnel de Kylian JULIA.",
   icons: {
     icon: "/images/favicon.ico",
