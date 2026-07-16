@@ -6,7 +6,7 @@ interface CheatSheet {
     date: string;
 }
 
-const cheatSheets: CheatSheet[] = [
+export const cheatSheets: CheatSheet[] = [
     {
         title: 'Cheat Sheet Diesel ORM V1 - FR',
         description: 'Cheat Sheet de l\'ORM Diesel en français',
