@@ -1,10 +1,5 @@
 import Link from "next/link";
-
-const skills = [
-  "TypeScript", "Next.js", "React", "Node.js",
-  "Python", "Docker", "Git", "Linux",
-  "Cybersécurité", "SQL", "Tailwind CSS", "REST APIs",
-];
+import StatsCards from "./stats";
 
 export default function AboutSection() {
   return (
@@ -20,16 +15,13 @@ export default function AboutSection() {
           {/* Bio */}
           <div className="space-y-5">
             <p className="leading-relaxed text-muted">
-              Étudiant en école d&apos;ingénieur spécialisé en informatique, je développe
-              mes compétences en développement web full-stack et en cybersécurité.
+              Étudiant en école d&apos;ingénieur spécialisé en informatique, spécialisé en réseaux et sécurité informatique.
             </p>
             <p className="leading-relaxed text-muted">
-              Curieux et autonome, j&apos;aime créer des projets qui mêlent design
-              soigné et architecture technique solide.
+              Curieux et autonome, j&apos;aime passer mon temps libre à coder et créer des applications et autres outils.
             </p>
             <p className="leading-relaxed text-muted">
-              Toujours à la recherche de nouveaux défis, je m&apos;investis aussi
-              bien dans des projets personnels que dans des collaborations open-source.
+              Toujours à la recherche de nouveaux défis, je suis toujours motivé par des projets personnels.
             </p>
             <Link
               href="/about"
@@ -42,21 +34,9 @@ export default function AboutSection() {
             </Link>
           </div>
 
-          {/* Skills */}
+          {/* Stats */}
           <div>
-            <h3 className="mb-5 text-xs font-semibold uppercase tracking-widest text-muted">
-              Compétences
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-lg border border-border bg-card px-3 py-1.5 text-sm transition-colors hover:border-primary/50 hover:text-primary"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
+            <StatsCards />
           </div>
         </div>
       </div>
