@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
+import { CookieModal } from "@/components/layout/CookieModal";
 
 const geistSans = localFont({
   src: "./fonts/GeistSans.woff2",
@@ -46,6 +47,7 @@ export default function RootLayout({
 
           <Footer />
           <Toaster position="top-right" richColors closeButton />
+          <CookieModal />
         </ThemeProvider>
       </body>
     </html>
