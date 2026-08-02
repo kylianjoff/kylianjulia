@@ -43,6 +43,21 @@
     "file": "site-perso"
   },
   {
+    "slug": "sport-et-diabete",
+    "title": "Sport & Diabète",
+    "date": "02/08/2026",
+    "author": "Kylian JULIA",
+    "tags": [
+      "Sport",
+      "Défi",
+      "Diabète",
+      "Santé"
+    ],
+    "excerpt": "<p>Pendant 4 ans je n&#39;ai pas fait beaucoup de sport à cause de mon diabète et de mes études. J&#39;ai profité de ma période de stage à Paris pour m&#39;y remettre un peu avec en bonus un défi assez cool.</p>\n",
+    "thumbnail": "/assets/blogs/sport-et-diabete/map.png",
+    "file": "sport-et-diabete"
+  },
+  {
     "slug": "toogoodtogo-des-etudiants",
     "title": "J'ai créé un TooGoodToGo entièrement gratuit pour les étudiants",
     "date": "08/11/2025",
