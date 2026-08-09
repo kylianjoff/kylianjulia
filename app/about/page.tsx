@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { CVPage } from "./components/cv";
+import { ContactModal } from "./components/contact";
 
 export const metaDate = {
     title: "À propos de Kylian JULIA",
@@ -44,6 +45,7 @@ export default function AboutPage() {
     const [associationHovered, setAssociationHovered] = useState("");
     const [cvOpen, setCvOpen] = useState(false);
     const [cvLang, setCvLang] = useState<"fr" | "en">("fr");
+    const [contactOpen, setContactOpen] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -298,7 +300,7 @@ export default function AboutPage() {
                     <div className="flex flex-row gap-4 w-full">
                         <Card className="flex flex-col gap-4 p-6 rounded-xl w-[65%]">
                             <h2 className="text-2xl font-bold text-white">Mon CV en format PDF</h2>
-
+                            <p className="text-muted">Vous pouvez consulter mon CV en format PDF. Mes informations de contact sont masquées, veuillez utiliser le <Button variant="secondary" className="font-semibold" onClick={() => setContactOpen(true)}>formulaire de contact</Button>.</p>
                         </Card>
                         <Card className="flex flex-col gap-4 p-6 rounded-xl w-[35%]">
                             <Button className="font-semibold" onClick={() => {
@@ -319,6 +321,13 @@ export default function AboutPage() {
                     lang={cvLang}
                     open={cvOpen}
                     onClose={() => setCvOpen(false)}
+                />
+            )}
+
+            {contactOpen && (
+                <ContactModal
+                    open={contactOpen}
+                    onClose={() => setContactOpen(false)}
                 />
             )}
         </>
