@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -85,7 +84,7 @@
 
   body {
     background-color: var(--color-background);
-    color: var(--color-text);
+    color: var(--color-foreground);
   }
 
   /* Scrollbar Webkit (Chrome, Edge, Safari) */
