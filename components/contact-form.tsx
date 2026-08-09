@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 interface ContactFormProps {
     subject?: string;
@@ -14,21 +14,15 @@ interface ContactFormProps {
 export default function ContactForm({
     subject,
 }: ContactFormProps) {
-
-    const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-
     const DELAY_MIN_MS = 3000;
-
     const lastSubmitRef = useRef(0);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-        toast.info("Envoi du message...");
-
         e.preventDefault();
 
         const form = e.currentTarget;
         const data = new FormData(form);
-
         const botField = data.get("bot-field")?.toString() ?? "";
 
         if (botField) {
@@ -39,40 +33,29 @@ export default function ContactForm({
         const firstName = data.get("firstName")?.toString() ?? "";
         const lastName = data.get("lastName")?.toString() ?? "";
         const email = data.get("email")?.toString() ?? "";
-        const subject = data.get("subject")?.toString() ?? "";
+        const subjectValue = data.get("subject")?.toString() ?? "";
         const message = data.get("message")?.toString() ?? "";
 
-        if (!firstName || !lastName || !email || !subject || !message) {
+        if (!firstName || !lastName || !email || !subjectValue || !message) {
             toast.error("Veuillez remplir tous les champs.");
             return;
         }
 
         const now = Date.now();
 
-        if ( now - lastSubmitRef.current < DELAY_MIN_MS) {
+        if (now - lastSubmitRef.current < DELAY_MIN_MS) {
             toast.warning("Veuillez patienter quelques secondes avant de soumettre à nouveau le formulaire.");
             return;
         }
 
         lastSubmitRef.current = now;
-
-        const body = new URLSearchParams({
-            "form-name": "contact",
-            "bot-field": "",
-            firstName,
-            lastName,
-            email,
-            subject,
-            message,
-        });
+        setIsSubmitting(true);
+        toast.info("Envoi du message...");
 
         try {
-            const response = await fetch("/", {
+            const response = await fetch("/api/contact", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: body.toString(),
+                body: data,
             });
 
             if (response.ok) {
@@ -80,25 +63,14 @@ export default function ContactForm({
                 form.reset();
                 return;
             }
-        } catch {}
 
-        try {
-            const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: body.toString(),
-            });
-
-            if (response.ok) {
-                toast.success("Votre message a été envoyé !");
-                form.reset();
-                return;
-            }
-        } catch {}
-
-        toast.error("Une erreur est survenue lors de l'envoie. Veuillez réessayer plus tard.");
+            const errorData = await response.json().catch(() => null);
+            toast.error(errorData?.error ?? "Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard.");
+        } catch {
+            toast.error("Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard.");
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     return (
@@ -130,7 +102,9 @@ export default function ContactForm({
                 <Textarea name="message" id="message" rows={5} required className="resize-none w-full rounded-md border border-border bg-background px-3 py-2 text-sm" />
             </div>
             <div className="flex justify-end">
-                <Button type="submit" size="lg" className="">Envoyer</Button>
+                <Button type="submit" size="lg" className="" disabled={isSubmitting}>
+                    {isSubmitting ? "Envoi..." : "Envoyer"}
+                </Button>
             </div>
         </form>
     )
