@@ -44,7 +44,7 @@ export function Footer() {
                 <a href="https://github.com/kylianjoff/kylianjulia/issues/new" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">Signaler un bug</a>
               </li>
               <li>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">
+                <a href="/data-and-cookies" target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-primary">
                   Données personnelles &amp; Cookies
                 </a>
               </li>
