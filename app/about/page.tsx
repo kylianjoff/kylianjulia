@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { CVPage } from "./components/cv";
 import { ContactModal } from "./components/contact";
+import { CertificationsSection } from "./components/certifications";
 
 export const metaDate = {
     title: "À propos de Kylian JULIA",
@@ -36,6 +37,7 @@ export default function AboutPage() {
         "formations",
         "experiences",
         "competences",
+        "certifications",
         "associatif",
         "CV",
     ];
@@ -124,6 +126,19 @@ export default function AboutPage() {
                                 )}
                             >
                                 Compétences
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/about#certifications"
+                                className={cn(
+                                    "block rounded-md px-3 py-2 transition-colors font-semibold text-muted",
+                                    activeSection === "certifications"
+                                        ? "text-primary"
+                                        : "hover:text-primary"
+                                )}
+                            >
+                                Certifications
                             </Link>
                         </li>
                         <li>
@@ -242,6 +257,10 @@ export default function AboutPage() {
                             </Card>
                         ))}
                     </div>
+                </section>
+
+                <section className="flex flex-col gap-6 mt-16" id="certifications">
+                    <CertificationsSection />
                 </section>
 
                 <section className="flex flex-col gap-6 mt-16" id="associatif">
