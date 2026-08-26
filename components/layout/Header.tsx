@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { JobSeekingModal } from "./JobSeekingModal";
 
 export function Header() {
     return (
@@ -20,6 +21,7 @@ export function Header() {
                     <Link href="/blog" className="text-muted transition-colors font-semibold hover:text-primary">Blog</Link>
                     <Link href="/cheatsheets" className="text-muted transition-colors font-semibold hover:text-primary">Cheat Sheets</Link>
                 </nav>
+                <JobSeekingModal />
             </div>
         </header>
     )
