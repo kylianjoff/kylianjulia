@@ -1,3 +1,4 @@
+import NewsletterForm from '@/components/newsletter-form';
 import { getBlogIndex } from '@/lib/blog';
 import Link from 'next/link';
 
@@ -11,6 +12,8 @@ export default function BlogPage() {
 
     return (
         <main className="max-w-4xl mx-auto px-6 py-16">
+
+            <NewsletterForm />
 
             <div className="mb-12 flex items-center gap-5">
                 <h1 className="text-4xl font-bold text-white">Blog</h1>

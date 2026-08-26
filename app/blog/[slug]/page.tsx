@@ -1,3 +1,4 @@
+import NewsletterForm from '@/components/newsletter-form';
 import { getBlogPost, getBlogIndex } from '@/lib/blog';
 import { renderMarkdown } from '@/lib/markdown';
 import Link from 'next/link';
@@ -86,6 +87,8 @@ export default async function BlogPostPage({
             <article>
                 {renderMarkdown(post.content)}
             </article>
+
+            <NewsletterForm />
 
         </main>
     );
