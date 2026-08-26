@@ -105,6 +105,29 @@
     background: var(--primary);
   }
 
+  .job-seeking-scrollbar {
+    scrollbar-color: var(--border) transparent;
+    scrollbar-width: thin;
+  }
+
+  .job-seeking-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .job-seeking-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 12px 0;
+  }
+
+  .job-seeking-scrollbar::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--border) 85%, transparent);
+    border-radius: 999px;
+  }
+
+  .job-seeking-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+
   /* Scrollbar Firefox */
   * {
     scrollbar-width: thin;
