@@ -36,6 +36,14 @@ interface Skills {
     skills: Skill[];
 }
 
+interface Certification {
+    nom: string;
+    organisme: string;
+    logo?: string;
+    details?: string[];
+    dateObtention?: string;
+}
+
 const associations: Association[] = [
     {
         name: 'Sigmix',
@@ -238,5 +246,37 @@ const profileDescription: string[] = [
     "Toujours occupé par des projets personnels.",
 ]
 
-export { associations, CVInfos, formations, experiences, skills, profileDescription }
-export type { Association, CVInfo, Formation, Experience, Skills }
+const certifications: Certification[] = [
+    {
+        nom: 'SecNumEdu',
+        organisme: 'ANSSI',
+        logo: 'images/certifications/secnumedu.png',
+        details: [
+            'Certification en cybersécurité.',
+        ],
+        dateObtention: '12/2025'
+    },
+    {
+        nom: 'TOEIC Listening and Reading',
+        organisme: 'Educational Testing Service (ETS)',
+        logo: 'images/certifications/toeic.png',
+        details: [
+            'Certification en anglais.',
+            'Score : 800/990 (B2)',
+        ],
+        dateObtention: '01/2026'
+    },
+    {
+        nom: 'CSNA',
+        organisme: 'Stormshield',
+        logo: 'images/certifications/csna.png',
+        details: [
+            'Certification en sécurité des réseaux.',
+            'Évaluation des compétences en cybersécurité.',
+        ],
+        dateObtention: '02/2026'
+    }
+]
+
+export { associations, CVInfos, formations, experiences, skills, profileDescription, certifications }
+export type { Association, CVInfo, Formation, Experience, Skills, Certification }
