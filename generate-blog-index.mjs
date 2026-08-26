@@ -60,6 +60,20 @@ function makeExcerpt(content, max = 160) {
     return text.length > max ? text.substring(0, max) + '…' : text;
 }
 
+function normalizeThumbnail(thumbnail) {
+    if (!thumbnail) return null;
+    const normalized = thumbnail.replace(/^\/?assets\/blogs\//, '/posts/');
+    return normalized.startsWith('/') ? normalized : `/${normalized}`;
+}
+
+function getThumbnail(data, content) {
+    const declared = normalizeThumbnail(data.thumbnail);
+    if (declared) return declared;
+
+    const firstImage = content.match(/!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/);
+    return normalizeThumbnail(firstImage?.[1]);
+}
+
 // ─── Traitement des fichiers .md ──────────────────────────────────────────────
 
 const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'));
@@ -80,7 +94,7 @@ const posts = files.map(file => {
         author:    data.author    || '',
         tags:      Array.isArray(data.tags) ? data.tags : (data.tags ? [data.tags] : []),
         excerpt:   data.excerpt   || makeExcerpt(content),
-        thumbnail: data.thumbnail || null,
+        thumbnail: getThumbnail(data, content),
         content,  // markdown brut — rendu dans Next.js via lib/markdown.tsx
     };
 

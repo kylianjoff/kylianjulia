@@ -20,13 +20,20 @@ type Block =
   | { type: 'hr' }
   | { type: 'image';      alt: string; src: string };
 
+function normalizeImageSrc(src: string): string {
+        const normalized = src.trim().replace(/^\/?assets\/blogs\//, '/posts/');
+        return normalized.startsWith('/') || normalized.startsWith('http')
+                ? normalized
+                : `/${normalized}`;
+}
+
 // ─── Inline tokenizer ─────────────────────────────────────────────────────────
 
 const INLINE_PATTERNS: Array<{
     re: RegExp;
     make: (m: RegExpMatchArray) => InlineToken;
 }> = [
-    { re: /!\[([^\]]*)\]\(([^)]+)\)/,  make: m => ({ type: 'image',  alt: m[1], src: m[2] }) },
+    { re: /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/, make: m => ({ type: 'image', alt: m[1], src: normalizeImageSrc(m[2]) }) },
     { re: /\[([^\]]+)\]\(([^)]+)\)/,   make: m => ({ type: 'link',   text: m[1], href: m[2] }) },
     { re: /\*\*([^*\n]+)\*\*/,         make: m => ({ type: 'bold',   content: m[1] }) },
     { re: /\*([^*\n]+)\*/,             make: m => ({ type: 'italic', content: m[1] }) },
@@ -217,9 +224,9 @@ function parseBlocks(markdown: string): Block[] {
         }
 
         // Image seule sur sa ligne
-        const imgMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+        const imgMatch = line.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)$/);
         if (imgMatch) {
-            blocks.push({ type: 'image', alt: imgMatch[1], src: imgMatch[2] });
+            blocks.push({ type: 'image', alt: imgMatch[1], src: normalizeImageSrc(imgMatch[2]) });
             i++;
             continue;
         }
