@@ -53,9 +53,12 @@ export default function ContactForm({
         toast.info("Envoi du message...");
 
         try {
-            const response = await fetch("/api/contact", {
+            const response = await fetch("/", {
                 method: "POST",
-                body: data,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: data
             });
 
             if (response.ok) {

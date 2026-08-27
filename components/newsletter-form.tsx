@@ -41,9 +41,12 @@ export default function NewsletterForm() {
         toast.info("Envoi de l'inscription...");
 
         try {
-            const response = await fetch("/api/newsletter", {
+            const response = await fetch("/", {
                 method: "POST",
-                body: data,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: data
             });
 
             if (response.ok) {
