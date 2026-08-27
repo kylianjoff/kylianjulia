@@ -6,11 +6,41 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 // ─── Window definitions ───────────────────────────────────────────────────────
 
 const WINDOW_DEFS = [
-  { id: 'terminal', title: 'Terminal',            delay: 700,  width: 400, height: 215 },
-  { id: 'editor',   title: 'portfolio.ts — Code', delay: 1400, width: 375, height: 252 },
-  { id: 'files',    title: 'Files',               delay: 2100, width: 275, height: 188 },
-  { id: 'sysinfo',  title: 'Kylian Info',         delay: 2800, width: 255, height: 158 },
-  { id: 'avatar',   title: 'kylian.png',          delay: 3500, width: 400, height: 400 },
+  {
+    id: "terminal",
+    title: "Terminal",
+    delay: 700,
+    width: 400,
+    height: 215,
+  },
+  {
+    id: "editor",
+    title: "portfolio.ts — Code",
+    delay: 1400,
+    width: 375,
+    height: 252,
+  },
+  {
+    id: "files",
+    title: "Files",
+    delay: 2100,
+    width: 275,
+    height: 188,
+  },
+  {
+    id: "sysinfo",
+    title: "Kylian Info",
+    delay: 2800,
+    width: 255,
+    height: 158,
+  },
+  {
+    id: "avatar",
+    title: "kylian.png",
+    delay: 3500,
+    width: 400,
+    height: 400,
+  },
 ] as const;
 
 type WindowId = (typeof WINDOW_DEFS)[number]['id'];
@@ -144,12 +174,28 @@ const WINDOW_CONTENTS: Record<WindowId, React.FC> = {
 // ─── Draggable window frame ───────────────────────────────────────────────────
 
 function WindowFrame({
-  id, title, x, y, zIndex, visible, width, height, children,
-  onTitleMouseDown, onWindowMouseDown,
+  id,
+  title,
+  x,
+  y,
+  zIndex,
+  visible,
+  width,
+  height,
+  scale,
+  onTitleMouseDown,
+  onWindowMouseDown,
+  children,
 }: {
-  id: string; title: string;
-  x: number; y: number; zIndex: number; visible: boolean;
-  width: number; height: number;
+  id: string;
+  title: string;
+  x: number;
+  y: number;
+  zIndex: number;
+  visible: boolean;
+  width: number;
+  height: number;
+  scale: number;
   children: React.ReactNode;
   onTitleMouseDown: (e: React.MouseEvent, id: string) => void;
   onWindowMouseDown: (id: string) => void;
@@ -157,17 +203,35 @@ function WindowFrame({
   return (
     <div
       style={{
-        position: 'absolute',
-        left: x, top: y, width, zIndex,
+        position: "absolute",
+        left: x,
+        top: y,
+        width,
+        height,
+
+        zIndex,
+
         borderRadius: 10,
-        overflow: 'hidden',
-        background: 'rgba(13,20,38,0.92)',
-        backdropFilter: 'blur(22px)',
-        boxShadow: '0 14px 44px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.07)',
+        overflow: "hidden",
+
+        background: "rgba(13,20,38,0.92)",
+        backdropFilter: "blur(22px)",
+
+        boxShadow:
+          "0 14px 44px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.07)",
+
         opacity: visible ? 1 : 0,
-        transform: visible ? 'scale(1) translateY(0)' : 'scale(0.91) translateY(8px)',
-        transition: 'opacity 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1)',
-        pointerEvents: visible ? 'auto' : 'none',
+
+        transform: visible
+          ? `scale(${scale})`
+          : `scale(${scale * 0.91}) translateY(8px)`,
+
+        transformOrigin: "top left",
+
+        transition:
+          "opacity 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1)",
+
+        pointerEvents: visible ? "auto" : "none",
       }}
       onMouseDown={() => onWindowMouseDown(id)}
     >
@@ -175,25 +239,73 @@ function WindowFrame({
       <div
         style={{
           height: 28,
-          background: 'rgba(22,34,58,0.98)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-          display: 'flex', alignItems: 'center', gap: 8,
-          paddingLeft: 10, paddingRight: 10,
-          cursor: 'grab', userSelect: 'none',
+
+          background: "rgba(22,34,58,0.98)",
+          borderBottom: "1px solid rgba(255,255,255,0.06)",
+
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+
+          paddingLeft: 10,
+          paddingRight: 10,
+
+          cursor: "grab",
+          userSelect: "none",
         }}
-        onMouseDown={e => { e.stopPropagation(); onTitleMouseDown(e, id); }}
+        onMouseDown={(e) => {
+          e.stopPropagation();
+          onTitleMouseDown(e, id);
+        }}
       >
-        <div style={{ display: 'flex', gap: 5, alignItems: 'center', flexShrink: 0 }}>
-          {(['#ef4444', '#f59e0b', '#22c55e'] as const).map((color, i) => (
-            <div key={i} style={{ width: 9, height: 9, borderRadius: '50%', background: color, opacity: 0.82 }} />
-          ))}
+        <div
+          style={{
+            display: "flex",
+            gap: 5,
+            alignItems: "center",
+            flexShrink: 0,
+          }}
+        >
+          {(["#ef4444", "#f59e0b", "#22c55e"] as const).map(
+            (color, i) => (
+              <div
+                key={i}
+                style={{
+                  width: 9,
+                  height: 9,
+                  borderRadius: "50%",
+                  background: color,
+                  opacity: 0.82,
+                }}
+              />
+            )
+          )}
         </div>
-        <span style={{ flex: 1, textAlign: 'center', color: '#94a3b8', fontSize: 10, fontWeight: 500, marginRight: 22 }}>
+
+        <span
+          style={{
+            flex: 1,
+            textAlign: "center",
+            color: "#94a3b8",
+            fontSize: 10,
+            fontWeight: 500,
+            marginRight: 22,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {title}
         </span>
       </div>
-      {/* Content area */}
-      <div style={{ height: height - 28, overflow: 'hidden' }}>
+
+      {/* Content */}
+      <div
+        style={{
+          height: height - 28,
+          overflow: "hidden",
+        }}
+      >
         {children}
       </div>
     </div>
@@ -226,6 +338,50 @@ export default function AnimationSection() {
     });
   }, []);
 
+  const [windowScale, setWindowScale] = useState(1);
+
+  useEffect(() => {
+    const updateScale = () => {
+      const el = desktopRef.current;
+
+      if (!el) return;
+
+      const { width, height } = el.getBoundingClientRect();
+
+      const padding = 20;
+
+      // Taille minimale nécessaire pour la plus grosse fenêtre
+      const maxWindowWidth = Math.max(
+        ...WINDOW_DEFS.map((window) => window.width)
+      );
+
+      const maxWindowHeight = Math.max(
+        ...WINDOW_DEFS.map((window) => window.height)
+      );
+
+      const widthScale =
+        (width - padding * 2) / maxWindowWidth;
+
+      const heightScale =
+        (height - 50) / maxWindowHeight;
+
+      const scale = Math.min(
+        1,
+        widthScale,
+        heightScale
+      );
+
+      setWindowScale(Math.max(0.55, scale));
+    };
+
+    updateScale();
+
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(desktopRef.current!);
+
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => { winStatesRef.current = winStates; }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Clock
@@ -247,23 +403,59 @@ export default function AnimationSection() {
   useEffect(() => {
     const place = () => {
       const el = desktopRef.current;
+
       if (!el) return;
+
       const { width, height } = el.getBoundingClientRect();
+
       const TOP_BAR = 30;
-      setWinStates(prev => prev.map(ws => {
-        const def = WINDOW_DEFS.find(d => d.id === ws.id)!;
-        const maxX = Math.max(10, width  - def.width  - 10);
-        const maxY = Math.max(TOP_BAR + 10, height - def.height - 10);
-        return {
-          ...ws,
-          x: 10 + Math.random() * (maxX - 10),
-          y: TOP_BAR + 10 + Math.random() * (maxY - TOP_BAR - 20),
-        };
-      }));
+      const PADDING = 10;
+
+      setWinStates((prev) =>
+        prev.map((ws) => {
+          const def = WINDOW_DEFS.find(
+            (d) => d.id === ws.id
+          )!;
+
+          // Dimensions réellement affichées
+          const scaledWidth = def.width * windowScale;
+          const scaledHeight = def.height * windowScale;
+
+          const maxX = Math.max(
+            PADDING,
+            width - scaledWidth - PADDING
+          );
+
+          const maxY = Math.max(
+            TOP_BAR + PADDING,
+            height - scaledHeight - PADDING
+          );
+
+          return {
+            ...ws,
+
+            x:
+              PADDING +
+              Math.random() *
+                Math.max(0, maxX - PADDING),
+
+            y:
+              TOP_BAR +
+              PADDING +
+              Math.random() *
+                Math.max(
+                  0,
+                  maxY - TOP_BAR - PADDING
+                ),
+          };
+        })
+      );
     };
-    const t = setTimeout(place, 150);
-    return () => clearTimeout(t);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const timer = setTimeout(place, 150);
+
+    return () => clearTimeout(timer);
+  }, [windowScale]);
 
   // Staggered appearance
   useEffect(() => {
@@ -301,14 +493,61 @@ export default function AnimationSection() {
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
       const drag = dragRef.current;
+
       if (!drag) return;
+
       const el = desktopRef.current;
+
       if (!el) return;
-      const { width, height } = el.getBoundingClientRect();
-      const def = WINDOW_DEFS.find(d => d.id === drag.id)!;
-      const newX = Math.max(0, Math.min(width  - def.width,  drag.startWinX + e.clientX - drag.startMouseX));
-      const newY = Math.max(30, Math.min(height - def.height, drag.startWinY + e.clientY - drag.startMouseY));
-      setWinStates(prev => prev.map(ws => ws.id === drag.id ? { ...ws, x: newX, y: newY } : ws));
+
+      const { width, height } =
+        el.getBoundingClientRect();
+
+      const def = WINDOW_DEFS.find(
+        (d) => d.id === drag.id
+      )!;
+
+      // Le déplacement de la souris doit être
+      // ramené à l'échelle réelle de la fenêtre.
+      const deltaX =
+        (e.clientX - drag.startMouseX) / windowScale;
+
+      const deltaY =
+        (e.clientY - drag.startMouseY) / windowScale;
+
+      const scaledWidth =
+        def.width * windowScale;
+
+      const scaledHeight =
+        def.height * windowScale;
+
+      const newX = Math.max(
+        0,
+        Math.min(
+          width - scaledWidth,
+          drag.startWinX + deltaX
+        )
+      );
+
+      const newY = Math.max(
+        30,
+        Math.min(
+          height - scaledHeight,
+          drag.startWinY + deltaY
+        )
+      );
+
+      setWinStates((prev) =>
+        prev.map((ws) =>
+          ws.id === drag.id
+            ? {
+                ...ws,
+                x: newX,
+                y: newY,
+              }
+            : ws
+        )
+      );
     };
     const onUp = () => { dragRef.current = null; };
     document.addEventListener('mousemove', onMove);
@@ -325,7 +564,7 @@ export default function AnimationSection() {
       {/* Desktop mockup */}
       <div
         ref={desktopRef}
-        className="w-[80%] h-[85%] absolute rounded-2xl overflow-hidden translate-y-[-50px]"
+        className="absolute overflow-hidden rounded-2xl w-[94%] h-[68%] sm:w-[88%] sm:h-[72%] md:w-[84%] md:h-[78%] lg:w-[80%] lg:h-[85%] -translate-y-6 sm:-translate-y-8 lg:-translate-y-[50px]"
         style={{
           aspectRatio: "16 / 10",
           background: "linear-gradient(145deg, #060e1f 0%, #0b1a38 35%, #071428 65%, #040c1c 100%)",
@@ -442,6 +681,7 @@ export default function AnimationSection() {
               height={def.height}
               onTitleMouseDown={handleTitleMouseDown}
               onWindowMouseDown={handleWindowMouseDown}
+              scale={windowScale}
             >
               <Content />
             </WindowFrame>
