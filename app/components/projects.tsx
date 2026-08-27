@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 // ─── Données satellites ──────────────────────────────────────────────────────
 // Remplace le contenu du <SatelliteIcon> par <Image src={...} /> quand tu auras les icônes.
@@ -18,9 +19,9 @@ interface SatelliteData {
 
 // Orbites elliptiques plates → large horizontalement, compact verticalement
 const SATELLITES: SatelliteData[] = [
-  { id: 1, label: "Portfolio",  rx: 250, ry: 60,  rotation:  18, duration:  9, startAngle:   0, color: "#3b82f6" },
-  { id: 2, label: "Projet 2",   rx: 340, ry: 80,  rotation: -22, duration: 14, startAngle: 130, color: "#38bdf8" },
-  { id: 3, label: "Projet 3",   rx: 420, ry: 96,  rotation:  12, duration: 20, startAngle: 250, color: "#818cf8" },
+  { id: 1, label: "Site personnel",  rx: 250, ry: 60,  rotation:  18, duration:  9, startAngle:   0, color: "#3b82f6" },
+  //{ id: 2, label: "Projet 2",   rx: 340, ry: 80,  rotation: -22, duration: 14, startAngle: 130, color: "#38bdf8" },
+  //{ id: 3, label: "Projet 3",   rx: 420, ry: 96,  rotation:  12, duration: 20, startAngle: 250, color: "#818cf8" },
 ];
 
 const ORBIT_W = 860;   // largeur du container
@@ -33,12 +34,12 @@ const CY = ORBIT_H / 2;  // 230
 function SatelliteIcon({ color, label }: { color: string; label: string }) {
   return (
     <div className="group/sat relative">
-      {/* Remplacer ce div par <Image src={...} alt={label} width={56} height={56} className="rounded-[14px]" /> */}
-      <div
-        className="w-14 h-14 rounded-[14px] bg-white transition-all duration-200 group-hover/sat:scale-110 group-hover/sat:brightness-105"
-        style={{
-          boxShadow: `0 2px 12px rgba(0,0,0,0.22), 0 0 0 0.5px rgba(0,0,0,0.06), 0 0 20px ${color}35`,
-        }}
+      <Image
+        src={`/images/projects/${label.toLowerCase().replace(/\s+/g, '-')}.png`}
+        alt={label}
+        width={56}
+        height={56}
+        className="rounded-[14px]"
       />
       {/* Tooltip */}
       <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap rounded-md border border-border bg-card px-2 py-0.5 text-[10px] text-foreground opacity-0 transition-opacity group-hover/sat:opacity-100">
