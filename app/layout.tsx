@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
 import { CookieModal } from "@/components/layout/CookieModal";
+import { LoadingScreen } from "@/components/layout/LoadingScreen";
 
 const geistSans = localFont({
   src: "./fonts/GeistSans.woff2",
@@ -39,6 +40,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <LoadingScreen />
           <Header />
 
           <main className="flex-1 pt-24 bg-background">
