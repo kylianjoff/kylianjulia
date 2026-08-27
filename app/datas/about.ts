@@ -147,7 +147,7 @@ const experiences: Experience[] = [
             'Amélioration de fonctionnalités existantes et ajout de nouvelles fonctionnalités.',
             'Utilisation de React pour le développement frontend et de RUST pour le développement backend.'
         ],
-        periode: '03/2026 - En cours'
+        periode: '03/2026 - 08/2026'
     },
     {
         nom: 'Vice-président de l\'association Im@ge',
@@ -195,11 +195,12 @@ const skills: Skills[] = [
         titre: 'Langages de programmation',
         skills: [
             {titre: 'C', logo: 'https://cdn.simpleicons.org/c/A8B9CC'},
-            {titre: 'Java', logo: 'https://cdn.simpleicons.org/openjdk/ED8B00'},
+            {titre: 'Java'},
             {titre: 'C++', logo: 'https://cdn.simpleicons.org/cplusplus/00599C'},
+            {titre: 'Rust', logo: 'https://cdn.simpleicons.org/rust/000000'},
             {titre: 'JavaScript', logo: 'https://cdn.simpleicons.org/javascript/F7DF1E'},
             {titre: 'HTML', logo: 'https://cdn.simpleicons.org/html5/E34F26'},
-            {titre: 'CSS', logo: 'https://cdn.simpleicons.org/css3/1572B6'},
+            {titre: 'CSS', logo: 'https://cdn.simpleicons.org/css/663399'},
             {titre: 'Python', logo: 'https://cdn.simpleicons.org/python/3776AB'},
             {titre: 'PHP', logo: 'https://cdn.simpleicons.org/php/777BB4'},
         ],
@@ -208,6 +209,7 @@ const skills: Skills[] = [
         titre: 'Web',
         skills: [
             {titre: 'Angular', logo: 'https://cdn.simpleicons.org/angular/DD0031'},
+            {titre: 'React', logo: 'https://cdn.simpleicons.org/react/61DAFB'},
             {titre: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs/FFFFFF'},
             {titre: 'Colyseus'},
             {titre: 'ASP.NET', logo: 'https://cdn.simpleicons.org/dotnet/512BD4'},
@@ -223,9 +225,9 @@ const skills: Skills[] = [
     {
         titre: 'Outils',
         skills: [
-            {titre: 'Microsoft Office', logo: 'https://cdn.simpleicons.org/microsoftoffice/D83B01'},
-            {titre: 'Microsoft Azure', logo: 'https://cdn.simpleicons.org/microsoftazure/0078D4'},
-            {titre: 'Visual Studio', logo: 'https://cdn.simpleicons.org/visualstudio/5C2D91'},
+            {titre: 'Microsoft Office'},
+            {titre: 'Microsoft Azure'},
+            {titre: 'Visual Studio'},
             {titre: 'UNIX', logo: 'https://cdn.simpleicons.org/linux/FFFFFF'},
             {titre: 'GIT', logo: 'https://cdn.simpleicons.org/git/F05032'},
             {titre: 'Docker', logo: 'https://cdn.simpleicons.org/docker/2496ED'},
