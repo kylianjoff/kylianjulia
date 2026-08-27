@@ -6,11 +6,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 interface ContactModalProps {
     open: boolean;
     onClose?: () => void;
+    subject?: string;
 }
 
 export function ContactModal({
     open,
     onClose,
+    subject,
 }: ContactModalProps) {
     return (
         <Dialog open={open} onOpenChange={onClose}>
@@ -20,7 +22,7 @@ export function ContactModal({
                         Formulaire de contact
                     </DialogTitle>
                 </DialogHeader>
-                <ContactForm />
+                <ContactForm subject={subject} />
             </DialogContent>
         </Dialog>
     )
