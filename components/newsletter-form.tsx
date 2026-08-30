@@ -41,31 +41,68 @@ export default function NewsletterForm() {
         toast.info("Envoi de l'inscription...");
 
         try {
-            const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID_NEWSLETTER}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: data
+            const formspreeId =
+                process.env.NEXT_PUBLIC_FORMSPREE_ID_NEWSLETTER;
+
+            if (!formspreeId) {
+                throw new Error(
+                    "NEXT_PUBLIC_FORMSPREE_ID_NEWSLETTER n'est pas configuré."
+                );
+            }
+
+            const payload = new URLSearchParams();
+
+            data.forEach((value, key) => {
+                payload.append(key, value.toString());
             });
 
+            const response = await fetch(
+                `https://formspree.io/f/${formspreeId}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/x-www-form-urlencoded",
+                        Accept: "application/json",
+                    },
+                    body: payload.toString(),
+                }
+            );
+
             if (response.ok) {
-                toast.success("Votre inscription à la newsletter a été prise en compte !");
+                toast.success(
+                    "Votre inscription à la newsletter a été prise en compte !"
+                );
+
                 form.reset();
                 return;
             }
 
-            const errorData = await response.json().catch(() => null);
-            toast.error(errorData?.error ?? "Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard.");
-        } catch {
-            toast.error("Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard.");
+            const errorData = await response
+                .json()
+                .catch(() => null);
+
+            toast.error(
+                errorData?.error ??
+                    "Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard."
+            );
+        } catch (error) {
+            console.error("[newsletter] Formspree error:", error);
+
+            toast.error(
+                "Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard."
+            );
         } finally {
             setIsSubmitting(false);
         }
     }
 
     return (
-        <form name="newsletter" onSubmit={handleSubmit} data-netlify="true" data-netlify-honeypot="bot-field" className="flex flex-col gap-4 mb-4 border border-border rounded-2xl bg-card p-6 sm:p-8">
+        <form
+            name="newsletter"
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-4 mb-4 border border-border rounded-2xl bg-card p-6 sm:p-8"
+        >
             <div className="flex flex-col gap-4 justify-center items-center">
                 <h1 className="text-2xl font-bold text-center">Inscrivez-vous à la newsletter</h1>
                 <p className="text-sm text-muted text-center">Recevez les dernières nouvelles et mises à jour directement dans votre boîte mail.</p>

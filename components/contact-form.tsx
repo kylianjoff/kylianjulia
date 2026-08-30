@@ -53,31 +53,68 @@ export default function ContactForm({
         toast.info("Envoi du message...");
 
         try {
-            const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID_CONTACT}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: data
+            const formspreeId =
+                process.env.NEXT_PUBLIC_FORMSPREE_ID_CONTACT;
+
+            if (!formspreeId) {
+                throw new Error(
+                    "NEXT_PUBLIC_FORMSPREE_ID_CONTACT n'est pas configuré."
+                );
+            }
+
+            const payload = new URLSearchParams();
+
+            data.forEach((value, key) => {
+                payload.append(key, value.toString());
             });
 
+            const response = await fetch(
+                `https://formspree.io/f/${formspreeId}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/x-www-form-urlencoded",
+                        Accept: "application/json",
+                    },
+                    body: payload.toString(),
+                }
+            );
+
             if (response.ok) {
-                toast.success("Votre message a été envoyé !");
+                toast.success(
+                    "Votre message a été envoyé avec succès !"
+                );
+
                 form.reset();
                 return;
             }
 
-            const errorData = await response.json().catch(() => null);
-            toast.error(errorData?.error ?? "Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard.");
-        } catch {
-            toast.error("Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard.");
+            const errorData = await response
+                .json()
+                .catch(() => null);
+
+            toast.error(
+                errorData?.error ??
+                    "Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard."
+            );
+        } catch (error) {
+            console.error("[contact] Formspree error:", error);
+
+            toast.error(
+                "Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard."
+            );
         } finally {
             setIsSubmitting(false);
         }
     }
 
     return (
-        <form name="contact" onSubmit={handleSubmit} data-netlify="true" data-netlify-honeypot="bot-field" className="bg-background px-8 py-6 rounded-xl border border-border space-y-6">
+        <form
+            name="contact"
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-4 mb-4 border border-border rounded-2xl bg-card p-6 sm:p-8"
+        >
             <div className="hidden">
                 <Label htmlFor="bot-field">Ne pas remplir ce champ</Label>
                 <Input type="text" name="bot-field" id="bot-field" />
