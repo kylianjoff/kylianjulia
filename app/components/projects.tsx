@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 
 // ─── Données satellites ──────────────────────────────────────────────────────
 // Remplace le contenu du <SatelliteIcon> par <Image src={...} /> quand tu auras les icônes.
@@ -34,7 +33,7 @@ const CY = ORBIT_H / 2;  // 230
 function SatelliteIcon({ color, label }: { color: string; label: string }) {
   return (
     <div className="group/sat relative">
-      <Image
+      <img
         src={`/images/projects/${label.toLowerCase().replace(/\s+/g, '-')}.png`}
         alt={label}
         width={56}

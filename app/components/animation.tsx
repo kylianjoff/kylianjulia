@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 // ─── Window definitions ───────────────────────────────────────────────────────
@@ -154,7 +153,7 @@ function SysInfoContent() {
 
 function AvatarContent() {
   return (
-    <Image
+    <img
       src="/images/avatar.png"
       alt="Avatar"
       width={400}
