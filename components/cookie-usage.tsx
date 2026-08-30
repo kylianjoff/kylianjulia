@@ -26,7 +26,7 @@ export default function CookieUsageModal({
                     Ce site utilise des cookies pour le fonctionnement technique.
                 </p>
 
-                <div className="flex flex-row justify-between gap-2 items-center">
+                <div className="flex flex-col xs:flex-row justify-between gap-2 items-center">
                     <a
                         href="/data-and-cookies"
                         className="inline-block text-sm font-medium text-primary underline-offset-4 transition-colors hover:underline"
@@ -34,7 +34,7 @@ export default function CookieUsageModal({
                         En savoir plus
                     </a>
 
-                    <Button className="w-full sm:w-auto" onClick={onOk}>
+                    <Button className="w-full xs:w-auto" onClick={onOk}>
                         J&apos;ai compris
                     </Button>
                 </div>
