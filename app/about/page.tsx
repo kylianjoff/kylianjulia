@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Timeline, type TimelineItem } from "@/components/ui/timeline";
 import {
     formations,
@@ -213,7 +212,7 @@ export default function AboutPage() {
 
                     <div className="relative flex min-h-0 flex-col gap-6 lg:min-h-[400px] lg:block">
                         <div className="w-full overflow-hidden rounded-3xl lg:ml-auto lg:w-[50%]">
-                            <Image
+                            <img
                                 src="/images/profile.png"
                                 alt="Profile"
                                 width={400}
@@ -397,7 +396,7 @@ export default function AboutPage() {
                                     setAssociationHovered("")
                                 }
                             >
-                                <Image
+                                <img
                                     src={`/${association.logo}`}
                                     alt={association.name}
                                     width={64}

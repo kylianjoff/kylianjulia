@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { JobSeekingModal } from "./JobSeekingModal";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -28,7 +27,7 @@ export function Header() {
             <div className="flex items-center justify-between px-10">
                 {/* Logo */}
                 <div className="flex items-center gap-4 p-2">
-                    <Image
+                    <img
                         src="/images/favicon.ico"
                         alt="Logo"
                         width={48}
