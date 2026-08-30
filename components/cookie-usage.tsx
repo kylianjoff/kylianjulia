@@ -26,7 +26,7 @@ export default function CookieUsageModal({
                     Ce site utilise des cookies pour le fonctionnement technique.
                 </p>
 
-                <div className="flex flex-row justify-between gap-2 items-center">
+                <div className="flex flex-col sm:flex-row justify-between gap-2 items-center">
                     <a
                         href="/data-and-cookies"
                         className="inline-block text-sm font-medium text-primary underline-offset-4 transition-colors hover:underline"
