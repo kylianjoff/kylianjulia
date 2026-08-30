@@ -53,7 +53,7 @@ export default function ContactForm({
         toast.info("Envoi du message...");
 
         try {
-            const response = await fetch("/", {
+            const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID_CONTACT}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",

@@ -41,7 +41,7 @@ export default function NewsletterForm() {
         toast.info("Envoi de l'inscription...");
 
         try {
-            const response = await fetch("/", {
+            const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID_NEWSLETTER}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
