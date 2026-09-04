@@ -1,9 +1,16 @@
 import { ImageResponse } from "next/og";
-import { getPostBySlug } from "@/lib/blog-source";
+import { getManifest, getPostBySlug } from "@/lib/blog-source";
 
 export const dynamic = "force-static";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+export async function generateStaticParams() {
+    const manifest = await getManifest();
+    return manifest.posts.map((post) => ({
+        slug: post.id,
+    }));
+}
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
