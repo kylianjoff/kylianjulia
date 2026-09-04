@@ -10,7 +10,7 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ post, compact = false }: BlogCardProps) {
-    const thumbnail = post.thumbnail?.replace(/^\/assets\/blogs\//, '/posts/');
+    const thumbnail = post.thumbnail;
 
     const [littleScreen, setLittleScreen] = useState(false);
 

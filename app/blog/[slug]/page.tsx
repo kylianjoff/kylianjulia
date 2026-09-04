@@ -1,40 +1,72 @@
-import NewsletterForm from '@/components/newsletter-form';
-import { getBlogPost, getBlogIndex } from '@/lib/blog';
-import { renderMarkdown } from '@/lib/markdown';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import NewsletterForm from '@/components/newsletter-form';
+import { renderMarkdown } from '@/lib/markdown';
+import { getManifest, getPostBySlug } from '@/lib/blog-source';
 
-export function generateStaticParams() {
-    return getBlogIndex().map(p => ({ slug: p.slug }));
+export async function generateStaticParams() {
+    const manifest = await getManifest();
+    return manifest.posts.map(post => ({ slug: post.id }));
 }
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}) {
+// Slug absent au build -> vraie 404 (pas de génération à la volée possible avec output: export).
+export const dynamicParams = false;
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const post = getBlogPost(slug);
+    const post = await getPostBySlug(slug);
     if (!post) return {};
+
+    const title = `${post.title} — Kylian JULIA`;
+    const description = post.excerpt || 'Articles de blog de Kylian JULIA.';
+    const images = post.thumbnail ? [post.thumbnail] : undefined;
+
     return {
-        title: `${post.title} — Kylian JULIA`,
-        description: post.excerpt,
+        title,
+        description,
+        alternates: { canonical: `/blog/${slug}` },
+        openGraph: {
+            type: 'article',
+            siteName: 'Kylian JULIA',
+            title,
+            description,
+            images,
+            authors: [post.author || 'Kylian JULIA'],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images,
+        },
     };
 }
 
-export default async function BlogPostPage({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const post = getBlogPost(slug);
+    const post = await getPostBySlug(slug);
     if (!post) notFound();
+
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        image: post.thumbnail ?? undefined,
+        author: { '@type': 'Person', name: post.author || 'Kylian JULIA' },
+        datePublished: post.date,
+        url: `https://kylianjulia.fr/blog/${post.slug}`,
+    };
 
     return (
         <main className="max-w-3xl mx-auto px-6 py-14">
+            <script
+                type="application/ld+json"
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
 
-            {/* Retour */}
             <Link
                 href="/blog"
                 className="inline-flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors mb-10 group"
@@ -43,7 +75,6 @@ export default async function BlogPostPage({
                 Retour au blog
             </Link>
 
-            {/* Header */}
             <header className="mb-12">
                 {post.thumbnail && (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -54,7 +85,6 @@ export default async function BlogPostPage({
                     />
                 )}
 
-                {/* Tags */}
                 {post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-5">
                         {post.tags.map(tag => (
@@ -83,13 +113,11 @@ export default async function BlogPostPage({
                 </p>
             </header>
 
-            {/* Contenu markdown rendu */}
             <article>
                 {renderMarkdown(post.content)}
             </article>
 
             <NewsletterForm />
-
         </main>
     );
 }
