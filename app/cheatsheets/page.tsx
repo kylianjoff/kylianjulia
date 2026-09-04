@@ -2,6 +2,23 @@ import Link from "next/link";
 import { cheatSheets } from "../datas/cheatsheets";
 import { Badge } from "@/components/ui/badge";
 
+export const metadata = {
+    title: 'Cheat Sheets',
+    description: 'Fiches mémo et ressources pratiques de Kylian JULIA sur le développement et la cybersécurité.',
+    alternates: { canonical: '/cheatsheets' },
+    openGraph: {
+        type: 'website',
+        url: '/cheatsheets',
+        title: 'Cheat Sheets — Kylian JULIA',
+        description: 'Fiches mémo et ressources pratiques de Kylian JULIA sur le développement et la cybersécurité.',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Cheat Sheets — Kylian JULIA',
+        description: 'Fiches mémo et ressources pratiques de Kylian JULIA sur le développement et la cybersécurité.',
+    },
+};
+
 export default function CheatsheetsPage() {
     return (
         <main className="max-w-4xl mx-auto px-6 py-16">
