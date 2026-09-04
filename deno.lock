@@ -13,10 +13,12 @@
       "dependencies": [
         "npm:@base-ui/react@1.6.0",
         "npm:@netlify/blobs@^11.0.3",
+        "npm:@netlify/edge-functions@4",
         "npm:@tailwindcss/postcss@4.1.11",
         "npm:@types/node@20.19.43",
         "npm:@types/react-dom@19.2.4",
         "npm:@types/react@19.2.18",
+        "npm:@vercel/og@^1.0.2",
         "npm:class-variance-authority@0.7.1",
         "npm:clsx@2.1.1",
         "npm:eslint-config-next@16.3.0",

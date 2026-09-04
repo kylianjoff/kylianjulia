@@ -3,6 +3,8 @@ import { Separator } from "@/components/ui/separator";
 export const metadata = {
     title: 'Données personnelles & cookies',
     description: 'Informations sur le traitement des données personnelles et l\'utilisation des cookies.',
+    alternates: { canonical: '/data-and-cookies' },
+    robots: { index: false, follow: true },
 };
 
 interface Article {
