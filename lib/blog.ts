@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+// Types partagés par les composants blog. Les données réelles viennent des Netlify Functions
+// (/api/blog/index, /api/blog/post), alimentées par netlify/functions/blog-sync.mts.
 
 export interface BlogPostMeta {
     slug: string;
@@ -13,27 +13,4 @@ export interface BlogPostMeta {
 
 export interface BlogPost extends BlogPostMeta {
     content: string; // markdown brut
-}
-
-const DATA_DIR = path.join(process.cwd(), 'public');
-
-export function getBlogIndex(): BlogPostMeta[] {
-    try {
-        const raw = fs.readFileSync(path.join(DATA_DIR, 'blog-index.json'), 'utf8');
-        return JSON.parse(raw) as BlogPostMeta[];
-    } catch {
-        return [];
-    }
-}
-
-export function getBlogPost(slug: string): BlogPost | null {
-    try {
-        const raw = fs.readFileSync(
-            path.join(DATA_DIR, 'posts-data', `${slug}.json`),
-            'utf8'
-        );
-        return JSON.parse(raw) as BlogPost;
-    } catch {
-        return null;
-    }
 }
