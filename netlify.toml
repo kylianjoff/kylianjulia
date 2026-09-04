@@ -1,3 +1,14 @@
 [build]
     command = "npm run build"
     publish = "out"
+
+[functions]
+    directory = "netlify/functions"
+    node_bundler = "esbuild"
+
+# Sert la page statique /blog/post pour toute URL /blog/<slug> (contenu chargé au runtime via /api/blog/post)
+[[redirects]]
+    from = "/blog/:slug"
+    to = "/blog/post"
+    status = 200
+    force = true

@@ -1,9 +1,19 @@
-import { getBlogIndex } from '@/lib/blog';
+'use client';
+
+import { BlogPostMeta } from '@/lib/blog';
 import BlogCard from './blog-card';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function BlogSection() {
-    const posts = getBlogIndex().slice(0, 3);
+    const [posts, setPosts] = useState<BlogPostMeta[]>([]);
+
+    useEffect(() => {
+        fetch('/api/blog/index')
+            .then(res => res.json())
+            .then((all: BlogPostMeta[]) => setPosts(all.slice(0, 3)))
+            .catch(() => setPosts([]));
+    }, []);
 
     return (
         <section className="py-28 px-6 bg-secondary border-t border-border/40">

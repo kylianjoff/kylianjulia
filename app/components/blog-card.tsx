@@ -1,7 +1,6 @@
 "use client";
 
 import { BlogPostMeta } from '@/lib/blog';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 interface BlogCardProps {
@@ -10,7 +9,7 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ post, compact = false }: BlogCardProps) {
-    const thumbnail = post.thumbnail?.replace(/^\/assets\/blogs\//, '/posts/');
+    const thumbnail = post.thumbnail;
 
     const [littleScreen, setLittleScreen] = useState(false);
 
@@ -28,7 +27,8 @@ export default function BlogCard({ post, compact = false }: BlogCardProps) {
     }, []);
 
     return (
-        <Link
+        // Lien natif (pas next/link) : /blog/:slug n'est pas une vraie route Next, elle dépend de la réécriture Netlify.
+        <a
             href={`/blog/${post.slug}`}
             className={`group overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 ${thumbnail ? (compact || littleScreen) ? 'flex flex-col' : 'grid grid-cols-[180px_1fr] md:grid-cols-[220px_1fr]' : ''}`}
         >
@@ -66,6 +66,6 @@ export default function BlogCard({ post, compact = false }: BlogCardProps) {
                     <span className="ml-auto shrink-0 text-xs text-muted/60 transition-colors group-hover:text-primary">Lire →</span>
                 </div>
             </div>
-        </Link>
+        </a>
     );
 }
