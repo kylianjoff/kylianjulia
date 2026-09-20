@@ -113,7 +113,7 @@ const formations: Formation[] = [
         nom: 'Diplôme d\'ingénieur informatique de l\'ISIMA',
         ecole: 'INP ISIMA',
         lieu: 'Aubière, France',
-        description: '2ème année d\'ingénieur. Spécialisation en réseaux et sécurité informatique.',
+        description: '3ème année d\'ingénieur. Spécialisation en réseaux et sécurité informatique.',
         periode: '09/2024 - En cours'
     },
     {
@@ -121,7 +121,7 @@ const formations: Formation[] = [
         ecole: 'UCA',
         lieu: 'Aubière, France',
         description: 'Validation d\'une équivalence L3 informatique durant ma première année d\'ingénieur à l\'ISIMA.',
-        periode: '09/2024 - 07/2025'
+        periode: '2025'
     },
     {
         nom: 'CPGE, PTSI PT',
@@ -134,7 +134,7 @@ const formations: Formation[] = [
         nom: 'Baccalauréat, Mathématiques et Sciences de l\'Ingénieur',
         ecole: 'Lycée Condorcet',
         lieu: 'Saint-Priest, France',
-        periode: '09/2019 - 06/2022'
+        periode: '2022'
     }
 ]
 
