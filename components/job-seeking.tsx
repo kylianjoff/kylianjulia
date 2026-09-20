@@ -28,6 +28,7 @@ export default function JobSeekingModal({
 
     function goToAboutPage() {
         window.open('/about', '_blank');
+        onClose();
     }
 
     return (
