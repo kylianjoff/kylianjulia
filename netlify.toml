@@ -1,6 +1,7 @@
 [build]
-  command = "node generate-blog-index.mjs && ng build --configuration production"
-  publish = "dist/kylianjulia/browser"
+    command = "npm run build"
+    publish = "out"
 
 [functions]
-  directory = "netlify/functions"
+    directory = "netlify/functions"
+    node_bundler = "esbuild"

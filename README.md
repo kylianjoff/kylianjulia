@@ -1,50 +1,36 @@
-# Kylianjulia
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+## Getting Started
 
-Site web personnel de Kylian JULIA ([kylianjulia.fr](https://kylianjulia.fr/)) répertoriant les compétences mais également les projets et un blog.
+First, run the development server:
 
-Ce projet a été généré en utilisant [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Fonctionnalités
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- Parcours professionnel et scolaire
-- Enumération des compétences
-- CV en français et en anglais
-- Articles sur les projets réalisés
-- Blog personnel
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Technologies
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- Angular 20.3.1
-- TypeScript
-- Node.js / npm
+## Learn More
 
-## TODO
+To learn more about Next.js, take a look at the following resources:
 
-- [X] Listing clair des projets (sur [projets.kylianjulia.fr](https://projets.kylianjulia.fr))
-- [ ] Formulaire de prise de contact
-- [ ] Amélioration du rendu de style des articles
-- [ ] Système de tag fonctionnel
-- [ ] Menu de recherche pour les articles
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Déploiement
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-Un système d'intégration continue (CI) et de déploiement continu (CD) sont intégrés au serveur de production. Ces systèmes vérifies le code et build le projet.
-[Voir le résultat](https://kylianjulia.fr/)
+## Deploy on Vercel
 
-## Ressources supplémentaires
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Pour plus d'information sur la technologie Angular, visitez la page [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
-
-## Contributions
-
-Ce projet est fermé aux contributions.
-
-## License
-
-Ce projet n'est soumis à aucune license. Copyright (c) 2025 Kylian JULIA.
-
-## Auteur
-
-Développé par [Kylian JULIA](https://kylianjulia.fr/).
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
