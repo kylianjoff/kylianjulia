@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { JobSeekingModal } from "./JobSeekingModal";
+//import { JobSeekingModal } from "./JobSeekingModal";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -77,7 +77,7 @@ export function Header() {
                         </Link>
                     </nav>
 
-                    <JobSeekingModal />
+                    {/*<JobSeekingModal />*/}
                 </div>
 
                 {/* Mobile button */}
@@ -138,7 +138,7 @@ export function Header() {
                             Cheat Sheets
                         </Link>
 
-                        <JobSeekingModal />
+                        {/*<JobSeekingModal />*/}
                     </nav>
                 </div>
             )}
